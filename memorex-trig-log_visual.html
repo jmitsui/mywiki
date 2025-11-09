@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEMOREX Visual - Matemática</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #f0f0f0;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .topic-selector {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+
+        .topic-btn {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+
+        .topic-btn.trigonometry {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        .topic-btn.logarithm {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+        }
+
+        .topic-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+
+        .topic-btn.active {
+            transform: scale(1.1);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+        }
+
+        .content-section {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid;
+        }
+
+        .trigonometry .card-header {
+            border-color: #f5576c;
+        }
+
+        .logarithm .card-header {
+            border-color: #00f2fe;
+        }
+
+        .card-icon {
+            font-size: 2.5em;
+            margin-right: 15px;
+        }
+
+        .card-title {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .highlight-box {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .highlight-box.success {
+            background: #d4edda;
+            border-color: #28a745;
+        }
+
+        .highlight-box.info {
+            background: #d1ecf1;
+            border-color: #17a2b8;
+        }
+
+        .highlight-box.danger {
+            background: #f8d7da;
+            border-color: #dc3545;
+        }
+
+        .formula {
+            background: #f8f9fa;
+            border: 2px dashed #6c757d;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.2em;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 1.1em;
+        }
+
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        .quadrant-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .quadrant {
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+            color: white;
+            font-size: 1.2em;
+        }
+
+        .q1 { background: linear-gradient(135deg, #a8e063 0%, #56ab2f 100%); }
+        .q2 { background: linear-gradient(135deg, #ffd89b 0%, #ff6b6b 100%); }
+        .q3 { background: linear-gradient(135deg, #fddb92 0%, #d1913c 100%); }
+        .q4 { background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); }
+
+        .mindmap {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            position: relative;
+            min-height: 400px;
+        }
+
+        .mindmap-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px 40px;
+            border-radius: 50px;
+            font-size: 1.5em;
+            font-weight: bold;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+
+        .mindmap-branch {
+            position: absolute;
+            background: white;
+            padding: 15px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border: 3px solid;
+        }
+
+        .branch-1 { top: 10%; left: 10%; border-color: #f5576c; }
+        .branch-2 { top: 10%; right: 10%; border-color: #4facfe; }
+        .branch-3 { bottom: 10%; left: 10%; border-color: #ffc107; }
+        .branch-4 { bottom: 10%; right: 10%; border-color: #28a745; }
+
+        .step-list {
+            counter-reset: step-counter;
+            list-style: none;
+            padding: 0;
+        }
+
+        .step-list li {
+            counter-increment: step-counter;
+            margin-bottom: 20px;
+            padding-left: 60px;
+            position: relative;
+            font-size: 1.1em;
+        }
+
+        .step-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .example-box {
+            background: #e7f3ff;
+            border-left: 5px solid #2196F3;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .example-title {
+            font-weight: bold;
+            color: #2196F3;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .tip-box {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #ff6b6b;
+        }
+
+        .tip-icon {
+            font-size: 2em;
+            margin-right: 10px;
+        }
+
+        .circle-diagram {
+            width: 400px;
+            height: 400px;
+            margin: 30px auto;
+            position: relative;
+            background: white;
+            border-radius: 50%;
+            border: 3px solid #333;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        .circle-axis-h {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #333;
+        }
+
+        .circle-axis-v {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: #333;
+        }
+
+        .circle-label {
+            position: absolute;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .label-0 { right: 5px; top: 48%; }
+        .label-90 { left: 48%; top: 5px; }
+        .label-180 { left: 5px; top: 48%; }
+        .label-270 { left: 48%; bottom: 5px; }
+
+        .angle-indicator {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 50%;
+            height: 2px;
+            background: #f5576c;
+            transform-origin: left center;
+            transition: transform 0.5s;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2em; }
+            .topic-selector { flex-direction: column; }
+            .quadrant-grid { grid-template-columns: 1fr; }
+            .circle-diagram { width: 300px; height: 300px; }
+        }
+
+        .interactive-circle {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .angle-input {
+            margin: 20px 0;
+        }
+
+        .angle-input input {
+            padding: 10px;
+            font-size: 1.2em;
+            border: 2px solid #667eea;
+            border-radius: 5px;
+            width: 150px;
+            margin: 0 10px;
+        }
+
+        .angle-input button {
+            padding: 10px 20px;
+            font-size: 1.1em;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .angle-input button:hover {
+            transform: scale(1.05);
+        }
+
+        .result-display {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            font-size: 1.2em;
+        }
+
+        .emoji {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 MEMOREX VISUAL</h1>
+        <p class="subtitle">Matemática para mentes criativas</p>
+
+        <div class="topic-selector">
+            <button class="topic-btn trigonometry active" onclick="showTopic('trigonometry')">
+                📐 Círculo Trigonométrico
+            </button>
+            <button class="topic-btn logarithm" onclick="showTopic('logarithm')">
+                📊 Inequação Logarítmica
+            </button>
+        </div>
+
+        <!-- CÍRCULO TRIGONOMÉTRICO -->
+        <div id="trigonometry" class="content-section active trigonometry">
+            
+            <!-- Mind Map -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">🧠</span>
+                    <h2 class="card-title">Mapa Mental - Círculo Trigonométrico</h2>
+                </div>
+                <div class="mindmap">
+                    <div class="mindmap-center">CÍRCULO<br>TRIGONOMÉTRICO</div>
+                    <div class="mindmap-branch branch-1">sen, cos, tan</div>
+                    <div class="mindmap-branch branch-2">Ângulos Notáveis</div>
+                    <div class="mindmap-branch branch-3">4 Quadrantes</div>
+                    <div class="mindmap-branch branch-4">sen² + cos² = 1</div>
+                </div>
+            </div>
+
+            <!-- Definição Visual -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">🎯</span>
+                    <h2 class="card-title">O que é?</h2>
+                </div>
+                <div class="highlight-box info">
+                    <span class="emoji">💡</span>
+                    É um <strong>círculo de raio 1</strong> no plano cartesiano que ajuda a visualizar as funções trigonométricas!
+                </div>
+                <div class="circle-diagram">
+                    <div class="circle-axis-h"></div>
+                    <div class="circle-axis-v"></div>
+                    <div class="circle-label label-0">0° (cos)</div>
+                    <div class="circle-label label-90">90° (sen)</div>
+                    <div class="circle-label label-180">180°</div>
+                    <div class="circle-label label-270">270°</div>
+                </div>
+            </div>
+
+            <!-- Quadrantes com Cores -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">🎨</span>
+                    <h2 class="card-title">Os 4 Quadrantes</h2>
+                </div>
+                <div class="quadrant-grid">
+                    <div class="quadrant q1">
+                        <div style="font-size: 2em;">😊</div>
+                        1º QUADRANTE<br>
+                        0° a 90°<br>
+                        ✅ TUDO POSITIVO<br>
+                        sen (+) cos (+) tan (+)
+                    </div>
+                    <div class="quadrant q2">
+                        <div style="font-size: 2em;">😐</div>
+                        2º QUADRANTE<br>
+                        90° a 180°<br>
+                        ✅ SENO positivo<br>
+                        sen (+) cos (-) tan (-)
+                    </div>
+                    <div class="quadrant q3">
+                        <div style="font-size: 2em;">😕</div>
+                        3º QUADRANTE<br>
+                        180° a 270°<br>
+                        ✅ TANGENTE positiva<br>
+                        sen (-) cos (-) tan (+)
+                    </div>
+                    <div class="quadrant q4">
+                        <div style="font-size: 2em;">🙂</div>
+                        4º QUADRANTE<br>
+                        270° a 360°<br>
+                        ✅ COSSENO positivo<br>
+                        sen (-) cos (+) tan (-)
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fórmulas Principais -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">⚡</span>
+                    <h2 class="card-title">Fórmulas que VOCÊ PRECISA SABER</h2>
+                </div>
+                
+                <div class="formula" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); font-size: 1.5em;">
+                    sen²θ + cos²θ = 1
+                    <div style="font-size: 0.6em; margin-top: 10px;">⭐ A MAIS IMPORTANTE! ⭐</div>
+                </div>
+
+                <div class="formula">
+                    tan θ = sen θ / cos θ
+                </div>
+
+                <div class="formula">
+                    sec θ = 1 / cos θ
+                </div>
+
+                <div class="formula">
+                    csc θ = 1 / sen θ
+                </div>
+            </div>
+
+            <!-- Tabela de Ângulos -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">📊</span>
+                    <h2 class="card-title">Ângulos Notáveis - Decore Esta Tabela!</h2>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ângulo</th>
+                            <th>Graus</th>
+                            <th>sen</th>
+                            <th>cos</th>
+                            <th>tan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: #e8f5e9;">
+                            <td>0</td>
+                            <td>0°</td>
+                            <td><strong>0</strong></td>
+                            <td><strong>1</strong></td>
+                            <td><strong>0</strong></td>
+                        </tr>
+                        <tr>
+                            <td>π/6</td>
+                            <td>30°</td>
+                            <td><strong>1/2</strong></td>
+                            <td><strong>√3/2</strong></td>
+                            <td><strong>√3/3</strong></td>
+                        </tr>
+                        <tr style="background: #fff3e0;">
+                            <td>π/4</td>
+                            <td>45°</td>
+                            <td><strong>√2/2</strong></td>
+                            <td><strong>√2/2</strong></td>
+                            <td><strong>1</strong></td>
+                        </tr>
+                        <tr>
+                            <td>π/3</td>
+                            <td>60°</td>
+                            <td><strong>√3/2</strong></td>
+                            <td><strong>1/2</strong></td>
+                            <td><strong>√3</strong></td>
+                        </tr>
+                        <tr style="background: #ffebee;">
+                            <td>π/2</td>
+                            <td>90°</td>
+                            <td><strong>1</strong></td>
+                            <td><strong>0</strong></td>
+                            <td><strong>não existe</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="tip-box">
+                    <span class="tip-icon">💡</span>
+                    <strong>DICA VISUAL:</strong> Observe o padrão! 
+                    <ul style="margin-top: 10px; margin-left: 20px;">
+                        <li>sen: 0, 1/2, √2/2, √3/2, 1</li>
+                        <li>cos: é o inverso! 1, √3/2, √2/2, 1/2, 0</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- INEQUAÇÃO LOGARÍTMICA -->
+        <div id="logarithm" class="content-section logarithm">
+            
+            <!-- Mind Map -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">🧠</span>
+                    <h2 class="card-title">Mapa Mental - Inequação Logarítmica</h2>
+                </div>
+                <div class="mindmap">
+                    <div class="mindmap-center">INEQUAÇÃO<br>LOGARÍTMICA</div>
+                    <div class="mindmap-branch branch-1">Condição:<br>x > 0</div>
+                    <div class="mindmap-branch branch-2">Base > 1:<br>mantém</div>
+                    <div class="mindmap-branch branch-3">0 < Base < 1:<br>inverte</div>
+                    <div class="mindmap-branch branch-4">Interseção<br>final</div>
+                </div>
+            </div>
+
+            <!-- Regra de Ouro -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">👑</span>
+                    <h2 class="card-title">A REGRA DE OURO</h2>
+                </div>
+                
+                <div class="highlight-box success" style="text-align: center; font-size: 1.3em;">
+                    <span class="emoji">🟢</span>
+                    <strong>Base MAIOR que 1:</strong> MANTÉM a desigualdade
+                </div>
+
+                <div class="formula" style="background: #d4edda;">
+                    log₂(x) > log₂(y) ⟹ x > y ✅
+                </div>
+
+                <div class="highlight-box danger" style="text-align: center; font-size: 1.3em; margin-top: 20px;">
+                    <span class="emoji">🔴</span>
+                    <strong>Base MENOR que 1:</strong> INVERTE a desigualdade
+                </div>
+
+                <div class="formula" style="background: #f8d7da;">
+                    log₀,₅(x) > log₀,₅(y) ⟹ x < y ⚠️
+                </div>
+            </div>
+
+            <!-- Passo a Passo -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">🎯</span>
+                    <h2 class="card-title">Passo a Passo Infalível</h2>
+                </div>
+                
+                <ol class="step-list">
+                    <li>
+                        <strong>CONDIÇÕES DE EXISTÊNCIA</strong><br>
+                        Logaritmandos devem ser POSITIVOS (> 0)<br>
+                        Base deve ser POSITIVA e DIFERENTE de 1
+                    </li>
+                    <li>
+                        <strong>IGUALAR AS BASES</strong><br>
+                        Se possível, deixe tudo na mesma base
+                    </li>
+                    <li>
+                        <strong>IDENTIFICAR A BASE</strong><br>
+                        É maior ou menor que 1? Isso é CRUCIAL!
+                    </li>
+                    <li>
+                        <strong>APLICAR A PROPRIEDADE</strong><br>
+                        Base > 1: mantém • Base < 1: inverte
+                    </li>
+                    <li>
+                        <strong>RESOLVER A INEQUAÇÃO</strong><br>
+                        Agora é só álgebra básica
+                    </li>
+                    <li>
+                        <strong>INTERSEÇÃO FINAL</strong><br>
+                        Juntar tudo com as condições de existência
+                    </li>
+                </ol>
+            </div>
+
+            <!-- Exemplos Visuais -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">📝</span>
+                    <h2 class="card-title">Exemplos Resolvidos</h2>
+                </div>
+
+                <div class="example-box">
+                    <div class="example-title">🟢 EXEMPLO 1: Base maior que 1</div>
+                    <p><strong>Problema:</strong> log₂(x) > 3</p>
+                    
+                    <div style="margin: 15px 0; padding: 10px; background: #f0f0f0; border-radius: 5px;">
+                        <strong>Passo 1:</strong> Condição → x > 0<br>
+                        <strong>Passo 2:</strong> Base 2 > 1 → MANTÉM ✅<br>
+                        <strong>Passo 3:</strong> log₂(x) > log₂(8)<br>
+                        <strong>Passo 4:</strong> x > 8<br>
+                        <strong>Resposta:</strong> <span style="background: #28a745; color: white; padding: 5px 10px; border-radius: 5px;">x > 8</span>
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <div class="example-title">🔴 EXEMPLO 2: Base menor que 1</div>
+                    <p><strong>Problema:</strong> log₀,₅(x - 1) < 2</p>
+                    
+                    <div style="margin: 15px 0; padding: 10px; background: #f0f0f0; border-radius: 5px;">
+                        <strong>Passo 1:</strong> Condição → x - 1 > 0 → x > 1<br>
+                        <strong>Passo 2:</strong> Base 0,5 < 1 → INVERTE ⚠️<br>
+                        <strong>Passo 3:</strong> log₀,₅(x - 1) < log₀,₅(0,25)<br>
+                        <strong>Passo 4:</strong> x - 1 > 0,25 (inverteu!)<br>
+                        <strong>Passo 5:</strong> x > 1,25<br>
+                        <strong>Resposta:</strong> <span style="background: #dc3545; color: white; padding: 5px 10px; border-radius: 5px;">x > 1,25</span>
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <div class="example-title">🟡 EXEMPLO 3: Comparando logaritmos</div>
+                    <p><strong>Problema:</strong> log₃(x) > log₃(2x - 3)</p>
+                    
+                    <div style="margin: 15px 0; padding: 10px; background: #f0f0f0; border-radius: 5px;">
+                        <strong>Passo 1:</strong> Condições → x > 0 E 2x - 3 > 0<br>
+                        <strong>Simplificando:</strong> x > 3/2<br>
+                        <strong>Passo 2:</strong> Base 3 > 1 → MANTÉM ✅<br>
+                        <strong>Passo 3:</strong> x > 2x - 3<br>
+                        <strong>Passo 4:</strong> -x > -3 → x < 3<br>
+                        <strong>Passo 5:</strong> Interseção: x > 3/2 E x < 3<br>
+                        <strong>Resposta:</strong> <span style="background: #ffc107; color: white; padding: 5px 10px; border-radius: 5px;">3/2 < x < 3</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Erros Comuns -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">⚠️</span>
+                    <h2 class="card-title">NÃO CAIA NESTAS ARMADILHAS!</h2>
+                </div>
+
+                <div class="highlight-box danger">
+                    <span class="emoji">❌</span>
+                    <strong>ERRO 1:</strong> Esquecer que x > 0 (condição de existência)
+                </div>
+
+                <div class="highlight-box danger">
+                    <span class="emoji">❌</span>
+                    <strong>ERRO 2:</strong> Não inverter quando a base é menor que 1
+                </div>
+
+                <div class="highlight-box danger">
+                    <span class="emoji">❌</span>
+                    <strong>ERRO 3:</strong> Pensar que log(x + y) = log(x) + log(y) ← FALSO!
+                </div>
+
+                <div class="highlight-box danger">
+                    <span class="emoji">❌</span>
+                    <strong>ERRO 4:</strong> Esquecer de fazer a interseção final
+                </div>
+            </div>
+
+            <!-- Checklist -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-icon">✅</span>
+                    <h2 class="card-title">Checklist - Use SEMPRE!</h2>
+                </div>
+                
+                <div style="font-size: 1.2em; line-height: 2;">
+                    ☑️ Defini as condições de existência?<br>
+                    ☑️ Identifiquei se a base é maior ou menor que 1?<br>
+                    ☑️ Apliquei a regra correta (manter ou inverter)?<br>
+                    ☑️ Resolvi a inequação resultante?<br>
+                    ☑️ Fiz a interseção com as condições?<br>
+                    ☑️ Testei minha resposta com um valor?
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        function showTopic(topic) {
+            // Esconder todos
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.querySelectorAll('.topic-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Mostrar selecionado
+            document.getElementById(topic).classList.add('active');
+            event.target.classList.add('active');
+
+            // Scroll suave para o topo
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
