@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filosofia - Material de Estudo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .tab {
+            padding: 12px 30px;
+            background: #f0f0f0;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .tab:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .tab.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .content {
+            display: none;
+        }
+
+        .content.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* MAPA MENTAL */
+        .mapa-mental {
+            padding: 30px;
+            background: #f8f9ff;
+            border-radius: 15px;
+            overflow-x: auto;
+        }
+
+        .mapa-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 800px;
+        }
+
+        .nivel-1 {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 15px;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .nivel-2-container {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nivel-2 {
+            background: #667eea;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            position: relative;
+        }
+
+        .nivel-3-container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .nivel-3 {
+            background: white;
+            color: #667eea;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            border: 2px solid #667eea;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* CARDS */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8ecff 100%);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-left: 5px solid #667eea;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .card h3 {
+            color: #667eea;
+            font-size: 24px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .epoca {
+            background: #667eea;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: normal;
+        }
+
+        .card-section {
+            margin: 12px 0;
+        }
+
+        .card-label {
+            font-weight: 700;
+            color: #764ba2;
+            font-size: 14px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .card-content {
+            color: #333;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .influencias {
+            background: #fff3cd;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 8px 0;
+        }
+
+        .ideias-chave {
+            background: #d4edda;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 8px 0;
+        }
+
+        /* CONTEÚDO DETALHADO */
+        .detalhado-section {
+            background: #f8f9ff;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-left: 5px solid #667eea;
+        }
+
+        .detalhado-section h2 {
+            color: #667eea;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .destaque {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #ffc107;
+        }
+
+        .palavras-chave {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .palavra {
+            background: #667eea;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .dica {
+            background: #d4edda;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #28a745;
+        }
+
+        .dica strong {
+            color: #155724;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        li {
+            margin: 8px 0;
+            color: #333;
+        }
+
+        .print-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+
+        .print-btn:hover {
+            background: #218838;
+            transform: scale(1.05);
+        }
+
+        @media print {
+            body { background: white; }
+            .tabs, .print-btn { display: none; }
+            .content { display: block !important; }
+            .container { box-shadow: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 Filosofia - Material de Estudo</h1>
+        <p class="subtitle">1º Ano do Ensino Médio - Exame Final</p>
+
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('mapa')">🗺️ Mapa Mental</button>
+            <button class="tab" onclick="showTab('cards')">📇 Cards Resumo</button>
+            <button class="tab" onclick="showTab('detalhado')">📖 Conteúdo Detalhado</button>
+        </div>
+
+        <!-- MAPA MENTAL -->
+        <div id="mapa" class="content active">
+            <div class="mapa-mental">
+                <div class="mapa-container">
+                    <div class="nivel-1">HISTÓRIA DA FILOSOFIA</div>
+                    
+                    <div class="nivel-2-container">
+                        <div>
+                            <div class="nivel-2">Filosofia Antiga</div>
+                            <div class="nivel-3-container">
+                                <div class="nivel-3">Platão (428-348 a.C.)</div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="nivel-2">Filosofia Medieval</div>
+                            <div class="nivel-3-container">
+                                <div class="nivel-3">Santo Agostinho</div>
+                                <div class="nivel-3">Tomás de Aquino</div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="nivel-2">Filosofia Moderna</div>
+                            <div class="nivel-3-container">
+                                <div class="nivel-3">Maquiavel</div>
+                                <div class="nivel-3">Descartes</div>
+                                <div class="nivel-3">Rousseau</div>
+                                <div class="nivel-3">Kant</div>
+                                <div class="nivel-3">Iluminismo</div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="nivel-2">Filosofia Contemporânea</div>
+                            <div class="nivel-3-container">
+                                <div class="nivel-3">Nietzsche</div>
+                                <div class="nivel-3">Marx</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARDS -->
+        <div id="cards" class="content">
+            <div class="cards-grid">
+                <!-- PLATÃO -->
+                <div class="card">
+                    <h3>PLATÃO <span class="epoca">428-348 a.C.</span></h3>
+                    <div class="card-section">
+                        <div class="card-label">📍 Onde</div>
+                        <div class="card-content">Atenas, Grécia</div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">👨‍🏫 Influenciado por</div>
+                        <div class="card-content influencias">Sócrates (seu mestre)</div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">💡 Influenciou</div>
+                        <div class="card-content influencias">Aristóteles, Santo Agostinho, toda filosofia ocidental</div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">🎯 Defendia</div>
+                        <div class="card-content ideias-chave">
+                            • Mundo das Ideias (realidade perfeita)<br>
+                            • Conhecimento pela razão<br>
+                            • Governo dos filósofos (rei-filósofo)
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">⚔️ Criticava</div>
+                        <div class="card-content">Sofistas (relativismo) e a democracia ateniense</div>
+                    </div>
+                </div>
+
+                <!-- SANTO AGOSTINHO -->
+                <div class="card">
+                    <h3>SANTO AGOSTINHO <span class="epoca">354-430 d.C.</span></h3>
+                    <div class="card-section">
+                        <div class="card-label">📍 Onde</div>
+                        <div class="card-content">Norte da África (Hipona)</div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">👨‍🏫 Influenciado por</div>
+                        <div class="card-content influencias">Platão e cristianismo</div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">💡 Influenciou</div>
+                        <div class="card-content influencias">Toda filosofia cristã medieval e Tomás de Aquino</div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">🎯 Defendia</div>
+                        <div class="card-content ideias-chave">
+                            • Fé + razão = conhecimento<br>
+                            • Deus = verdade absoluta<br>
+                            • Livre-arbítrio e pecado original
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">⚔️ Criticava</div>
+                        <div class="card-content">Maniqueísmo e ceticismo filosófico</div>
+                    </div>
+                </div>
+
+                <!-- TOMÁS DE AQUINO -->
+                <div class="card">
+                    <h3>TOMÁS DE AQUINO <span class="epoca">1225-1274</span></h3>
+                    <div class="card-section">
+                        <div class="card-label">📍 Onde</div>
+                        <div class="card-content">Itália</div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">👨‍🏫 Influenciado por</div>
+                        <div class="card-content influencias">Aristóteles e Santo Agostinho</div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">💡 Influenciou</div>
+                        <div class="card-content influencias">Doutrina oficial da Igreja Católica (Escolástica)</div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">🎯 Defendia</div>
+                        <div class="card-content ideias-chave">
+                            • Harmonia entre fé e razão<br>
+                            • 5 vias para provar existência de Deus<br>
+                            • Lógica aristotélica + cristianismo
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">⚔️ Criticava</div>
+                        <div class="card-content">Averroísmo (dupla verdade)</div>
+                    </div>
+                </div>
+
+                <!-- MAQUIAVEL -->
+                <div class="card">
+                    <h3>MAQUIAVEL <span class="epoca">1469-1527</span></h3>
+                    <div class="card-section">
+                        <div class="card-label">📍 Onde</div>
+                        <div class="card-content">Florença, Itália (Renascimento)</div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">👨‍🏫 Influenciado por</div>
+                        <div class="card-content influencias">História romana e política italiana</div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">💡 Influenciou</div>
+                        <div class="card-content influencias">Ciência política moderna, teoria do Estado</div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">🎯 Defendia</div>
+                        <div class="card-content ideias-chave">
+                            • Política separada da moral<br>
+                            • "Os fins justificam os meios"<br>
+                            • Virtù (força) do governante
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">⚔️ Criticava</div>
+                        <div class="card-content">Idealismo político e moralismo na política</div>
+                    </div>
+                </div>
+
+                <!-- DESCARTES -->
+                <div class="card">
+                    <h3>DESCARTES <span class="epoca">1596-1650</span></h3>
+                    <div class="card-section">
+                        <div class="card-label">📍 Onde</div>
+                        <div class="card-content">França (Racionalismo)</div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">👨‍🏫 Influenciado por</div>
+                        <div class="card-content influencias">Matemática e ceticismo</div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">💡 Influenciou</div>
+                        <div class="card-content influencias">Filosofia moderna, método científico, racionalismo</div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">🎯 Defendia</div>
+                        <div class="card-content ideias-chave">
+                            • "Penso, logo existo" (Cogito)<br>
+                            • Dúvida metódica<br>
+                            • Razão > sentidos<br>
+                            • Dualismo mente-corpo
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">⚔️ Criticava</div>
+                        <div class="card-content">Conhecimento baseado só nos sentidos</div>
+                    </div>
+                </div>
+
+                <!-- ROUSSEAU -->
+                <div class="card">
+                    <h3>ROUSSEAU <span class="epoca">1712-1778</span></h3>
+                    <div class="card-section">
+                        <div class="card-label">📍 Onde</div>
+                        <div class="card-content">Genebra/França (Iluminismo)</div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">👨‍🏫 Influenciado por</div>
+                        <div class="card-content influencias">Iluminismo (mas crítico)</div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">💡 Influenciou</div>
+                        <div class="card-content influencias">Revolução Francesa, democracia, educação moderna</div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">🎯 Defendia</div>
+                        <div class="card-content ideias-chave">
+                            • "Homem nasce bom" (bondade natural)<br>
+                            • Contrato Social<br>
+                            • Vontade geral<br>
+                            • Igualdade social
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">⚔️ Criticava</div>
+                        <div class="card-content">Civilização corrompe, desigualdade social, propriedade privada</div>
+                    </div>
+                </div>
+
+                <!-- KANT -->
+                <div class="card">
+                    <h3>KANT <span class="epoca">1724-1804</span></h3>
+                    <div class="card-section">
+                        <div class="card-label">📍 Onde</div>
+                        <div class="card-content">Königsberg, Prússia (Alemanha)</div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">👨‍🏫 Influenciado por</div>
+                        <div class="card-content influencias">Iluminismo, racionalismo e empirismo</div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">💡 Influenciou</div>
+                        <div class="card-content influencias">Toda filosofia moderna, ética, teoria do conhecimento</div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">🎯 Defendia</div>
+                        <div class="card-content ideias-chave">
+                            • Imperativo categórico (ética universal)<br>
+                            • "Sapere aude" (ouse saber)<br>
+                            • Razão + experiência = conhecimento<br>
+                            • Autonomia moral
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">⚔️ Criticava</div>
+                        <div class="card-content">Dogmatismo e ceticismo extremos</div>
+                    </div>
+                </div>
+
+                <!-- ILUMINISMO -->
+                <div class="card">
+                    <h3>ILUMINISMO <span class="epoca">Século XVIII</span></h3>
+                    <div class="card-section">
+                        <div class="card-label">📍 Onde</div>
+                        <div class="card-content">França principalmente (Europa)</div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">👨‍🏫 Principais Pensadores</div>
+                        <div class="card-content influencias">Voltaire, Montesquieu, Diderot, Rousseau, Kant</div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">💡 Influenciou</div>
+                        <div class="card-content influencias">Revoluções (Francesa, Americana), ciência moderna, democracia</div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">🎯 Defendia</div>
+                        <div class="card-content ideias-chave">
+                            • Razão e ciência<br>
+                            • Liberdade individual<br>
+                            • Progresso humano<br>
+                            • Separação Igreja-Estado<br>
+                            • Direitos naturais
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">⚔️ Criticava</div>
+                        <div class="card-content">Absolutismo, superstição, Igreja, tradição sem razão</div>
+                    </div>
+                </div>
+
+                <!-- NIETZSCHE -->
+                <div class="card">
+                    <h3>NIETZSCHE <span class="epoca">1844-1900</span></h3>
+                    <div class="card-section">
+                        <div class="card-label">📍 Onde</div>
+                        <div class="card-content">Alemanha</div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">👨‍🏫 Influenciado por</div>
+                        <div class="card-content influencias">Schopenhauer, tragédia grega</div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">💡 Influenciou</div>
+                        <div class="card-content influencias">Existencialismo, pós-modernismo, psicologia</div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">🎯 Defendia</div>
+                        <div class="card-content ideias-chave">
+                            • "Deus está morto"<br>
+                            • Além-Homem (Übermensch)<br>
+                            • Vontade de potência<br>
+                            • Amor fati (amor ao destino)
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">⚔️ Criticava</div>
+                        <div class="card-content">Cristianismo (moral de escravo), Sócrates, Platão, valores ocidentais</div>
+                    </div>
+                </div>
+
+                <!-- MARX -->
+                <div class="card">
+                    <h3>MARX <span class="epoca">1818-1883</span></h3>
+                    <div class="card-section">
+                        <div class="card-label">📍 Onde</div>
+                        <div class="card-content">Alemanha/Inglaterra</div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">👨‍🏫 Influenciado por</div>
+                        <div class="card-content influencias">Hegel, materialismo, economia política</div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">💡 Influenciou</div>
+                        <div class="card-content influencias">Socialismo, comunismo, movimentos revolucionários, sociologia</div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">🎯 Defendia</div>
+                        <div class="card-content ideias-chave">
+                            • Materialismo histórico<br>
+                            • Luta de classes<br>
+                            • Mais-valia (exploração)<br>
+                            • Revolução proletária
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">⚔️ Criticava</div>
+                        <div class="card-content">Capitalismo, burguesia, alienação do trabalho, idealismo</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONTEÚDO DETALHADO -->
+        <div id="detalhado" class="content">
+            
+            <!-- PLATÃO -->
+            <div class="detalhado-section">
+                <h2>🏛️ PLATÃO (428-348 a.C.)</h2>
+                
+                <div class="palavras-chave">
+                    <span class="palavra">Mundo das Ideias</span>
+                    <span class="palavra">Alegoria da Caverna</span>
+                    <span class="palavra">Rei-Filósofo</span>
+                    <span class="palavra">Formas Perfeitas</span>
+                    <span class="palavra">Dualismo</span>
+                </div>
+
+                <div class="destaque">
+                    <strong>💡 Conceito Central:</strong> Existem DOIS mundos: o Mundo Sensível (imperfeito, das aparências) e o Mundo das Ideias (perfeito, das essências verdadeiras). Só a razão acessa a verdade.
+                </div>
+
+                <p><strong>Principais ideias:</strong></p>
+                <ul>
+                    <li><strong>Teoria das Formas/Ideias:</strong> As coisas que vemos são cópias imperfeitas de Formas perfeitas e eternas</li>
+                    <li><strong>Alegoria da Caverna:</strong> Prisioneiros veem sombras na parede (ignorância). Quem sai da caverna vê a luz (conhecimento verdadeiro)</li>
+                    <li><strong>Política:</strong> Estado ideal governado por filósofos (os mais sábios)</li>
+                    <li><strong>Conhecimento:</strong> Reminiscência - a alma já conhece tudo, só precisa "lembrar"</li>
+                </ul>
+
+                <div class="dica">
+                    <strong>💭 Dica de Memorização:</strong> "PLATÃo = PLAno superior TÃo real" - O plano das ideias é mais real que o mundo físico. Pense nos filmes Matrix ou A Origem: realidade vs. ilusão!
+                </div>
+            </div>
+
+            <!-- FILOSOFIA MEDIEVAL -->
+            <div class="detalhado-section">
+                <h2>⛪ FILOSOFIA MEDIEVAL</h2>
+                
+                <h3 style="color: #764ba2; margin-top: 20px;">Santo Agostinho (354-430)</h3>
+                
+                <div class="palavras-chave">
+                    <span class="palavra">Fé e Razão</span>
+                    <span class="palavra">Iluminação Divina</span>
+                    <span class="palavra">Livre-arbítrio</span>
+                    <span class="palavra">Patrística</span>
+                </div>
+
+                <div class="destaque">
+                    <strong>💡 Conceito Central:</strong> Platão + Cristianismo = Fé não contradiz razão, complementa! Deus é fonte de toda verdade e ilumina nossa mente.
+                </div>
+
+                <p><strong>Principais ideias:</strong></p>
+                <ul>
+                    <li><strong>Fé + Razão:</strong> "Creio para compreender" - fé ajuda a razão</li>
+                    <li><strong>Deus:</strong> É a verdade absoluta, eterno e imutável</li>
+                    <li><strong>Mal:</strong> Não é algo criado por Deus, mas ausência do bem</li>
+                    <li><strong>Livre-arbítrio:</strong> Humanos podem escolher entre bem e mal</li>
+                </ul>
+
+                <div class="dica">
+                    <strong>💭 Dica:</strong> "AGOSTinho = GOSTO de fé + razão" - Ele gostava das duas coisas juntas! Foi o primeiro grande filósofo cristão.
+                </div>
+
+                <h3 style="color: #764ba2; margin-top: 30px;">Tomás de Aquino (1225-1274)</h3>
+                
+                <div class="palavras-chave">
+                    <span class="palavra">5 Vias</span>
+                    <span class="palavra">Escolástica</span>
+                    <span class="palavra">Aristóteles + Fé</span>
+                    <span class="palavra">Tomismo</span>
+                </div>
+
+                <div class="destaque">
+                    <strong>💡 Conceito Central:</strong> Aristóteles + Cristianismo = Perfeito! Usou lógica e razão para provar a existência de Deus através das "5 Vias".
+                </div>
+
+                <p><strong>As 5 Vias para provar Deus:</strong></p>
+                <ul>
+                    <li><strong>1ª Via (Movimento):</strong> Tudo que se move foi movido por algo → Deus é o Motor Imóvel</li>
+                    <li><strong>2ª Via (Causa):</strong> Tudo tem uma causa → Deus é a Causa Primeira</li>
+                    <li><strong>3ª Via (Contingência):</strong> Coisas existem mas poderiam não existir → Deus é Ser Necessário</li>
+                    <li><strong>4ª Via (Graus):</strong> Há graus de perfeição → Deus é o Ser Perfeitíssimo</li>
+                    <li><strong>5ª Via (Finalidade):</strong> Tudo tem um propósito → Deus é o Designer Inteligente</li>
+                </ul>
+
+                <div class="dica">
+                    <strong>💭 Dica:</strong> "5 VIAS = 5 dedos da mão" - Conte nos dedos: Movimento, Causa, Contingência, Graus, Finalidade!
+                </div>
+            </div>
+
+            <!-- MAQUIAVEL -->
+            <div class="detalhado-section">
+                <h2>👑 MAQUIAVEL (1469-1527)</h2>
+                
+                <div class="palavras-chave">
+                    <span class="palavra">O Príncipe</span>
+                    <span class="palavra">Fins justificam meios</span>
+                    <span class="palavra">Virtù</span>
+                    <span class="palavra">Fortuna</span>
+                    <span class="palavra">Realismo Político</span>
+                </div>
+
+                <div class="destaque">
+                    <strong>💡 Conceito Central:</strong> Política não tem nada a ver com moral! O governante deve fazer O QUE FUNCIONA para manter o poder, não o que é "bonito" ou "ético".
+                </div>
+
+                <p><strong>Principais ideias:</strong></p>
+                <ul>
+                    <li><strong>"Fins justificam os meios":</strong> Se o objetivo é bom (ordem, estabilidade), vale usar qualquer método</li>
+                    <li><strong>Melhor ser temido que amado:</strong> Mas sem ser odiado!</li>
+                    <li><strong>Virtù:</strong> Força, esperteza e habilidade do líder (não é "virtude" moral)</li>
+                    <li><strong>Fortuna:</strong> Sorte, acaso - o líder precisa saber aproveitar oportunidades</li>
+                    <li><strong>Realismo:</strong> Política como ela É, não como deveria ser</li>
+                </ul>
+
+                <div class="dica">
+                    <strong>💭 Dica:</strong> "MAQUIAvel = MAQUIna política" - Ele via política como máquina: fria, calculista, sem sentimentos. Pense em House of Cards!
+                </div>
+            </div>
+
+            <!-- DESCARTES -->
+            <div class="detalhado-section">
+                <h2>🤔 DESCARTES (1596-1650)</h2>
+                
+                <div class="palavras-chave">
+                    <span class="palavra">Cogito</span>
+                    <span class="palavra">Dúvida Metódica</span>
+                    <span class="palavra">Racionalismo</span>
+                    <span class="palavra">Res Cogitans</span>
+                    <span class="palavra">Res Extensa</span>
+                </div>
+
+                <div class="destaque">
+                    <strong>💡 Conceito Central:</strong> "Penso, logo existo" (Cogito, ergo sum). A única certeza absoluta é que EU PENSO, portanto EU EXISTO. Tudo começa da razão!
+                </div>
+
+                <p><strong>Método da Dúvida:</strong></p>
+                <ul>
+                    <li><strong>1º passo:</strong> Duvide de TUDO (sentidos enganam, sonhos parecem reais)</li>
+                    <li><strong>2º passo:</strong> Mas não posso duvidar que DUVIDO</li>
+                    <li><strong>3º passo:</strong> Se duvido, penso. Se penso, existo!</li>
+                    <li><strong>4º passo:</strong> Deus existe (garante que nossa razão funciona)</li>
+                    <li><strong>5º passo:</strong> Logo, posso confiar na razão para conhecer a verdade</li>
+                </ul>
+
+                <p><strong>Dualismo:</strong></p>
+                <ul>
+                    <li><strong>Res Cogitans:</strong> Coisa pensante = mente, alma (imaterial)</li>
+                    <li><strong>Res Extensa:</strong> Coisa extensa = corpo, matéria (tem tamanho)</li>
+                </ul>
+
+                <div class="dica">
+                    <strong>💭 Dica:</strong> "DESCARTes = DESCARTar tudo até sobrar o essencial" - Jogue fora todas as dúvidas até achar algo 100% certo: EU PENSO!
+                </div>
+            </div>
+
+            <!-- ROUSSEAU -->
+            <div class="detalhado-section">
+                <h2>🌿 ROUSSEAU (1712-1778)</h2>
+                
+                <div class="palavras-chave">
+                    <span class="palavra">Bom Selvagem</span>
+                    <span class="palavra">Contrato Social</span>
+                    <span class="palavra">Vontade Geral</span>
+                    <span class="palavra">Desigualdade</span>
+                    <span class="palavra">Estado de Natureza</span>
+                </div>
+
+                <div class="destaque">
+                    <strong>💡 Conceito Central:</strong> "O homem nasce bom, a sociedade o corrompe". No estado natural éramos livres e felizes. A civilização criou desigualdade e mal.
+                </div>
+
+                <p><strong>Principais ideias:</strong></p>
+                <ul>
+                    <li><strong>Bom Selvagem:</strong> Homem primitivo era bom, pacífico e livre (diferente de Hobbes!)</li>
+                    <li><strong>Propriedade Privada:</strong> Criou desigualdade - "O primeiro que cercou um terreno..."</li>
+                    <li><strong>Contrato Social:</strong> Povo cria governo para proteger liberdade coletiva</li>
+                    <li><strong>Vontade Geral:</strong> Não é soma de vontades individuais, é bem comum de todos</li>
+                    <li><strong>Soberania Popular:</strong> Poder vem do povo, não do rei</li>
+                </ul>
+
+                <div class="dica">
+                    <strong>💭 Dica:</strong> "RouSSEAU = S-S-EAU (água, natureza)" - Pense nele como defensor da natureza e da bondade natural! Tipo Avatar ou Pocahontas.
+                </div>
+            </div>
+
+            <!-- KANT -->
+            <div class="detalhado-section">
+                <h2>⚖️ KANT (1724-1804)</h2>
+                
+                <div class="palavras-chave">
+                    <span class="palavra">Imperativo Categórico</span>
+                    <span class="palavra">Sapere Aude</span>
+                    <span class="palavra">Autonomia</span>
+                    <span class="palavra">Crítica da Razão</span>
+                    <span class="palavra">Maioridade</span>
+                </div>
+
+                <div class="destaque">
+                    <strong>💡 Conceito Central:</strong> "Age como se tua ação fosse virar lei universal". Ética baseada no DEVER racional, não em consequências. Use sua própria razão!
+                </div>
+
+                <p><strong>Imperativo Categórico (lei moral):</strong></p>
+                <ul>
+                    <li><strong>Fórmula 1:</strong> "Age como se a máxima de tua ação devesse se tornar lei universal"</li>
+                    <li><strong>Exemplo:</strong> Posso mentir? NÃO! Se todos mentissem, ninguém acreditaria em nada</li>
+                    <li><strong>Fórmula 2:</strong> "Trate as pessoas sempre como fim, nunca apenas como meio"</li>
+                    <li><strong>Exemplo:</strong> Não use pessoas como ferramentas, respeite sua dignidade</li>
+                </ul>
+
+                <p><strong>Iluminismo:</strong></p>
+                <ul>
+                    <li><strong>"Sapere aude":</strong> Ouse saber! Tenha coragem de usar sua razão!</li>
+                    <li><strong>Maioridade:</strong> Sair da tutela (dependência de outros para pensar)</li>
+                </ul>
+
+                <div class="dica">
+                    <strong>💭 Dica:</strong> "KANT = CANTo da razão" - Ele CANTA a razão universal! Teste moral: "E se TODO MUNDO fizesse isso?"
+                </div>
+            </div>
+
+            <!-- ILUMINISMO -->
+            <div class="detalhado-section">
+                <h2>💡 ILUMINISMO (Século XVIII)</h2>
+                
+                <div class="palavras-chave">
+                    <span class="palavra">Razão</span>
+                    <span class="palavra">Progresso</span>
+                    <span class="palavra">Liberdade</span>
+                    <span class="palavra">Enciclopédia</span>
+                    <span class="palavra">Luzes</span>
+                    <span class="palavra">Crítica</span>
+                </div>
+
+                <div class="destaque">
+                    <strong>💡 Conceito Central:</strong> Movimento cultural que defendia RAZÃO, CIÊNCIA e LIBERDADE contra tradição, superstição e absolutismo. "Século das Luzes" - a razão ilumina!
+                </div>
+
+                <p><strong>Principais ideias:</strong></p>
+                <ul>
+                    <li><strong>Razão:</strong> Única fonte confiável de conhecimento (contra fé cega)</li>
+                    <li><strong>Progresso:</strong> Humanidade pode e deve melhorar através da razão</li>
+                    <li><strong>Liberdade:</strong> Individual, religiosa, de expressão, política</li>
+                    <li><strong>Igualdade:</strong> Todos nascem com direitos naturais</li>
+                    <li><strong>Tolerância:</strong> Respeito às diferenças (Voltaire)</li>
+                    <li><strong>Separação de poderes:</strong> Executivo, Legislativo, Judiciário (Montesquieu)</li>
+                </ul>
+
+                <p><strong>Principais Filósofos:</strong></p>
+                <ul>
+                    <li><strong>Voltaire:</strong> Liberdade de expressão, crítica à Igreja</li>
+                    <li><strong>Montesquieu:</strong> Separação dos poderes</li>
+                    <li><strong>Diderot:</strong> Enciclopédia (difundir conhecimento)</li>
+                    <li><strong>Rousseau:</strong> Contrato social, vontade geral</li>
+                    <li><strong>Kant:</strong> Autonomia da razão</li>
+                </ul>
+
+                <div class="dica">
+                    <strong>💭 Dica:</strong> "ILUMInismo = ILUMIna com a razão" - Luzes da razão contra as trevas da ignorância! Pense na lâmpada 💡 como símbolo!
+                </div>
+            </div>
+
+            <!-- NIETZSCHE -->
+            <div class="detalhado-section">
+                <h2>⚡ NIETZSCHE (1844-1900)</h2>
+                
+                <div class="palavras-chave">
+                    <span class="palavra">Deus está Morto</span>
+                    <span class="palavra">Além-Homem</span>
+                    <span class="palavra">Vontade de Potência</span>
+                    <span class="palavra">Eterno Retorno</span>
+                    <span class="palavra">Niilismo</span>
+                </div>
+
+                <div class="destaque">
+                    <strong>💡 Conceito Central:</strong> "Deus está morto" - valores tradicionais (cristãos) morreram. Precisamos criar NOVOS valores. O Além-Homem supera a moral do rebanho.
+                </div>
+
+                <p><strong>Principais ideias:</strong></p>
+                <ul>
+                    <li><strong>"Deus está morto":</strong> Não literal - significa que valores cristãos perderam sentido na modernidade</li>
+                    <li><strong>Moral de Senhores vs Escravos:</strong>
+                        <br>• Senhores: Criam valores, afirmam vida, força
+                        <br>• Escravos: Ressentem os fortes, inventam "bem x mal", negam vida
+                    </li>
+                    <li><strong>Além-Homem (Übermensch):</strong> Supera valores velhos, cria os próprios valores, afirma vida</li>
+                    <li><strong>Vontade de Potência:</strong> Força vital, desejo de crescer e superar-se</li>
+                    <li><strong>Amor Fati:</strong> Amar o próprio destino, aceitar tudo</li>
+                    <li><strong>Eterno Retorno:</strong> E se tudo se repetisse infinitamente? Viveria do mesmo jeito?</li>
+                </ul>
+
+                <div class="dica">
+                    <strong>💭 Dica:</strong> "NIETZSCHE = NITRO-explosivo" - Ele explodiu os valores tradicionais! Pense nele como o Coringa: questiona tudo, destrói certezas!
+                </div>
+            </div>
+
+            <!-- MARX -->
+            <div class="detalhado-section">
+                <h2>🔨 MARX (1818-1883)</h2>
+                
+                <div class="palavras-chave">
+                    <span class="palavra">Materialismo Histórico</span>
+                    <span class="palavra">Luta de Classes</span>
+                    <span class="palavra">Mais-valia</span>
+                    <span class="palavra">Alienação</span>
+                    <span class="palavra">Revolução</span>
+                </div>
+
+                <div class="destaque">
+                    <strong>💡 Conceito Central:</strong> História é movida pela LUTA DE CLASSES (ricos x pobres). Capitalismo explora trabalhadores através da mais-valia. Solução: revolução proletária!
+                </div>
+
+                <p><strong>Principais ideias:</strong></p>
+                <ul>
+                    <li><strong>Materialismo Histórico:</strong> Economia determina tudo (política, cultura, ideias)</li>
+                    <li><strong>Luta de Classes:</strong> História = conflito entre opressores e oprimidos
+                        <br>• Antiguidade: senhores x escravos
+                        <br>• Feudalismo: senhores feudais x servos
+                        <br>• Capitalismo: burguesia x proletariado
+                    </li>
+                    <li><strong>Mais-valia:</strong> Trabalhador produz mais do que recebe = lucro do patrão = exploração</li>
+                    <li><strong>Alienação:</strong> Trabalhador vira peça da máquina, perde sentido do trabalho</li>
+                    <li><strong>Revolução:</strong> Proletariado deve tomar o poder e acabar com propriedade privada</li>
+                    <li><strong>Comunismo:</strong> Sociedade sem classes, sem Estado, produção coletiva</li>
+                </ul>
+
+                <div class="dica">
+                    <strong>💭 Dica:</strong> "MARX = MARCA de batalha de classes" - Ele MARCou a luta entre patrão e empregado. Símbolo: martelo 🔨 e foice (trabalhadores)!
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <button class="print-btn" onclick="window.print()">🖨️ Imprimir Tudo</button>
+
+    <script>
+        function showTab(tabName) {
+            // Esconder todos os conteúdos
+            const contents = document.querySelectorAll('.content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            // Remover active de todos os tabs
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Mostrar conteúdo selecionado
+            document.getElementById(tabName).classList.add('active');
+            
+            // Marcar tab como ativo
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
