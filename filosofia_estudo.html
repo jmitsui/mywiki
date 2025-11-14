@@ -87,17 +87,20 @@
 
         /* MAPA MENTAL */
         .mapa-mental {
-            padding: 30px;
+            padding: 30px 20px;
             background: #f8f9ff;
             border-radius: 15px;
-            overflow-x: auto;
+            overflow-x: hidden;
+            width: 100%;
         }
 
         .mapa-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-width: 800px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .nivel-1 {
@@ -105,18 +108,27 @@
             color: white;
             padding: 20px 40px;
             border-radius: 15px;
-            font-size: 24px;
+            font-size: clamp(18px, 4vw, 24px);
             font-weight: bold;
             margin-bottom: 40px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            text-align: center;
+            width: 90%;
+            max-width: 500px;
         }
 
         .nivel-2-container {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
             margin-bottom: 40px;
-            flex-wrap: wrap;
-            justify-content: center;
+            width: 100%;
+            padding: 0 10px;
+        }
+
+        .nivel-2-container > div {
+            width: 100%;
+            min-width: 0;
         }
 
         .nivel-2 {
@@ -124,28 +136,121 @@
             color: white;
             padding: 15px 25px;
             border-radius: 12px;
-            font-size: 18px;
+            font-size: clamp(16px, 3vw, 18px);
             font-weight: 600;
             box-shadow: 0 4px 10px rgba(0,0,0,0.15);
             position: relative;
+            text-align: center;
+            word-wrap: break-word;
         }
 
         .nivel-3-container {
             display: flex;
-            gap: 15px;
+            gap: 10px;
             flex-wrap: wrap;
             justify-content: center;
-            margin-top: 20px;
+            margin-top: 15px;
         }
 
         .nivel-3 {
             background: white;
             color: #667eea;
-            padding: 10px 20px;
+            padding: 8px 16px;
             border-radius: 8px;
-            font-size: 14px;
+            font-size: clamp(11px, 2.5vw, 14px);
             border: 2px solid #667eea;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+            flex: 0 1 auto;
+            word-wrap: break-word;
+            max-width: 100%;
+        }
+
+        /* Responsividade para tablets */
+        @media (max-width: 768px) {
+            .mapa-mental {
+                padding: 20px 10px;
+            }
+
+            .nivel-1 {
+                padding: 15px 25px;
+                margin-bottom: 30px;
+                width: 95%;
+            }
+
+            .nivel-2-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 0 5px;
+            }
+
+            .nivel-2 {
+                padding: 12px 20px;
+            }
+
+            .nivel-3-container {
+                gap: 8px;
+                margin-top: 12px;
+            }
+
+            .nivel-3 {
+                padding: 6px 12px;
+            }
+        }
+
+        /* Responsividade para celulares */
+        @media (max-width: 480px) {
+            .mapa-mental {
+                padding: 15px 5px;
+                border-radius: 10px;
+            }
+
+            .nivel-1 {
+                padding: 12px 15px;
+                margin-bottom: 25px;
+                width: 98%;
+                font-size: 16px;
+            }
+
+            .nivel-2-container {
+                gap: 15px;
+                grid-template-columns: 1fr;
+            }
+
+            .nivel-2 {
+                padding: 10px 12px;
+                font-size: 15px;
+            }
+
+            .nivel-3-container {
+                gap: 6px;
+                margin-top: 10px;
+            }
+
+            .nivel-3 {
+                padding: 5px 8px;
+                font-size: 11px;
+                flex: 1 1 calc(50% - 6px);
+                min-width: 0;
+            }
+        }
+
+        /* Para telas muito pequenas */
+        @media (max-width: 360px) {
+            .nivel-1 {
+                font-size: 14px;
+                padding: 10px 12px;
+            }
+
+            .nivel-2 {
+                font-size: 14px;
+                padding: 8px 10px;
+            }
+
+            .nivel-3 {
+                font-size: 10px;
+                padding: 4px 6px;
+            }
         }
 
         /* CARDS */
@@ -302,11 +407,300 @@
             transform: scale(1.05);
         }
 
+        /* RESPONSIVIDADE GERAL */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 20px;
+                border-radius: 15px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .subtitle {
+                font-size: 1em;
+            }
+
+            .tabs {
+                gap: 5px;
+            }
+
+            .tab {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .card h3 {
+                font-size: 20px;
+            }
+
+            .detalhado-section {
+                padding: 20px;
+            }
+
+            .detalhado-section h2 {
+                font-size: 24px;
+            }
+
+            .palavras-chave {
+                gap: 8px;
+            }
+
+            .palavra {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+
+            .print-btn {
+                bottom: 20px;
+                right: 20px;
+                padding: 12px 25px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .tab {
+                padding: 8px 15px;
+                font-size: 12px;
+                flex: 1;
+            }
+
+            .card {
+                padding: 15px;
+            }
+
+            .card h3 {
+                font-size: 18px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+
+            .epoca {
+                font-size: 11px;
+            }
+
+            .card-content {
+                font-size: 14px;
+            }
+
+            .detalhado-section {
+                padding: 15px;
+            }
+
+            .detalhado-section h2 {
+                font-size: 20px;
+            }
+
+            .palavras-chave {
+                gap: 6px;
+            }
+
+            .palavra {
+                font-size: 11px;
+                padding: 5px 10px;
+            }
+
+            .destaque, .dica {
+                padding: 12px;
+                font-size: 14px;
+            }
+
+            .print-btn {
+                bottom: 15px;
+                right: 15px;
+                padding: 10px 20px;
+                font-size: 13px;
+            }
+        }
+
         @media print {
-            body { background: white; }
+            body { 
+                background: white;
+                padding: 0;
+            }
+            
             .tabs, .print-btn { display: none; }
-            .content { display: block !important; }
-            .container { box-shadow: none; }
+            
+            .content { 
+                display: block !important;
+                animation: none;
+            }
+            
+            .container { 
+                box-shadow: none;
+                padding: 20px;
+                max-width: 100%;
+            }
+            
+            h1 {
+                page-break-after: avoid;
+                font-size: 32pt;
+            }
+            
+            .subtitle {
+                page-break-after: always;
+                margin-bottom: 0;
+                padding-bottom: 50px;
+            }
+            
+            /* Estilo especial para aviso - não imprimir */
+            .container > div[style*="background: #d4edda"] {
+                display: none;
+            }
+            
+            /* Mapa Mental - página única */
+            .mapa-mental {
+                page-break-after: always;
+                padding: 15px;
+            }
+            
+            .mapa-container {
+                min-width: auto;
+            }
+            
+            /* Cards - cada card em sua página */
+            .cards-grid {
+                display: block;
+            }
+            
+            .card {
+                page-break-after: always;
+                page-break-inside: avoid;
+                margin-bottom: 0;
+                box-shadow: none;
+                border: 2px solid #667eea;
+                width: 100%;
+            }
+            
+            .card:last-child {
+                page-break-after: auto;
+            }
+            
+            /* Seções detalhadas - quebra antes de cada filósofo */
+            .detalhado-section {
+                page-break-before: always;
+                page-break-inside: avoid;
+                box-shadow: none;
+                border: 2px solid #667eea;
+                margin-bottom: 30px;
+            }
+            
+            .detalhado-section:first-child {
+                page-break-before: auto;
+            }
+            
+            /* Evitar quebras no meio de elementos */
+            .destaque, .dica, .palavras-chave {
+                page-break-inside: avoid;
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+            
+            ul, ol {
+                page-break-inside: avoid;
+            }
+            
+            li {
+                page-break-inside: avoid;
+                orphans: 3;
+                widows: 3;
+            }
+            
+            p {
+                orphans: 3;
+                widows: 3;
+            }
+            
+            h2, h3 {
+                page-break-after: avoid;
+                page-break-inside: avoid;
+                margin-top: 20px;
+            }
+            
+            .card-section {
+                page-break-inside: avoid;
+            }
+            
+            /* Garantir que labels e conteúdo fiquem juntos */
+            .card-label {
+                page-break-after: avoid;
+            }
+            
+            .card-content {
+                page-break-before: avoid;
+            }
+            
+            /* Ajustes de tamanho para impressão */
+            .nivel-1 {
+                font-size: 20pt;
+                padding: 15px 30px;
+                margin-bottom: 30px;
+            }
+            
+            .nivel-2 {
+                font-size: 16pt;
+                padding: 12px 20px;
+            }
+            
+            .nivel-3 {
+                font-size: 12pt;
+                padding: 8px 15px;
+            }
+            
+            .card h3 {
+                font-size: 20pt;
+            }
+            
+            .card-content {
+                font-size: 11pt;
+            }
+            
+            .detalhado-section h2 {
+                font-size: 22pt;
+            }
+            
+            .palavra {
+                font-size: 10pt;
+                padding: 6px 12px;
+            }
+            
+            /* Margens da página */
+            @page {
+                margin: 2cm;
+            }
+            
+            /* Remover backgrounds muito coloridos na impressão */
+            .card, .detalhado-section {
+                background: white !important;
+            }
+            
+            .influencias, .ideias-chave, .destaque, .dica {
+                border: 1px solid #ccc;
+            }
         }
     </style>
 </head>
@@ -314,6 +708,11 @@
     <div class="container">
         <h1>📚 Filosofia - Material de Estudo</h1>
         <p class="subtitle">1º Ano do Ensino Médio - Exame Final</p>
+        
+        <div style="background: #d4edda; border: 2px solid #28a745; border-radius: 10px; padding: 15px; margin-bottom: 30px; text-align: center;">
+            <strong style="color: #155724; font-size: 18px;">💡 DICA DE IMPRESSÃO:</strong>
+            <p style="color: #155724; margin-top: 10px;">Clique no botão verde abaixo para imprimir. O material está otimizado com quebras de página automáticas!</p>
+        </div>
 
         <div class="tabs">
             <button class="tab active" onclick="showTab('mapa')">🗺️ Mapa Mental</button>
@@ -368,6 +767,12 @@
 
         <!-- CARDS -->
         <div id="cards" class="content">
+            
+            <div style="page-break-after: always; text-align: center; padding: 100px 0;">
+                <h1 style="color: #667eea; font-size: 48px; margin-bottom: 20px;">📇 CARDS RESUMO</h1>
+                <p style="font-size: 24px; color: #666;">Informações rápidas de cada filósofo</p>
+            </div>
+            
             <div class="cards-grid">
                 <!-- PLATÃO -->
                 <div class="card">
@@ -670,6 +1075,11 @@
 
         <!-- CONTEÚDO DETALHADO -->
         <div id="detalhado" class="content">
+            
+            <div style="page-break-after: always; text-align: center; padding: 100px 0;">
+                <h1 style="color: #667eea; font-size: 48px; margin-bottom: 20px;">📖 CONTEÚDO DETALHADO</h1>
+                <p style="font-size: 24px; color: #666;">Com dicas de memorização</p>
+            </div>
             
             <!-- PLATÃO -->
             <div class="detalhado-section">
