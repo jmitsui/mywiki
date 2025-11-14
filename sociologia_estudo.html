@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sociologia - Material de Estudo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #f5576c;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        .aviso {
+            background: #d4edda;
+            border: 2px solid #28a745;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .aviso strong {
+            color: #155724;
+            font-size: 18px;
+        }
+
+        .aviso p {
+            color: #155724;
+            margin-top: 10px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .tab {
+            padding: 12px 30px;
+            background: #f0f0f0;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .tab:hover {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .tab.active {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+        }
+
+        .content {
+            display: none;
+        }
+
+        .content.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* MAPA MENTAL */
+        .mapa-mental {
+            padding: 30px 20px;
+            background: #fff5f7;
+            border-radius: 15px;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        .mapa-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nivel-1 {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 15px;
+            font-size: clamp(18px, 4vw, 24px);
+            font-weight: bold;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            text-align: center;
+            width: 90%;
+            max-width: 500px;
+        }
+
+        .nivel-2-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+            width: 100%;
+            padding: 0 10px;
+        }
+
+        .nivel-2-container > div {
+            width: 100%;
+            min-width: 0;
+        }
+
+        .nivel-2 {
+            background: #f5576c;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 12px;
+            font-size: clamp(16px, 3vw, 18px);
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            text-align: center;
+            word-wrap: break-word;
+        }
+
+        .nivel-3-container {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .nivel-3 {
+            background: white;
+            color: #f5576c;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: clamp(11px, 2.5vw, 14px);
+            border: 2px solid #f5576c;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+            flex: 0 1 auto;
+            word-wrap: break-word;
+            max-width: 100%;
+        }
+
+        /* CARDS */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #fff5f7 0%, #ffe8f0 100%);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-left: 5px solid #f5576c;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .card h3 {
+            color: #f5576c;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .card-section {
+            margin: 12px 0;
+        }
+
+        .card-label {
+            font-weight: 700;
+            color: #c41e3a;
+            font-size: 14px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .card-content {
+            color: #333;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .conceito-chave {
+            background: #d4edda;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 8px 0;
+        }
+
+        .exemplo {
+            background: #fff3cd;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 8px 0;
+        }
+
+        /* CONTEÚDO DETALHADO */
+        .detalhado-section {
+            background: #fff5f7;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-left: 5px solid #f5576c;
+        }
+
+        .detalhado-section h2 {
+            color: #f5576c;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .detalhado-section h3 {
+            color: #c41e3a;
+            font-size: 22px;
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
+
+        .destaque {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #ffc107;
+        }
+
+        .palavras-chave {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .palavra {
+            background: #f5576c;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .dica {
+            background: #d4edda;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #28a745;
+        }
+
+        .dica strong {
+            color: #155724;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        li {
+            margin: 8px 0;
+            color: #333;
+        }
+
+        .print-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .print-btn:hover {
+            background: #218838;
+            transform: scale(1.05);
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            .container { padding: 20px; border-radius: 15px; }
+            h1 { font-size: 2em; }
+            .subtitle { font-size: 1em; }
+            .tabs { gap: 5px; }
+            .tab { padding: 10px 20px; font-size: 14px; }
+            .cards-grid { grid-template-columns: 1fr; gap: 20px; }
+            .card { padding: 20px; }
+            .card h3 { font-size: 20px; }
+            .detalhado-section { padding: 20px; }
+            .detalhado-section h2 { font-size: 24px; }
+            .palavras-chave { gap: 8px; }
+            .palavra { font-size: 12px; padding: 6px 12px; }
+            .print-btn { bottom: 20px; right: 20px; padding: 12px 25px; font-size: 14px; }
+            .mapa-mental { padding: 20px 10px; }
+            .nivel-1 { padding: 15px 25px; margin-bottom: 30px; width: 95%; }
+            .nivel-2-container { grid-template-columns: 1fr; gap: 20px; padding: 0 5px; }
+            .nivel-2 { padding: 12px 20px; }
+            .nivel-3-container { gap: 8px; margin-top: 12px; }
+            .nivel-3 { padding: 6px 12px; }
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 15px; }
+            h1 { font-size: 1.8em; }
+            .tab { padding: 8px 15px; font-size: 12px; flex: 1; }
+            .card { padding: 15px; }
+            .card h3 { font-size: 18px; }
+            .card-content { font-size: 14px; }
+            .detalhado-section { padding: 15px; }
+            .detalhado-section h2 { font-size: 20px; }
+            .palavras-chave { gap: 6px; }
+            .palavra { font-size: 11px; padding: 5px 10px; }
+            .destaque, .dica { padding: 12px; font-size: 14px; }
+            .print-btn { bottom: 15px; right: 15px; padding: 10px 20px; font-size: 13px; }
+            .mapa-mental { padding: 15px 5px; border-radius: 10px; }
+            .nivel-1 { padding: 12px 15px; margin-bottom: 25px; width: 98%; font-size: 16px; }
+            .nivel-2-container { gap: 15px; }
+            .nivel-2 { padding: 10px 12px; font-size: 15px; }
+            .nivel-3-container { gap: 6px; margin-top: 10px; }
+            .nivel-3 { padding: 5px 8px; font-size: 11px; flex: 1 1 calc(50% - 6px); }
+        }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .tabs, .print-btn, .aviso { display: none; }
+            .content { display: block !important; animation: none; }
+            .container { box-shadow: none; padding: 20px; max-width: 100%; }
+            h1 { page-break-after: avoid; font-size: 32pt; }
+            .subtitle { page-break-after: always; margin-bottom: 0; padding-bottom: 50px; }
+            .mapa-mental { page-break-after: always; padding: 15px; }
+            .cards-grid { display: block; }
+            .card { page-break-after: always; page-break-inside: avoid; margin-bottom: 0; box-shadow: none; border: 2px solid #f5576c; width: 100%; }
+            .detalhado-section { page-break-before: always; page-break-inside: avoid; box-shadow: none; border: 2px solid #f5576c; }
+            .destaque, .dica, .palavras-chave { page-break-inside: avoid; }
+            ul, ol { page-break-inside: avoid; }
+            li, p { orphans: 3; widows: 3; }
+            h2, h3 { page-break-after: avoid; }
+            @page { margin: 2cm; }
+            .card, .detalhado-section { background: white !important; }
+            .conceito-chave, .exemplo, .destaque, .dica { border: 1px solid #ccc; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 Sociologia - Material de Estudo</h1>
+        <p class="subtitle">1º Ano do Ensino Médio - Exame Final</p>
+        
+        <div class="aviso">
+            <strong>💡 DICA DE IMPRESSÃO:</strong>
+            <p>Clique no botão verde abaixo para imprimir. O material está otimizado com quebras de página automáticas!</p>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('mapa')">🗺️ Mapa Mental</button>
+            <button class="tab" onclick="showTab('cards')">📇 Cards Resumo</button>
+            <button class="tab" onclick="showTab('detalhado')">📖 Conteúdo Detalhado</button>
+        </div>
+
+        <!-- MAPA MENTAL -->
+        <div id="mapa" class="content active">
+            <div class="mapa-mental">
+                <div class="mapa-container">
+                    <div class="nivel-1">SOCIOLOGIA - TEMAS CENTRAIS</div>
+                    
+                    <div class="nivel-2-container">
+                        <div>
+                            <div class="nivel-2">CULTURA</div>
+                            <div class="nivel-3-container">
+                                <div class="nivel-3">Etnocentrismo</div>
+                                <div class="nivel-3">Relativismo Cultural</div>
+                                <div class="nivel-3">Diversidade</div>
+                                <div class="nivel-3">Aculturação</div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="nivel-2">MOVIMENTOS SOCIAIS</div>
+                            <div class="nivel-3-container">
+                                <div class="nivel-3">Clássicos</div>
+                                <div class="nivel-3">Novos Movimentos</div>
+                                <div class="nivel-3">Questão Racial</div>
+                                <div class="nivel-3">Feminismo</div>
+                                <div class="nivel-3">LGBTQIA+</div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="nivel-2">TRABALHO</div>
+                            <div class="nivel-3-container">
+                                <div class="nivel-3">Fordismo</div>
+                                <div class="nivel-3">Taylorismo</div>
+                                <div class="nivel-3">Toyotismo</div>
+                                <div class="nivel-3">Flexibilização</div>
+                                <div class="nivel-3">Terceirização</div>
+                                <div class="nivel-3">Uberização</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARDS -->
+        <div id="cards" class="content">
+            
+            <div style="page-break-after: always; text-align: center; padding: 100px 0;">
+                <h1 style="color: #f5576c; font-size: 48px; margin-bottom: 20px;">📇 CARDS RESUMO</h1>
+                <p style="font-size: 24px; color: #666;">Conceitos essenciais de Sociologia</p>
+            </div>
+            
+            <div class="cards-grid">
+                <!-- ETNOCENTRISMO -->
+                <div class="card">
+                    <h3>🌍 ETNOCENTRISMO</h3>
+                    <div class="card-section">
+                        <div class="card-label">💡 Conceito</div>
+                        <div class="card-content conceito-chave">
+                            Visão que considera a própria cultura SUPERIOR às demais. Julga outras culturas usando os próprios valores como referência "universal".
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">⚠️ Consequências</div>
+                        <div class="card-content">
+                            • Preconceito e discriminação<br>
+                            • Supervalorização da própria cultura<br>
+                            • Desrespeito à diversidade<br>
+                            • Conflitos culturais e xenofobia
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">📌 Exemplos</div>
+                        <div class="card-content exemplo">
+                            • Colonização: europeus chamavam indígenas de "selvagens"<br>
+                            • Escravidão justificada por "inferioridade" africana<br>
+                            • Xenofobia contra imigrantes<br>
+                            • Hostilidade contra chineses na pandemia
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RELATIVISMO CULTURAL -->
+                <div class="card">
+                    <h3>🤝 RELATIVISMO CULTURAL</h3>
+                    <div class="card-section">
+                        <div class="card-label">💡 Conceito</div>
+                        <div class="card-content conceito-chave">
+                            Cada cultura deve ser compreendida segundo suas PRÓPRIAS lógicas e contexto. NÃO existe cultura superior ou inferior - todas têm igual valor.
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">✅ Princípios</div>
+                        <div class="card-content">
+                            • Igualdade entre culturas<br>
+                            • Respeito à diversidade<br>
+                            • Compreensão contextual<br>
+                            • Combate ao preconceito<br>
+                            • Não julgamento etnocêntrico
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">📌 Exemplo</div>
+                        <div class="card-content exemplo">
+                            Corrida de toras dos Krahô: não é "competição" como no Ocidente, mas ritual cerimonial com significado próprio sobre força, resistência e comunidade.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MOVIMENTOS SOCIAIS CLÁSSICOS -->
+                <div class="card">
+                    <h3>⚒️ MOVIMENTOS CLÁSSICOS</h3>
+                    <div class="card-section">
+                        <div class="card-label">💡 Características</div>
+                        <div class="card-content conceito-chave">
+                            Surgem na Revolução Industrial (século XIX). Foco: LUTA DE CLASSES. Objetivo: conquistar poder político e transformar economia.
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">🎯 Exemplos</div>
+                        <div class="card-content">
+                            • Movimento Operário<br>
+                            • Sindicatos trabalhistas<br>
+                            • Movimento dos Sem-Terra (MST)<br>
+                            • Movimentos socialistas/comunistas
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">⚔️ Métodos</div>
+                        <div class="card-content">
+                            Greves, ocupações, luta armada, mobilizações de massa. Estratégia: tomar o Estado e mudar estrutura econômica.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NOVOS MOVIMENTOS SOCIAIS -->
+                <div class="card">
+                    <h3>🌈 NOVOS MOVIMENTOS SOCIAIS</h3>
+                    <div class="card-section">
+                        <div class="card-label">💡 Características</div>
+                        <div class="card-content conceito-chave">
+                            Surgem na 2ª metade do século XX. NÃO focam só em classe - defendem identidades, direitos civis, meio ambiente, gênero, sexualidade.
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">🎯 Exemplos</div>
+                        <div class="card-content">
+                            • Movimento Feminista<br>
+                            • Movimento LGBTQIA+<br>
+                            • Movimento Negro<br>
+                            • Movimento Ambientalista<br>
+                            • Movimento Estudantil
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">✌️ Métodos</div>
+                        <div class="card-content">
+                            Passeatas pacíficas, redes sociais, conscientização, pressão política, manifestações culturais. Foco: mudança cultural e conquista de direitos.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- QUESTÃO RACIAL -->
+                <div class="card">
+                    <h3>✊🏿 QUESTÃO RACIAL NO BRASIL</h3>
+                    <div class="card-section">
+                        <div class="card-label">💡 Contexto</div>
+                        <div class="card-content conceito-chave">
+                            Brasil tem racismo estrutural: discriminação está nas instituições, não só em atos individuais. Herança da escravidão (1888).
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">⚠️ Problemas</div>
+                        <div class="card-content">
+                            • Desigualdade racial no mercado<br>
+                            • Menor acesso à educação<br>
+                            • Violência policial<br>
+                            • Sub-representação política<br>
+                            • Mito da "democracia racial"
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">✅ Políticas Afirmativas</div>
+                        <div class="card-content exemplo">
+                            • Cotas raciais (Lei 10.639/2003)<br>
+                            • Ensino de história afro-brasileira<br>
+                            • Movimento Negro Unificado<br>
+                            • Ações de reparação histórica
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FEMINISMO -->
+                <div class="card">
+                    <h3>👩 FEMINISMO</h3>
+                    <div class="card-section">
+                        <div class="card-label">💡 Conceito</div>
+                        <div class="card-content conceito-chave">
+                            Movimento que luta pela IGUALDADE de gênero. Combate o patriarcado (estrutura que privilegia homens) e a opressão das mulheres.
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">📚 Ondas do Feminismo</div>
+                        <div class="card-content">
+                            • 1ª Onda (séc XIX): Direito ao voto<br>
+                            • 2ª Onda (anos 60-80): Direitos reprodutivos, trabalho<br>
+                            • 3ª Onda (anos 90): Diversidade, interseccionalidade<br>
+                            • 4ª Onda (2010+): Redes sociais, #MeToo
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">🎯 Pautas Atuais</div>
+                        <div class="card-content exemplo">
+                            • Igualdade salarial<br>
+                            • Combate à violência doméstica<br>
+                            • Representação política<br>
+                            • Direito ao próprio corpo
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FORDISMO/TAYLORISMO -->
+                <div class="card">
+                    <h3>🏭 FORDISMO & TAYLORISMO</h3>
+                    <div class="card-section">
+                        <div class="card-label">💡 Conceito</div>
+                        <div class="card-content conceito-chave">
+                            Modelos de produção do início do século XX. TAYLORISMO: racionalização científica. FORDISMO: linha de montagem + produção em massa.
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">🎯 Características</div>
+                        <div class="card-content">
+                            • Especialização do trabalhador<br>
+                            • Divisão rígida de tarefas<br>
+                            • Produção padronizada<br>
+                            • Controle rígido do tempo<br>
+                            • Separação: quem pensa ≠ quem executa
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">⚖️ Consequências</div>
+                        <div class="card-content exemplo">
+                            ✅ Maior produtividade<br>
+                            ✅ Produtos mais baratos<br>
+                            ❌ Alienação do trabalhador<br>
+                            ❌ Trabalho repetitivo e desgastante
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TOYOTISMO -->
+                <div class="card">
+                    <h3>🚗 TOYOTISMO</h3>
+                    <div class="card-section">
+                        <div class="card-label">💡 Conceito</div>
+                        <div class="card-content conceito-chave">
+                            Modelo japonês (Toyota, anos 1970). FLEXIBILIZAÇÃO do trabalho. Produção "just-in-time" (sob demanda). Trabalhador polivalente.
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">🎯 Características</div>
+                        <div class="card-content">
+                            • Produção flexível<br>
+                            • Trabalhador multitarefa<br>
+                            • Controle de qualidade no processo<br>
+                            • Estoque mínimo<br>
+                            • "Participação" do trabalhador<br>
+                            • Terceirização
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">⚠️ Lado Obscuro</div>
+                        <div class="card-content exemplo">
+                            Maior responsabilidade = maior pressão. Flexibilização = menos estabilidade e direitos. Intensificação do ritmo de trabalho.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TERCEIRIZAÇÃO -->
+                <div class="card">
+                    <h3>📦 TERCEIRIZAÇÃO</h3>
+                    <div class="card-section">
+                        <div class="card-label">💡 Conceito</div>
+                        <div class="card-content conceito-chave">
+                            Empresa contrata OUTRA empresa para realizar serviços. Reduz custos e responsabilidades trabalhistas do contratante.
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">🎯 Exemplos</div>
+                        <div class="card-content">
+                            • Limpeza e segurança em empresas<br>
+                            • Call centers<br>
+                            • Serviços de TI<br>
+                            • Logística e transporte
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">⚖️ Prós e Contras</div>
+                        <div class="card-content exemplo">
+                            🏢 Para empresa: reduz custos<br>
+                            👷 Para trabalhador: salários menores, menos direitos, maior insegurança, precarização
+                        </div>
+                    </div>
+                </div>
+
+                <!-- UBERIZAÇÃO -->
+                <div class="card">
+                    <h3>📱 UBERIZAÇÃO DO TRABALHO</h3>
+                    <div class="card-section">
+                        <div class="card-label">💡 Conceito</div>
+                        <div class="card-content conceito-chave">
+                            Trabalho mediado por aplicativos digitais. Trabalhador = "parceiro" ou "autônomo", NÃO empregado. Sem vínculo formal.
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">🎯 Exemplos</div>
+                        <div class="card-content">
+                            • Motoristas (Uber, 99)<br>
+                            • Entregadores (iFood, Rappi)<br>
+                            • Freelancers (99Freelas)<br>
+                            • Serviços domésticos por app
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">⚠️ Problemas</div>
+                        <div class="card-content exemplo">
+                            • SEM direitos trabalhistas (férias, 13º, FGTS)<br>
+                            • Jornadas exaustivas<br>
+                            • Insegurança econômica<br>
+                            • Riscos transferidos ao trabalhador<br>
+                            • "Empreendedorismo" forçado
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GLOBALIZAÇÃO E TRABALHO -->
+                <div class="card">
+                    <h3>🌐 GLOBALIZAÇÃO & TRABALHO</h3>
+                    <div class="card-section">
+                        <div class="card-label">💡 Conceito</div>
+                        <div class="card-content conceito-chave">
+                            Integração econômica mundial. Capital circula livremente entre países, buscando mão de obra mais barata e menos regulação.
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">🎯 Características</div>
+                        <div class="card-content">
+                            • Multinacionais buscam países com salários menores<br>
+                            • Competição global por empregos<br>
+                            • Pressão por flexibilização<br>
+                            • Desregulamentação trabalhista<br>
+                            • Aumento da desigualdade
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">📌 Crítica do Papa Francisco</div>
+                        <div class="card-content exemplo">
+                            "Globalização da esperança" vs "Globalização da exclusão e indiferença" - disparidade econômica entre ricos e pobres.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONTEÚDO DETALHADO -->
+        <div id="detalhado" class="content">
+            
+            <div style="page-break-after: always; text-align: center; padding: 100px 0;">
+                <h1 style="color: #f5576c; font-size: 48px; margin-bottom: 20px;">📖 CONTEÚDO DETALHADO</h1>
+                <p style="font-size: 24px; color: #666;">Com dicas de memorização e exemplos</p>
+            </div>
+            
+            <!-- CULTURA -->
+            <div class="detalhado-section">
+                <h2>🌍 CULTURA: Etnocentrismo vs Relativismo Cultural</h2>
+                
+                <div class="palavras-chave">
+                    <span class="palavra">Etnocentrismo</span>
+                    <span class="palavra">Relativismo</span>
+                    <span class="palavra">Diversidade</span>
+                    <span class="palavra">Tolerância</span>
+                    <span class="palavra">Preconceito</span>
+                </div>
+
+                <div class="destaque">
+                    <strong>💡 CONCEITO CENTRAL:</strong> Como devemos olhar para culturas diferentes da nossa? Com superioridade (etnocentrismo) ou com respeito e compreensão (relativismo cultural)?
+                </div>
+
+                <h3>🔴 Etnocentrismo</h3>
+                <p><strong>O que é?</strong> Visão que julga outras culturas usando os próprios valores como medida universal. "Minha cultura é superior, as outras são inferiores".</p>
+
+                <p><strong>Consequências negativas:</strong></p>
+                <ul>
+                    <li><strong>Preconceito e discriminação:</strong> Povos indígenas vistos como "atrasados" ou "primitivos"</li>
+                    <li><strong>Justificativa para violência:</strong> Colonização, escravidão, genocídios culturais</li>
+                    <li><strong>Xenofobia:</strong> Hostilidade contra imigrantes e refugiados</li>
+                    <li><strong>Desrespeito aos direitos humanos:</strong> Imposição de valores pela força</li>
+                </ul>
+
+                <div class="exemplo">
+                    <strong>📌 EXEMPLOS HISTÓRICOS:</strong><br>
+                    • <strong>Colonização:</strong> Europeus trataram indígenas brasileiros como "selvagens sem alma"<br>
+                    • <strong>Escravidão:</strong> Africanos considerados "inferiores" para justificar tráfico<br>
+                    • <strong>Pandemia COVID-19:</strong> Xenofobia contra asiáticos (hostilidades contra chineses)<br>
+                    • <strong>Contemporâneo:</strong> Discriminação contra árabes muçulmanos pós-11 de setembro
+                </div>
+
+                <h3>🟢 Relativismo Cultural</h3>
+                <p><strong>O que é?</strong> Cada cultura tem suas próprias lógicas e deve ser compreendida dentro do SEU contexto histórico e social. Não existe cultura superior ou inferior.</p>
+
+                <p><strong>Princípios:</strong></p>
+                <ul>
+                    <li><strong>Igualdade cultural:</strong> Todas as culturas têm igual valor</li>
+                    <li><strong>Compreensão contextual:</strong> Entender antes de julgar</li>
+                    <li><strong>Respeito à diversidade:</strong> Diferença não é inferioridade</li>
+                    <li><strong>Anti-etnocentrismo:</strong> Questionar os próprios preconceitos</li>
+                </ul>
+
+                <div class="exemplo">
+                    <strong>📌 EXEMPLO CLÁSSICO - Corrida de Toras (Povos Krahô):</strong><br>
+                    Um antropólogo não pode julgar esta prática como "competição esportiva" usando valores ocidentais. Para os Krahô, é um ritual cerimonial que envolve resistência, força comunitária, transmissão de conhecimentos ancestrais. Tem significado PRÓPRIO dentro daquela cultura.
+                </div>
+
+                <div class="dica">
+                    <strong>💭 DICA DE MEMORIZAÇÃO:</strong> "ETNOcentrismo = EU NO centro" - Coloca a própria cultura no centro de tudo. "RELATIVismo = RELACIONar-se com respeito" - Relaciona-se com outras culturas de igual para igual.
+                </div>
+
+                <p><strong>⚠️ IMPORTANTE:</strong> Relativismo cultural NÃO significa aceitar tudo. Práticas que violam direitos humanos fundamentais (tortura, escravidão, mutilação) devem ser condenadas, mas sem etnocentrismo - através de diálogo intercultural e consensos internacionais.
+                </p>
+            </div>
+
+            <!-- MOVIMENTOS SOCIAIS -->
+            <div class="detalhado-section">
+                <h2>✊ MOVIMENTOS SOCIAIS</h2>
+                
+                <div class="palavras-chave">
+                    <span class="palavra">Luta de Classes</span>
+                    <span class="palavra">Identidade</span>
+                    <span class="palavra">Direitos Civis</span>
+                    <span class="palavra">Ativismo</span>
+                    <span class="palavra">Transformação Social</span>
+                </div>
+
+                <div class="destaque">
+                    <strong>💡 CONCEITO CENTRAL:</strong> Movimentos sociais são ações coletivas organizadas que buscam mudanças sociais, políticas ou culturais. Podem focar em classe social (clássicos) ou em identidades e direitos (novos).
+                </div>
+
+                <h3>⚒️ Movimentos Sociais Clássicos</h3>
+                <p><strong>Quando surgem?</strong> Século XIX, com a Revolução Industrial e o capitalismo.</p>
+
+                <p><strong>Foco principal:</strong> LUTA DE CLASSES (burguesia x proletariado). Questão econômica é central.</p>
+
+                <p><strong>Objetivo:</strong> Conquistar o poder político do Estado para transformar a estrutura econômica.</p>
+
+                <p><strong>Exemplos:</strong></p>
+                <ul>
+                    <li><strong>Movimento Operário:</strong> Sindicalização, greves, melhores condições de trabalho</li>
+                    <li><strong>Partidos Socialistas/Comunistas:</strong> Luta pelo fim do capitalismo</li>
+                    <li><strong>MST (Brasil):</strong> Reforma agrária, redistribuição de terras</li>
+                </ul>
+
+                <p><strong>Métodos:</strong> Greves, ocupações, manifestações de massa, luta armada (em alguns casos).</p>
+
+                <h3>🌈 Novos Movimentos Sociais</h3>
+                <p><strong>Quando surgem?</strong> Segunda metade do século XX (anos 1960-70 em diante).</p>
+
+                <p><strong>Diferencial:</strong> NÃO focam apenas em classe. Defendem IDENTIDADES, direitos civis, causas específicas.</p>
+
+                <p><strong>Temas:</strong> Gênero, raça, sexualidade, meio ambiente, direitos humanos, cultura.</p>
+
+                <p><strong>Exemplos:</strong></p>
+                <ul>
+                    <li><strong>Feminismo:</strong> Igualdade de gênero, direitos reprodutivos, combate à violência</li>
+                    <li><strong>Movimento Negro:</strong> Combate ao racismo, reparação histórica, cotas</li>
+                    <li><strong>LGBTQIA+:</strong> Direitos iguais, casamento, adoção, criminalização da homofobia</li>
+                    <li><strong>Ambientalismo:</strong> Preservação ambiental, combate às mudanças climáticas</li>
+                    <li><strong>Estudantil:</strong> Educação pública e gratuita, participação política</li>
+                </ul>
+
+                <p><strong>Métodos:</strong> Passeatas pacíficas, uso de redes sociais, manifestações culturais, pressão política, conscientização.</p>
+
+                <div class="dica">
+                    <strong>💭 DICA:</strong> "Clássicos = CLASSE (operários, economia)". "Novos = NOVO foco (identidade, cultura, direitos civis)".
+                </div>
+
+                <h3>✊🏿 Questão Racial no Brasil</h3>
+                <p><strong>Racismo Estrutural:</strong> Discriminação racial está ENRAIZADA nas instituições brasileiras (polícia, justiça, educação, mercado de trabalho), não só em atos individuais.</p>
+
+                <p><strong>Dados alarmantes:</strong></p>
+                <ul>
+                    <li>População negra ganha em média 40% menos que brancos</li>
+                    <li>Maior vítima de violência policial</li>
+                    <li>Menor acesso a universidades (antes das cotas)</li>
+                    <li>Sub-representação política</li>
+                </ul>
+
+                <p><strong>Mito da "Democracia Racial":</strong> Ideia falsa de que no Brasil "não há racismo" porque houve miscigenação. Na verdade, racismo existe e é estrutural.</p>
+
+                <p><strong>Políticas Afirmativas:</strong></p>
+                <ul>
+                    <li><strong>Lei de Cotas (Lei 12.711/2012):</strong> Reserva de vagas em universidades federais</li>
+                    <li><strong>Lei 10.639/2003:</strong> Obrigatoriedade do ensino de história afro-brasileira</li>
+                    <li><strong>Lei 7.716/1989:</strong> Criminalização do racismo</li>
+                    <li><strong>Movimento Negro Unificado:</strong> Luta por direitos e reparação</li>
+                </ul>
+
+                <h3>👩 Feminismo</h3>
+                <p><strong>O que defende?</strong> Igualdade entre homens e mulheres. Combate ao PATRIARCADO (sistema que privilegia homens).</p>
+
+                <p><strong>As Ondas do Feminismo:</strong></p>
+                <ul>
+                    <li><strong>1ª Onda (século XIX - início XX):</strong> Sufrágio (direito ao voto). Movimento sufragista.</li>
+                    <li><strong>2ª Onda (anos 1960-1980):</strong> Direitos reprodutivos, igualdade no trabalho, sexualidade. Simone de Beauvoir: "Não se nasce mulher, torna-se mulher".</li>
+                    <li><strong>3ª Onda (anos 1990-2000):</strong> Diversidade de feminismos, interseccionalidade (raça + classe + gênero), crítica ao feminismo "branco".</li>
+                    <li><strong>4ª Onda (2010 em diante):</strong> Redes sociais, #MeToo, combate ao assédio, sororidade digital.</li>
+                </ul>
+
+                <p><strong>Importante:</strong> Feminismo marxista discute como opressão de gênero E opressão de classe se entrelaçam. Não dá para separar totalmente.</p>
+
+                <div class="exemplo">
+                    <strong>📌 EXEMPLO:</strong> Mulheres negras e pobres sofrem TRIPLA discriminação: gênero + raça + classe. Feminismo interseccional busca entender essas sobreposições.
+                </div>
+            </div>
+
+            <!-- TRABALHO -->
+            <div class="detalhado-section">
+                <h2>👷 MUNDO DO TRABALHO: Modelos de Produção</h2>
+                
+                <div class="palavras-chave">
+                    <span class="palavra">Fordismo</span>
+                    <span class="palavra">Taylorismo</span>
+                    <span class="palavra">Toyotismo</span>
+                    <span class="palavra">Flexibilização</span>
+                    <span class="palavra">Precarização</span>
+                    <span class="palavra">Terceirização</span>
+                </div>
+
+                <div class="destaque">
+                    <strong>💡 CONCEITO CENTRAL:</strong> Ao longo do século XX, o mundo do trabalho passou por transformações profundas. Do fordismo rígido ao toyotismo flexível, até a uberização atual. Cada modelo tem impactos diferentes na vida do trabalhador.
+                </div>
+
+                <h3>🏭 Fordismo & Taylorismo (Início do século XX)</h3>
+                
+                <p><strong>TAYLORISMO (Frederick Taylor):</strong></p>
+                <ul>
+                    <li><strong>Administração Científica:</strong> Estudo dos tempos e movimentos</li>
+                    <li><strong>Especialização extrema:</strong> Cada trabalhador faz UMA tarefa repetidamente</li>
+                    <li><strong>Separação:</strong> Quem PENSA (gerência) ≠ quem EXECUTA (operário)</li>
+                    <li><strong>Controle rígido:</strong> Cronômetro, fiscalização constante</li>
+                </ul>
+
+                <p><strong>FORDISMO (Henry Ford):</strong></p>
+                <ul>
+                    <li><strong>Linha de montagem:</strong> Esteira rolante, produção em série</li>
+                    <li><strong>Padronização:</strong> Produtos idênticos em massa (Ford T preto)</li>
+                    <li><strong>Salários mais altos:</strong> Para que operários pudessem consumir</li>
+                    <li><strong>Jornada fixa:</strong> 8 horas diárias</li>
+                </ul>
+
+                <p><strong>Consequências:</strong></p>
+                <ul>
+                    <li>✅ Aumento gigantesco da produtividade</li>
+                    <li>✅ Produtos mais baratos e acessíveis</li>
+                    <li>❌ ALIENAÇÃO: trabalhador não vê o produto final, só uma peça</li>
+                    <li>❌ Trabalho repetitivo, desgastante, desumano</li>
+                    <li>❌ Perda de autonomia e criatividade</li>
+                </ul>
+
+                <div class="exemplo">
+                    <strong>📌 FILME:</strong> "Tempos Modernos" (Chaplin, 1936) mostra perfeitamente a alienação fordista - trabalhador vira peça da máquina.
+                </div>
+
+                <h3>🚗 Toyotismo (Anos 1970 em diante)</h3>
+                
+                <p><strong>Origem:</strong> Japão pós-guerra, fábrica Toyota. Modelo se espalha pelo mundo na globalização.</p>
+
+                <p><strong>Características:</strong></p>
+                <ul>
+                    <li><strong>Produção flexível:</strong> Fabricar conforme demanda (just-in-time)</li>
+                    <li><strong>Estoque mínimo:</strong> Economiza espaço e dinheiro</li>
+                    <li><strong>Trabalhador polivalente:</strong> Faz várias tarefas diferentes</li>
+                    <li><strong>Qualidade no processo:</strong> Cada etapa controla qualidade</li>
+                    <li><strong>"Participação":</strong> Sugestões de melhorias (Círculos de Controle de Qualidade)</li>
+                    <li><strong>Terceirização:</strong> Empresas menores fazem partes do processo</li>
+                </ul>
+
+                <p><strong>Lado Obscuro:</strong></p>
+                <ul>
+                    <li>Maior responsabilidade = Maior pressão psicológica</li>
+                    <li>Flexibilização = Menos direitos e estabilidade</li>
+                    <li>Intensificação do ritmo de trabalho</li>
+                    <li>"Participação" é ilusória - decisões estratégicas continuam no topo</li>
+                    <li>Terceirização precariza condições de trabalho</li>
+                </ul>
+
+                <div class="dica">
+                    <strong>💭 DICA:</strong> "FORDismo = FORte e rígido (linha de montagem fixa)". "TOYOtismo = TOY = brinquedo flexível (produção flexível)".
+                </div>
+
+                <h3>📦 Terceirização</h3>
+                
+                <p><strong>O que é?</strong> Empresa principal contrata OUTRA empresa para realizar serviços. Trabalhador não tem vínculo direto com quem realmente usa seu trabalho.</p>
+
+                <p><strong>Exemplos comuns:</strong></p>
+                <ul>
+                    <li>Limpeza, segurança, recepção em empresas</li>
+                    <li>Call centers de bancos e teles</li>
+                    <li>Serviços de TI e tecnologia</li>
+                    <li>Logística e entrega</li>
+                </ul>
+
+                <p><strong>Para a empresa:</strong></p>
+                <ul>
+                    <li>✅ Reduz custos com salários e encargos</li>
+                    <li>✅ Transfere responsabilidades trabalhistas</li>
+                    <li>✅ Maior "flexibilidade" para contratar/demitir</li>
+                </ul>
+
+                <p><strong>Para o trabalhador:</strong></p>
+                <ul>
+                    <li>❌ Salários geralmente menores</li>
+                    <li>❌ Menos benefícios</li>
+                    <li>❌ Maior rotatividade e insegurança</li>
+                    <li>❌ Dificuldade de sindicalização</li>
+                    <li>❌ Piores condições de trabalho</li>
+                </ul>
+
+                <p><strong>Reforma Trabalhista (2017) no Brasil:</strong> Ampliou possibilidades de terceirização, incluindo atividades-fim. Debate: flexibilização ou precarização?</p>
+
+                <h3>📱 Uberização do Trabalho</h3>
+                
+                <p><strong>O que é?</strong> Trabalho mediado por plataformas digitais. Trabalhador vira "parceiro", "autônomo", "empreendedor de si mesmo" - mas SEM vínculo empregatício.</p>
+
+                <p><strong>Exemplos:</strong></p>
+                <ul>
+                    <li>Motoristas: Uber, 99, Cabify</li>
+                    <li>Entregadores: iFood, Rappi, Loggi</li>
+                    <li>Freelancers: 99Freelas, Workana</li>
+                    <li>Serviços gerais: GetNinjas, Triider</li>
+                </ul>
+
+                <p><strong>Discurso vs Realidade:</strong></p>
+                <ul>
+                    <li><strong>Discurso:</strong> "Seja seu próprio patrão", "liberdade", "flexibilidade de horário"</li>
+                    <li><strong>Realidade:</strong> Sem direitos trabalhistas (férias, 13º, FGTS), jornadas exaustivas para sobreviver, insegurança total, riscos transferidos ao "parceiro"</li>
+                </ul>
+
+                <p><strong>Problemas:</strong></p>
+                <ul>
+                    <li><strong>Ausência total de direitos:</strong> Doente? Sem salário. Acidentes? Problema seu.</li>
+                    <li><strong>Algoritmos controlam:</strong> Plataforma decide quem trabalha, quanto ganha, como trabalha</li>
+                    <li><strong>Competição predatória:</strong> Trabalhadores competem entre si por "corridas"</li>
+                    <li><strong>Jornadas exaustivas:</strong> Para ganhar o mínimo, precisam trabalhar 12-14h/dia</li>
+                    <li><strong>"Empreendedorismo" forçado:</strong> Discurso ideológico que esconde precarização</li>
+                </ul>
+
+                <div class="exemplo">
+                    <strong>📌 GREVES DE ENTREGADORES:</strong> Movimento "Breque dos Apps" (2020) - entregadores pararam exigindo melhores condições. Evidencia: eles SÃO trabalhadores, não "empreendedores".
+                </div>
+
+                <h3>🌐 Globalização e Trabalho</h3>
+                
+                <p><strong>O que é globalização?</strong> Integração econômica mundial. Capitais, mercadorias e informações circulam livremente. MAS: trabalhadores não.</p>
+
+                <p><strong>Impactos no trabalho:</strong></p>
+                <ul>
+                    <li><strong>Busca por mão de obra barata:</strong> Multinacionais vão para países com salários baixos</li>
+                    <li><strong>Competição global:</strong> Trabalhadores de diferentes países competem por vagas</li>
+                    <li><strong>Pressão por desregulamentação:</strong> "Precisamos flexibilizar para competir"</li>
+                    <li><strong>Enfraquecimento sindical:</strong> Sindicatos perdem força</li>
+                    <li><strong>Aumento da desigualdade:</strong> Países ricos exploram países pobres</li>
+                </ul>
+
+                <p><strong>Crítica do Papa Francisco (2015):</strong> Fala sobre "globalização da indiferença" - enquanto capital circula livre, pessoas morrem de fome nas fronteiras. Disparidade econômica absurda entre ricos e pobres.
+</p>
+
+                <div class="dica">
+                    <strong>💭 PARA O EXAME:</strong> Conecte os conceitos! Globalização → Toyotismo → Flexibilização → Terceirização → Uberização. É um processo histórico de precarização do trabalho.
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <button class="print-btn" onclick="window.print()">🖨️ Imprimir Tudo</button>
+
+    <script>
+        function showTab(tabName) {
+            const contents = document.querySelectorAll('.content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
