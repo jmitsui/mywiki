@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Português - Material de Estudo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #fa709a;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        .aviso {
+            background: #d4edda;
+            border: 2px solid #28a745;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .aviso strong {
+            color: #155724;
+            font-size: 18px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .tab {
+            padding: 12px 30px;
+            background: #f0f0f0;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .tab:hover {
+            background: linear-gradient(135deg, #fa709a, #fee140);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .tab.active {
+            background: linear-gradient(135deg, #fa709a, #fee140);
+            color: white;
+        }
+
+        .content {
+            display: none;
+        }
+
+        .content.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* MAPA MENTAL */
+        .mapa-mental {
+            padding: 30px 20px;
+            background: #fff8f0;
+            border-radius: 15px;
+            overflow-x: auto;
+        }
+
+        .mapa-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 900px;
+        }
+
+        .nivel-1 {
+            background: linear-gradient(135deg, #fa709a, #fee140);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 15px;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .nivel-2-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            width: 100%;
+        }
+
+        .nivel-2 {
+            background: #fa709a;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            text-align: center;
+        }
+
+        .nivel-3-container {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 12px;
+        }
+
+        .nivel-3 {
+            background: white;
+            color: #fa709a;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            border: 2px solid #fa709a;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* CARDS */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #fff8f0 0%, #ffe8e0 100%);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-left: 5px solid #fa709a;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .card h3 {
+            color: #fa709a;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .card-section {
+            margin: 12px 0;
+        }
+
+        .card-label {
+            font-weight: 700;
+            color: #c4447c;
+            font-size: 13px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .card-content {
+            color: #333;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .poema {
+            background: #f0f8ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 3px solid #2196f3;
+            font-family: 'Georgia', serif;
+            font-style: italic;
+            line-height: 1.8;
+        }
+
+        .citacao {
+            background: #fff9e6;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 3px solid #ffc107;
+            font-style: italic;
+        }
+
+        .exemplo-gram {
+            background: #e8f5e9;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 3px solid #4caf50;
+        }
+
+        .dica-port {
+            background: #e3f2fd;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 3px solid #2196f3;
+        }
+
+        .dica-port strong {
+            color: #0d47a1;
+        }
+
+        .autor-box {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border: 2px solid #fa709a;
+        }
+
+        .autor-box h4 {
+            color: #fa709a;
+            margin-bottom: 10px;
+        }
+
+        /* CONTEÚDO DETALHADO */
+        .detalhado-section {
+            background: #fff8f0;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-left: 5px solid #fa709a;
+        }
+
+        .detalhado-section h2 {
+            color: #fa709a;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .detalhado-section h3 {
+            color: #c4447c;
+            font-size: 22px;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        .palavras-chave {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .palavra {
+            background: #fa709a;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .tabela {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .tabela th {
+            background: #fa709a;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .tabela td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .tabela tr:hover {
+            background: #f5f5f5;
+        }
+
+        .print-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .print-btn:hover {
+            background: #218838;
+            transform: scale(1.05);
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        li {
+            margin: 8px 0;
+            color: #333;
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 768px) {
+            .cards-grid { grid-template-columns: 1fr; }
+            .nivel-2-container { grid-template-columns: 1fr; }
+        }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .tabs, .print-btn, .aviso { display: none; }
+            .content { display: block !important; }
+            .container { box-shadow: none; }
+            .card { page-break-inside: avoid; border: 2px solid #fa709a; }
+            @page { margin: 2cm; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 Português - Material de Estudo</h1>
+        <p class="subtitle">1º Ano do Ensino Médio - Exame Final</p>
+        
+        <div class="aviso">
+            <strong>💡 DICA DE IMPRESSÃO:</strong>
+            <p>Material completo de Literatura e Gramática!</p>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('mapa')">🗺️ Mapa Mental</button>
+            <button class="tab" onclick="showTab('literatura')">📖 Literatura</button>
+            <button class="tab" onclick="showTab('gramatica')">✍️ Gramática</button>
+        </div>
+
+        <!-- MAPA MENTAL -->
+        <div id="mapa" class="content active">
+            <div class="mapa-mental">
+                <div class="mapa-container">
+                    <div class="nivel-1">PORTUGUÊS - LITERATURA & GRAMÁTICA</div>
+                    
+                    <div class="nivel-2-container">
+                        <div>
+                            <div class="nivel-2">LITERATURA</div>
+                            <div class="nivel-3-container">
+                                <div class="nivel-3">Humanismo - Gil Vicente</div>
+                                <div class="nivel-3">Barroco - Gregório de Matos</div>
+                                <div class="nivel-3">Romantismo - Poesia</div>
+                                <div class="nivel-3">Romantismo - Prosa</div>
+                                <div class="nivel-3">Gêneros Textuais</div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="nivel-2">GRAMÁTICA</div>
+                            <div class="nivel-3-container">
+                                <div class="nivel-3">Substantivo</div>
+                                <div class="nivel-3">Adjetivo</div>
+                                <div class="nivel-3">Pronome</div>
+                                <div class="nivel-3">Verbo</div>
+                                <div class="nivel-3">Artigo</div>
+                                <div class="nivel-3">Numeral</div>
+                                <div class="nivel-3">Preposição</div>
+                                <div class="nivel-3">Advérbio</div>
+                                <div class="nivel-3">Conjunção</div>
+                                <div class="nivel-3">Interjeição</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LITERATURA -->
+        <div id="literatura" class="content">
+            
+            <div style="page-break-after: always; text-align: center; padding: 100px 0;">
+                <h1 style="color: #fa709a; font-size: 48px; margin-bottom: 20px;">📖 LITERATURA</h1>
+                <p style="font-size: 24px; color: #666;">Movimentos literários e autores</p>
+            </div>
+            
+            <div class="cards-grid">
+                
+                <!-- HUMANISMO -->
+                <div class="card">
+                    <h3>🎭 HUMANISMO</h3>
+                    <div class="card-section">
+                        <div class="card-label">📌 Período</div>
+                        <div class="card-content">
+                            Século XV (1434-1527) - Transição entre Idade Média e Renascimento
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">🎯 Características</div>
+                        <div class="card-content">
+                            • Valorização do ser humano (antropocentrismo)<br>
+                            • Crítica à Igreja e ao clero<br>
+                            • Teatro popular (autos)<br>
+                            • Linguagem mais acessível<br>
+                            • Moral e sátira social
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">👤 Gil Vicente (1465-1536)</div>
+                        <div class="autor-box">
+                            <h4>Pai do Teatro Português</h4>
+                            <p><strong>Obra principal:</strong> Auto da Barca do Inferno (1517)</p>
+                            <p><strong>Tema:</strong> Julgamento após a morte - crítica aos vícios da sociedade</p>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">📖 Auto da Barca do Inferno</div>
+                        <div class="card-content">
+                            <strong>Estrutura:</strong> Duas barcas (Inferno e Paraíso)<br>
+                            <strong>Personagens:</strong> Almas com seus pecados<br>
+                            <strong>Diabo:</strong> Convoca para Barca do Inferno<br>
+                            <strong>Anjo:</strong> Barca do Paraíso (poucos entram!)
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="dica-port">
+                            <strong>💡 Personagens importantes:</strong><br>
+                            • <strong>Fidalgo:</strong> Símbolo da nobreza arrogante<br>
+                            • <strong>Onzeneiro:</strong> Agiota, usurário<br>
+                            • <strong>Parvo (Joane):</strong> ÚNICO que vai ao Paraíso (simplicidade)<br>
+                            • <strong>Sapateiro:</strong> Representa o povo trabalhador
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BARROCO -->
+                <div class="card">
+                    <h3>✨ BARROCO</h3>
+                    <div class="card-section">
+                        <div class="card-label">📌 Período</div>
+                        <div class="card-content">
+                            Século XVII (1601-1768) no Brasil
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">🎯 Características</div>
+                        <div class="card-content">
+                            • <strong>Dualismo:</strong> Corpo x Alma, Pecado x Perdão<br>
+                            • <strong>Cultismo:</strong> Jogo de palavras, rebuscamento<br>
+                            • <strong>Conceptismo:</strong> Jogo de ideias, raciocínio<br>
+                            • <strong>Antíteses:</strong> Oposições constantes<br>
+                            • <strong>Linguagem complexa:</strong> Figuras de linguagem
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">👤 Gregório de Matos (1636-1696)</div>
+                        <div class="autor-box">
+                            <h4>"Boca do Inferno"</h4>
+                            <p><strong>Apelido:</strong> Crítica feroz à sociedade baiana</p>
+                            <p><strong>Poesia:</strong> Lírica, satírica, religiosa</p>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">📚 Tipos de Poesia</div>
+                        <div class="card-content">
+                            <strong>1. LÍRICA AMOROSA:</strong> Amor idealizado<br>
+                            <strong>2. SATÍRICA:</strong> Crítica mordaz, humor ácido<br>
+                            <strong>3. RELIGIOSA:</strong> Arrependimento, busca por Deus
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="citacao">
+                            <strong>Exemplo de sátira:</strong><br>
+                            "Que falta nesta cidade? Verdade.<br>
+                            Que mais por sua desonra? Honra.<br>
+                            Falta mais que se lhe ponha? Vergonha."
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ROMANTISMO - GONÇALVES DIAS -->
+                <div class="card">
+                    <h3>🌹 ROMANTISMO - 1ª GERAÇÃO</h3>
+                    <div class="card-section">
+                        <div class="card-label">📌 Características</div>
+                        <div class="card-content">
+                            • <strong>Indianismo:</strong> Índio como herói nacional<br>
+                            • <strong>Nacionalismo:</strong> Exaltação da pátria<br>
+                            • <strong>Natureza:</strong> Selvas, rios brasileiros<br>
+                            • <strong>Linguagem:</strong> Simples e emotiva
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">👤 Gonçalves Dias (1823-1864)</div>
+                        <div class="autor-box">
+                            <h4>Maior poeta indianista</h4>
+                            <p><strong>Características:</strong> Nacionalismo, saudosismo, natureza</p>
+                            <p><strong>Obras:</strong> Primeiros Cantos, Segundos Cantos</p>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">📖 Canção do Exílio (1843)</div>
+                        <div class="poema">
+"Minha terra tem palmeiras,<br>
+Onde canta o Sabiá;<br>
+As aves, que aqui gorjeiam,<br>
+Não gorjeiam como lá."<br><br>
+
+<strong>Tema:</strong> Saudade da pátria (poeta no exílio)
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">📖 Canção dos Tamoios</div>
+                        <div class="card-content">
+                            <strong>Tema:</strong> Heroísmo indígena<br>
+                            <strong>Estrutura:</strong> Poema épico<br>
+                            <strong>Personagem:</strong> Guerreiro tamoio (luta pela liberdade)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ROMANTISMO - ÁLVARES DE AZEVEDO -->
+                <div class="card">
+                    <h3>💀 ROMANTISMO - 2ª GERAÇÃO</h3>
+                    <div class="card-section">
+                        <div class="card-label">📌 Características</div>
+                        <div class="card-content">
+                            • <strong>Ultrarromantismo:</strong> Emoções exageradas<br>
+                            • <strong>Mal do século:</strong> Pessimismo, tédio<br>
+                            • <strong>Morte:</strong> Tema recorrente<br>
+                            • <strong>Melancolia:</strong> Sofrimento amoroso<br>
+                            • <strong>Fuga da realidade:</strong> Sonho, fantasia
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">👤 Álvares de Azevedo (1831-1852)</div>
+                        <div class="autor-box">
+                            <h4>Poeta da morte</h4>
+                            <p><strong>Vida:</strong> Morreu aos 20 anos (tuberculose)</p>
+                            <p><strong>Obra:</strong> Lira dos Vinte Anos</p>
+                            <p><strong>Temas:</strong> Morte, amor impossível, solidão</p>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">📖 Poemas Principais</div>
+                        <div class="card-content">
+                            <strong>"Minha Desgraça":</strong> Angústia existencial<br>
+                            <strong>"Lembranças de Morrer":</strong> Pressentimento da morte<br>
+                            <strong>"Se Eu Morresse Amanhã":</strong> Desejo de ser lembrado
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="poema">
+<strong>"Lembranças de Morrer":</strong><br>
+"Descansem o meu leito solitário<br>
+Na floresta dos homens esquecida,<br>
+À sombra de uma cruz, e escrevam nela:<br>
+— Foi poeta — sonhou — e amou na vida."
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="dica-port">
+                            <strong>💡 BINOMIA DE AZEVEDO:</strong><br>
+                            Lado angelical (amor puro) X Lado satânico (ironia, morte)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ROMANTISMO - PROSA -->
+                <div class="card">
+                    <h3>📕 ROMANTISMO - PROSA URBANA</h3>
+                    <div class="card-section">
+                        <div class="card-label">📌 Características</div>
+                        <div class="card-content">
+                            • <strong>Cenário:</strong> Cidades (Rio de Janeiro)<br>
+                            • <strong>Personagens:</strong> Burguesia urbana<br>
+                            • <strong>Temas:</strong> Casamento, costumes, sociedade<br>
+                            • <strong>Enredo:</strong> Triângulos amorosos, final feliz
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">👤 José de Alencar (1829-1877)</div>
+                        <div class="autor-box">
+                            <h4>Fundador do romance brasileiro</h4>
+                            <p><strong>Romances Urbanos:</strong> Senhora, Lucíola, Diva</p>
+                            <p><strong>Romances Indianistas:</strong> O Guarani, Iracema</p>
+                            <p><strong>Romances Regionalistas:</strong> O Sertanejo, O Gaúcho</p>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">📖 Senhora (1875)</div>
+                        <div class="card-content">
+                            <strong>Tema:</strong> Casamento por interesse<br>
+                            <strong>Aurélia:</strong> Rica, compra o marido (Fernando Seixas)<br>
+                            <strong>Crítica:</strong> Sociedade mercantilista<br>
+                            <strong>Final:</strong> Amor verdadeiro vence
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">👤 Joaquim Manuel de Macedo (1820-1882)</div>
+                        <div class="autor-box">
+                            <h4>Primeiro romancista brasileiro</h4>
+                            <p><strong>Obra principal:</strong> A Moreninha (1844)</p>
+                            <p><strong>Tema:</strong> Amor juvenil, costumes cariocas</p>
+                            <p><strong>Personagens:</strong> Carolina (moreninha) e Augusto</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GÊNEROS TEXTUAIS -->
+                <div class="card">
+                    <h3>📝 GÊNEROS LITERÁRIOS</h3>
+                    <div class="card-section">
+                        <div class="card-label">📌 LÍRICO</div>
+                        <div class="card-content">
+                            <strong>Características:</strong><br>
+                            • Expressão de sentimentos, emoções<br>
+                            • EU-LÍRICO (voz do poema)<br>
+                            • Geralmente em VERSO<br>
+                            • Subjetividade<br>
+                            <strong>Exemplos:</strong> Poesia, soneto, ode
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">📌 ÉPICO (NARRATIVO)</div>
+                        <div class="card-content">
+                            <strong>Características:</strong><br>
+                            • Narrativa de feitos heroicos<br>
+                            • NARRADOR (conta a história)<br>
+                            • Geralmente em VERSO<br>
+                            • Objetividade<br>
+                            <strong>Exemplos:</strong> Os Lusíadas, Ilíada, Odisseia
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">📌 DRAMÁTICO (TEATRAL)</div>
+                        <div class="card-content">
+                            <strong>Características:</strong><br>
+                            • Texto para SER ENCENADO<br>
+                            • Diálogos entre personagens<br>
+                            • Sem narrador<br>
+                            • Ação direta<br>
+                            <strong>Exemplos:</strong> Teatro, tragédia, comédia
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="dica-port">
+                            <strong>💡 RESUMO:</strong><br>
+                            LÍRICO = sentimentos (poesia)<br>
+                            ÉPICO = narrativa heroica (epopeia)<br>
+                            DRAMÁTICO = teatro (peça)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LITERÁRIO VS NÃO LITERÁRIO -->
+                <div class="card">
+                    <h3>📄 TEXTO LITERÁRIO vs NÃO LITERÁRIO</h3>
+                    <div class="card-section">
+                        <div class="card-label">📖 TEXTO LITERÁRIO</div>
+                        <div class="card-content">
+                            <strong>Função:</strong> ESTÉTICA (arte, beleza)<br>
+                            <strong>Linguagem:</strong> CONOTATIVA (sentido figurado)<br>
+                            <strong>Objetivo:</strong> Emocionar, provocar reflexão<br>
+                            <strong>Subjetividade:</strong> Interpretações múltiplas<br>
+                            <strong>Exemplos:</strong> Poema, romance, conto
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">📰 TEXTO NÃO LITERÁRIO</div>
+                        <div class="card-content">
+                            <strong>Função:</strong> INFORMATIVA (comunicar)<br>
+                            <strong>Linguagem:</strong> DENOTATIVA (sentido literal)<br>
+                            <strong>Objetivo:</strong> Informar, instruir<br>
+                            <strong>Objetividade:</strong> Sentido direto, claro<br>
+                            <strong>Exemplos:</strong> Notícia, manual, bula
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="exemplo-gram">
+                            <strong>COMPARAÇÃO:</strong><br>
+                            <strong>Literário:</strong> "Meu coração é um balde despejado" (metáfora)<br>
+                            <strong>Não literário:</strong> "Estou muito triste" (direto)
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- GRAMÁTICA -->
+        <div id="gramatica" class="content">
+            
+            <div style="page-break-after: always; text-align: center; padding: 100px 0;">
+                <h1 style="color: #fa709a; font-size: 48px; margin-bottom: 20px;">✍️ GRAMÁTICA</h1>
+                <p style="font-size: 24px; color: #666;">Classes Gramaticais</p>
+            </div>
+            
+            <div class="cards-grid">
+                
+                <!-- SUBSTANTIVO -->
+                <div class="card">
+                    <h3>1️⃣ SUBSTANTIVO</h3>
+                    <div class="card-section">
+                        <div class="card-label">📌 Definição</div>
+                        <div class="card-content">
+                            Palavra que NOMEIA seres, objetos, lugares, sentimentos, qualidades.
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">🎯 Tipos</div>
+                        <div class="card-content">
+                            <strong>COMUM:</strong> mesa, cidade, amor<br>
+                            <strong>PRÓPRIO:</strong> Brasil, João, Amazonas<br>
+                            <strong>CONCRETO:</strong> cadeira, cachorro (existe por si)<br>
+                            <strong>ABSTRATO:</strong> felicidade, medo (depende de ser)<br>
+                            <strong>SIMPLES:</strong> flor, casa<br>
+                            <strong>COMPOSTO:</strong> girassol, guarda-chuva<br>
+                            <strong>PRIMITIVO:</strong> pedra, terra<br>
+                            <strong>DERIVADO:</strong> pedreira, terreno<br>
+                            <strong>COLETIVO:</strong> enxame (abelhas), cardume (peixes)
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="exemplo-gram">
+                            "O <strong>menino</strong> comprou uma <strong>bicicleta</strong>."<br>
+                            (menino e bicicleta = substantivos)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ADJETIVO -->
+                <div class="card">
+                    <h3>2️⃣ ADJETIVO</h3>
+                    <div class="card-section">
+                        <div class="card-label">📌 Definição</div>
+                        <div class="card-content">
+                            Palavra que QUALIFICA ou CARACTERIZA o substantivo.
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">🎯 Tipos</div>
+                        <div class="card-content">
+                            <strong>SIMPLES:</strong> azul, grande<br>
+                            <strong>COMPOSTO:</strong> azul-marinho, luso-brasileiro<br>
+                            <strong>PRIMITIVO:</strong> bom, feliz<br>
+                            <strong>DERIVADO:</strong> brasileiro, triste<br>
+                            <strong>PÁTRIO:</strong> brasileiro, francês, paulista
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">📊 Flexões</div>
+                        <div class="card-content">
+                            <strong>GÊNERO:</strong> bonito/bonita<br>
+                            <strong>NÚMERO:</strong> bonito/bonitos<br>
+                            <strong>GRAU:</strong> bonito/mais bonito/boníssimo
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="exemplo-gram">
+                            "A casa <strong>amarela</strong> é <strong>linda</strong>."<br>
+                            (amarela e linda = adjetivos)
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="dica-port">
+                            <strong>💡 DICA:</strong> Adjetivo responde "Como é?"<br>
+                            Casa como é? Amarela, linda.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ARTIGO -->
+                <div class="card">
+                    <h3>3️⃣ ARTIGO</h3>
+                    <div class="card-section">
+                        <div class="card-label">📌 Definição</div>
+                        <div class="card-content">
+                            Palavra que DETERMINA ou INDEFINE o substantivo.
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">🎯 Tipos</div>
+                        <div class="card-content">
+                            <strong>DEFINIDO:</strong> o, a, os, as<br>
+                            (específico, conhecido)<br><br>
+                            <strong>INDEFINIDO:</strong> um, uma, uns, umas<br>
+                            (qualquer um, impreciso)
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="exemplo-gram">
+                            "<strong>O</strong> menino" (um menino específico)<br>
+                            "<strong>Um</strong> menino" (qualquer menino)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NUMERAL -->
+                <div class="card">
+                    <h3>4️⃣ NUMERAL</h3>
+                    <div class="card-section">
+                        <div class="card-label">📌 Definição</div>
+                        <div class="card-content">
+                            Palavra que indica QUANTIDADE, ORDEM, MÚLTIPLO ou FRAÇÃO.
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">🎯 Tipos</div>
+                        <div class="card-content">
+                            <strong>CARDINAL:</strong> um, dois, três (quantidade)<br>
+                            <strong>ORDINAL:</strong> primeiro, segundo (ordem)<br>
+                            <strong>MULTIPLICATIVO:</strong> dobro, triplo<br>
+                            <strong>FRACIONÁRIO:</strong> meio, terço
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="exemplo-gram">
+                            "Comprei <strong>três</strong> livros."<br>
+                            "Ele chegou em <strong>primeiro</strong> lugar."
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PRONOME -->
+                <div class="card">
+                    <h3>5️⃣ PRONOME</h3>
+                    <div class="card-section">
+                        <div class="card-label">📌 Definição</div>
+                        <div class="card-content">
+                            Palavra que SUBSTITUI ou ACOMPANHA o substantivo.
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">🎯 Tipos</div>
+                        <div class="card-content">
+                            <strong>PESSOAL:</strong> eu, tu, ele, nós, vós, eles<br>
+                            <strong>POSSESSIVO:</strong> meu, teu, seu, nosso<br>
+                            <strong>DEMONSTRATIVO:</strong> este, esse, aquele<br>
+                            <strong>INDEFINIDO:</strong> alguém, ninguém, tudo<br>
+                            <strong>INTERROGATIVO:</strong> quem? qual? quanto?<br>
+                            <strong>RELATIVO:</strong> que, qual, cujo, onde<br>
+                            <strong>TRATAMENTO:</strong> você, senhor, Vossa Excelência
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="exemplo-gram">
+                            "João saiu. <strong>Ele</strong> voltará tarde."<br>
+                            (Ele = pronome que substitui João)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VERBO -->
+                <div class="card">
+                    <h3>6️⃣ VERBO</h3>
+                    <div class="card-section">
+                        <div class="card-label">📌 Definição</div>
+                        <div class="card-content">
+                            Palavra que indica AÇÃO, ESTADO ou FENÔMENO DA NATUREZA.
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">🎯 Tipos</div>
+                        <div class="card-content">
+                            <strong>AÇÃO:</strong> correr, estudar, pensar<br>
+                            <strong>ESTADO:</strong> ser, estar, ficar, permanecer<br>
+                            <strong>FENÔMENO:</strong> chover, ventar, nevar
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">📊 Flexões</div>
+                        <div class="card-content">
+                            <strong>MODO:</strong> indicativo, subjuntivo, imperativo<br>
+                            <strong>TEMPO:</strong> presente, passado, futuro<br>
+                            <strong>PESSOA:</strong> 1ª, 2ª, 3ª (singular/plural)<br>
+                            <strong>NÚMERO:</strong> singular, plural<br>
+                            <strong>VOZ:</strong> ativa, passiva, reflexiva
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="exemplo-gram">
+                            "Eu <strong>estudo</strong> português."<br>
+                            "Maria <strong>corre</strong> no parque."<br>
+                            "Hoje <strong>choveu</strong> muito."
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ADVÉRBIO -->
+                <div class="card">
+                    <h3>7️⃣ ADVÉRBIO</h3>
+                    <div class="card-section">
+                        <div class="card-label">📌 Definição</div>
+                        <div class="card-content">
+                            Palavra que MODIFICA verbo, adjetivo ou outro advérbio.
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">🎯 Circunstâncias</div>
+                        <div class="card-content">
+                            <strong>TEMPO:</strong> hoje, ontem, sempre, nunca<br>
+                            <strong>LUGAR:</strong> aqui, ali, perto, longe<br>
+                            <strong>MODO:</strong> bem, mal, devagar, rapidamente<br>
+                            <strong>INTENSIDADE:</strong> muito, pouco, bastante<br>
+                            <strong>DÚVIDA:</strong> talvez, quiçá, possivelmente<br>
+                            <strong>AFIRMAÇÃO:</strong> sim, certamente, realmente<br>
+                            <strong>NEGAÇÃO:</strong> não, nunca, jamais
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="exemplo-gram">
+                            "Ela canta <strong>bem</strong>." (modo)<br>
+                            "Ele chegou <strong>ontem</strong>." (tempo)<br>
+                            "O livro está <strong>ali</strong>." (lugar)
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="dica-port">
+                            <strong>💡 DICA:</strong> Advérbio responde:<br>
+                            Como? Quando? Onde? Quanto?
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PREPOSIÇÃO -->
+                <div class="card">
+                    <h3>8️⃣ PREPOSIÇÃO</h3>
+                    <div class="card-section">
+                        <div class="card-label">📌 Definição</div>
+                        <div class="card-content">
+                            Palavra que LIGA termos, estabelecendo relação entre eles.
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">🎯 Principais Preposições</div>
+                        <div class="card-content">
+                            <strong>ESSENCIAIS:</strong><br>
+                            a, ante, após, até, com, contra, de, desde, em, entre, para, per, perante, por, sem, sob, sobre, trás
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">🔗 Relações</div>
+                        <div class="card-content">
+                            <strong>LUGAR:</strong> em, sobre, sob<br>
+                            <strong>TEMPO:</strong> desde, durante, até<br>
+                            <strong>CAUSA:</strong> por, com<br>
+                            <strong>FINALIDADE:</strong> para<br>
+                            <strong>COMPANHIA:</strong> com<br>
+                            <strong>POSSE:</strong> de
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="exemplo-gram">
+                            "Vou <strong>para</strong> casa."<br>
+                            "Livro <strong>de</strong> português."<br>
+                            "Fui <strong>com</strong> Maria."
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CONJUNÇÃO -->
+                <div class="card">
+                    <h3>9️⃣ CONJUNÇÃO</h3>
+                    <div class="card-section">
+                        <div class="card-label">📌 Definição</div>
+                        <div class="card-content">
+                            Palavra que CONECTA orações ou termos da mesma oração.
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">🎯 Tipos</div>
+                        <div class="card-content">
+                            <strong>COORDENATIVAS:</strong><br>
+                            • Aditivas: e, nem<br>
+                            • Adversativas: mas, porém, contudo<br>
+                            • Alternativas: ou, ora...ora<br>
+                            • Conclusivas: logo, portanto<br>
+                            • Explicativas: pois, porque<br><br>
+                            <strong>SUBORDINATIVAS:</strong><br>
+                            • Causais: porque, pois, como<br>
+                            • Concessivas: embora, ainda que<br>
+                            • Condicionais: se, caso<br>
+                            • Comparativas: como, que<br>
+                            • Consecutivas: que (tão...que)<br>
+                            • Conformativas: conforme, como<br>
+                            • Temporais: quando, enquanto<br>
+                            • Finais: para que, a fim de que<br>
+                            • Proporcionais: à medida que
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="exemplo-gram">
+                            "Estudei <strong>e</strong> passei." (aditiva)<br>
+                            "Estudei, <strong>mas</strong> não passei." (adversativa)<br>
+                            "<strong>Se</strong> estudar, passará." (condicional)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- INTERJEIÇÃO -->
+                <div class="card">
+                    <h3>🔟 INTERJEIÇÃO</h3>
+                    <div class="card-section">
+                        <div class="card-label">📌 Definição</div>
+                        <div class="card-content">
+                            Palavra que EXPRESSA emoção, sentimento ou reação espontânea.
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">🎯 Principais Interjeições</div>
+                        <div class="card-content">
+                            <strong>ALEGRIA:</strong> Ah! Oba! Viva!<br>
+                            <strong>DOR:</strong> Ai! Ui!<br>
+                            <strong>SURPRESA:</strong> Oh! Nossa! Uau!<br>
+                            <strong>ALÍVIO:</strong> Ufa! Arre!<br>
+                            <strong>ADVERTÊNCIA:</strong> Cuidado! Atenção!<br>
+                            <strong>SILÊNCIO:</strong> Psiu! Silêncio!<br>
+                            <strong>ADMIRAÇÃO:</strong> Puxa! Caramba!<br>
+                            <strong>DESEJO:</strong> Oxalá! Tomara!<br>
+                            <strong>SAUDAÇÃO:</strong> Oi! Olá! Tchau!
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="exemplo-gram">
+                            "<strong>Uau!</strong> Que lindo!"<br>
+                            "<strong>Ai!</strong> Machuquei o pé."<br>
+                            "<strong>Psiu!</strong> Venha aqui."
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="dica-port">
+                            <strong>💡 IMPORTANTE:</strong> Interjeição é sempre seguida de ponto de exclamação (!)
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <button class="print-btn" onclick="window.print()">🖨️ Imprimir</button>
+
+    <script>
+        function showTab(tabName) {
+            const contents = document.querySelectorAll('.content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
