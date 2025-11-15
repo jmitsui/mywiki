@@ -99,68 +99,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* MAPA MENTAL */
-        .mapa-mental {
-            padding: 30px 20px;
-            background: #e8fff3;
-            border-radius: 15px;
-            overflow-x: auto;
-        }
-
-        .mapa-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-width: 800px;
-        }
-
-        .nivel-1 {
-            background: linear-gradient(135deg, #43e97b, #38f9d7);
-            color: white;
-            padding: 20px 40px;
-            border-radius: 15px;
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 40px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        .nivel-2-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            width: 100%;
-        }
-
-        .nivel-2 {
-            background: #00a86b;
-            color: white;
-            padding: 15px 20px;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 600;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-            text-align: center;
-        }
-
-        .nivel-3-container {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 12px;
-        }
-
-        .nivel-3 {
-            background: white;
-            color: #00a86b;
-            padding: 6px 12px;
-            border-radius: 8px;
-            font-size: 12px;
-            border: 2px solid #00a86b;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
         /* CARDS */
         .cards-grid {
             display: grid;
@@ -187,9 +125,6 @@
             color: #00a86b;
             font-size: 22px;
             margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
 
         .card-section {
@@ -210,17 +145,97 @@
             line-height: 1.6;
         }
 
-        .formula {
+        /* FÓRMULAS MATEMÁTICAS MELHORADAS */
+        .formula-box {
             background: #fff9e6;
-            padding: 12px;
-            border-radius: 8px;
-            margin: 10px 0;
-            border-left: 3px solid #ffc107;
-            font-family: 'Courier New', monospace;
-            font-size: 16px;
-            font-weight: bold;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border: 3px solid #ffc107;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .formula {
+            font-family: 'Times New Roman', 'Georgia', serif;
+            font-size: 24px;
             text-align: center;
-            color: #333;
+            color: #000;
+            line-height: 2.8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        /* Fração */
+        .frac {
+            display: inline-flex;
+            flex-direction: column;
+            vertical-align: middle;
+            text-align: center;
+            margin: 0 5px;
+        }
+
+        .frac-num {
+            border-bottom: 2px solid #000;
+            padding-bottom: 3px;
+            min-width: 30px;
+        }
+
+        .frac-den {
+            padding-top: 3px;
+            min-width: 30px;
+        }
+
+        /* Raiz quadrada */
+        .sqrt {
+            position: relative;
+            display: inline-block;
+            padding-left: 8px;
+            margin: 0 5px;
+        }
+
+        .sqrt::before {
+            content: '√';
+            font-size: 1.6em;
+            position: absolute;
+            left: -5px;
+            top: -8px;
+        }
+
+        .sqrt-content {
+            border-top: 2px solid #000;
+            padding: 2px 8px 0 8px;
+            display: inline-block;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        /* Expoentes e índices */
+        .sup {
+            font-size: 0.7em;
+            vertical-align: super;
+            margin-left: 2px;
+        }
+
+        .sub {
+            font-size: 0.7em;
+            vertical-align: sub;
+            margin-left: 2px;
+        }
+
+        /* Parênteses grandes */
+        .paren {
+            font-size: 1.4em;
+            font-weight: normal;
+        }
+
+        /* Operadores */
+        .op {
+            margin: 0 8px;
+            font-weight: bold;
+            font-size: 1.1em;
         }
 
         .exemplo {
@@ -243,79 +258,6 @@
 
         .dica strong {
             color: #155724;
-        }
-
-        /* CONTEÚDO DETALHADO */
-        .detalhado-section {
-            background: #e8fff3;
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
-            border-left: 5px solid #00a86b;
-        }
-
-        .detalhado-section h2 {
-            color: #00a86b;
-            font-size: 28px;
-            margin-bottom: 20px;
-        }
-
-        .detalhado-section h3 {
-            color: #007a52;
-            font-size: 22px;
-            margin-top: 25px;
-            margin-bottom: 15px;
-        }
-
-        .destaque {
-            background: #fff9e6;
-            padding: 15px;
-            border-radius: 10px;
-            margin: 15px 0;
-            border-left: 4px solid #ffc107;
-        }
-
-        .palavras-chave {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin: 15px 0;
-        }
-
-        .palavra {
-            background: #00a86b;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
-        }
-
-        .passo-passo {
-            background: white;
-            padding: 15px;
-            border-radius: 10px;
-            margin: 15px 0;
-            border: 2px solid #00a86b;
-        }
-
-        .passo-passo h4 {
-            color: #00a86b;
-            margin-bottom: 10px;
-        }
-
-        .passo {
-            margin: 8px 0;
-            padding-left: 25px;
-            position: relative;
-        }
-
-        .passo:before {
-            content: "▸";
-            position: absolute;
-            left: 5px;
-            color: #00a86b;
-            font-weight: bold;
         }
 
         .tabela {
@@ -345,16 +287,6 @@
             background: #f5f5f5;
         }
 
-        ul {
-            margin-left: 20px;
-            margin-top: 10px;
-        }
-
-        li {
-            margin: 8px 0;
-            color: #333;
-        }
-
         .print-btn {
             position: fixed;
             bottom: 30px;
@@ -377,51 +309,19 @@
             transform: scale(1.05);
         }
 
-        .grafico {
-            background: white;
-            padding: 15px;
-            border-radius: 10px;
-            margin: 15px 0;
-            border: 2px solid #00a86b;
-            font-family: monospace;
-            white-space: pre;
-            overflow-x: auto;
-        }
-
         /* RESPONSIVIDADE */
         @media (max-width: 768px) {
-            body { padding: 10px; }
-            .container { padding: 20px; }
-            h1 { font-size: 2em; }
-            .tabs { gap: 5px; }
-            .tab { padding: 10px 20px; font-size: 14px; }
             .cards-grid { grid-template-columns: 1fr; }
-            .card { padding: 20px; }
-            .mapa-container { min-width: 100%; }
-            .nivel-2-container { grid-template-columns: 1fr; }
-            .detalhado-section { padding: 20px; }
-        }
-
-        @media (max-width: 480px) {
-            .container { padding: 15px; }
-            h1 { font-size: 1.8em; }
-            .card h3 { font-size: 18px; }
-            .formula { font-size: 14px; padding: 10px; }
+            .formula { font-size: 20px; }
         }
 
         @media print {
             body { background: white; padding: 0; }
             .tabs, .print-btn, .aviso { display: none; }
             .content { display: block !important; }
-            .container { box-shadow: none; padding: 20px; }
-            h1 { page-break-after: avoid; }
-            .subtitle { page-break-after: always; padding-bottom: 50px; }
-            .mapa-mental { page-break-after: always; }
-            .card { page-break-after: always; page-break-inside: avoid; border: 2px solid #00a86b; }
-            .detalhado-section { page-break-before: always; page-break-inside: avoid; border: 2px solid #00a86b; }
-            .formula, .exemplo, .dica, .passo-passo { page-break-inside: avoid; }
+            .container { box-shadow: none; }
+            .card { page-break-inside: avoid; border: 2px solid #00a86b; }
             @page { margin: 2cm; }
-            .card, .detalhado-section { background: white !important; }
         }
     </style>
 </head>
@@ -431,72 +331,16 @@
         <p class="subtitle">1º Ano do Ensino Médio - Exame Final</p>
         
         <div class="aviso">
-            <strong>💡 DICA DE IMPRESSÃO:</strong>
-            <p>Clique no botão verde abaixo para imprimir. O material está otimizado com quebras de página!</p>
+            <strong>💡 Fórmulas Matematicamente Corretas!</strong>
+            <p>Agora com notação visual melhorada</p>
         </div>
 
         <div class="tabs">
-            <button class="tab active" onclick="showTab('mapa')">🗺️ Mapa Mental</button>
-            <button class="tab" onclick="showTab('cards')">📇 Cards Resumo</button>
-            <button class="tab" onclick="showTab('detalhado')">📖 Conteúdo Detalhado</button>
-        </div>
-
-        <!-- MAPA MENTAL -->
-        <div id="mapa" class="content active">
-            <div class="mapa-mental">
-                <div class="mapa-container">
-                    <div class="nivel-1">MATEMÁTICA - TEMAS PRINCIPAIS</div>
-                    
-                    <div class="nivel-2-container">
-                        <div>
-                            <div class="nivel-2">ÁLGEBRA</div>
-                            <div class="nivel-3-container">
-                                <div class="nivel-3">Equação 2° grau</div>
-                                <div class="nivel-3">Função Afim</div>
-                                <div class="nivel-3">Função 2° grau</div>
-                                <div class="nivel-3">Módulo</div>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="nivel-2">GEOMETRIA & TRIGONOMETRIA</div>
-                            <div class="nivel-3-container">
-                                <div class="nivel-3">Semelhança</div>
-                                <div class="nivel-3">Triângulo Retângulo</div>
-                                <div class="nivel-3">Razões Trigonométricas</div>
-                                <div class="nivel-3">Relação Fundamental</div>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="nivel-2">CONJUNTOS & FINANCEIRA</div>
-                            <div class="nivel-3-container">
-                                <div class="nivel-3">Teoria dos Conjuntos</div>
-                                <div class="nivel-3">Porcentagem</div>
-                                <div class="nivel-3">Aumentos/Descontos</div>
-                                <div class="nivel-3">Regra de Três</div>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="nivel-2">FUNÇÕES AVANÇADAS</div>
-                            <div class="nivel-3-container">
-                                <div class="nivel-3">Função Exponencial</div>
-                                <div class="nivel-3">Logaritmos</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <button class="tab active" onclick="showTab('cards')">📇 Cards com Fórmulas</button>
         </div>
 
         <!-- CARDS -->
-        <div id="cards" class="content">
-            
-            <div style="page-break-after: always; text-align: center; padding: 100px 0;">
-                <h1 style="color: #00a86b; font-size: 48px; margin-bottom: 20px;">📇 CARDS DE FÓRMULAS</h1>
-                <p style="font-size: 24px; color: #666;">Conceitos e fórmulas essenciais</p>
-            </div>
+        <div id="cards" class="content active">
             
             <div class="cards-grid">
                 <!-- EQUAÇÃO 2 GRAU -->
@@ -504,34 +348,169 @@
                     <h3>📐 EQUAÇÃO DO 2° GRAU</h3>
                     <div class="card-section">
                         <div class="card-label">📌 Forma Geral</div>
-                        <div class="formula">
-                            ax² + bx + c = 0<br>
-                            (com a ≠ 0)
+                        <div class="formula-box">
+                            <div class="formula">
+                                <i>a</i><i>x</i><span class="sup">2</span>
+                                <span class="op">+</span>
+                                <i>b</i><i>x</i>
+                                <span class="op">+</span>
+                                <i>c</i>
+                                <span class="op">=</span>
+                                0
+                            </div>
+                            <div style="text-align: center; margin-top: 10px; font-size: 14px; color: #666;">
+                                (com <i>a</i> ≠ 0)
+                            </div>
                         </div>
                     </div>
                     <div class="card-section">
-                        <div class="card-label">🔢 Fórmula de Bhaskara</div>
-                        <div class="formula">
-                            x = (-b ± √Δ) / 2a<br><br>
-                            Δ = b² - 4ac
+                        <div class="card-label">🔢 Discriminante (Δ)</div>
+                        <div class="formula-box">
+                            <div class="formula">
+                                Δ
+                                <span class="op">=</span>
+                                <i>b</i><span class="sup">2</span>
+                                <span class="op">−</span>
+                                4<i>ac</i>
+                            </div>
                         </div>
                     </div>
                     <div class="card-section">
-                        <div class="card-label">⚠️ Discriminante (Δ)</div>
+                        <div class="card-label">🎯 Fórmula de Bhaskara</div>
+                        <div class="formula-box">
+                            <div class="formula">
+                                <i>x</i>
+                                <span class="op">=</span>
+                                <div class="frac">
+                                    <div class="frac-num">
+                                        −<i>b</i> ± 
+                                        <span class="sqrt">
+                                            <span class="sqrt-content">Δ</span>
+                                        </span>
+                                    </div>
+                                    <div class="frac-den">2<i>a</i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">⚠️ Análise do Δ</div>
                         <div class="card-content">
-                            • Δ > 0: duas raízes reais diferentes<br>
-                            • Δ = 0: duas raízes reais iguais<br>
-                            • Δ < 0: não tem raízes reais
+                            • Δ > 0: <strong>duas raízes reais diferentes</strong><br>
+                            • Δ = 0: <strong>duas raízes reais iguais</strong><br>
+                            • Δ < 0: <strong>não tem raízes reais</strong>
                         </div>
                     </div>
                     <div class="card-section">
-                        <div class="card-label">💡 Exemplo</div>
-                        <div class="exemplo">
-x² - 5x + 6 = 0
-a=1, b=-5, c=6
-Δ = 25 - 24 = 1
-x = (5 ± 1)/2
-x₁ = 3, x₂ = 2
+                        <div class="dica">
+                            <strong>💡 Exemplo:</strong> x² − 5x + 6 = 0<br>
+                            a=1, b=−5, c=6<br>
+                            Δ = 25 − 24 = 1<br>
+                            x = (5 ± 1)/2 → x₁ = 3, x₂ = 2
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TEOREMA DE PITÁGORAS -->
+                <div class="card">
+                    <h3>📐 TEOREMA DE PITÁGORAS</h3>
+                    <div class="card-section">
+                        <div class="card-label">📌 Fórmula Principal</div>
+                        <div class="formula-box">
+                            <div class="formula">
+                                <i>a</i><span class="sup">2</span>
+                                <span class="op">=</span>
+                                <i>b</i><span class="sup">2</span>
+                                <span class="op">+</span>
+                                <i>c</i><span class="sup">2</span>
+                            </div>
+                            <div style="text-align: center; margin-top: 10px; font-size: 14px;">
+                                (hipotenusa)² = (cateto)² + (cateto)²
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">📊 Relações Métricas</div>
+                        <div class="formula-box">
+                            <div class="formula" style="flex-direction: column; gap: 15px;">
+                                <div>
+                                    <i>a</i> · <i>h</i> = <i>b</i> · <i>c</i>
+                                </div>
+                                <div>
+                                    <i>b</i><span class="sup">2</span> = <i>a</i> · <i>m</i>
+                                </div>
+                                <div>
+                                    <i>c</i><span class="sup">2</span> = <i>a</i> · <i>n</i>
+                                </div>
+                                <div>
+                                    <i>h</i><span class="sup">2</span> = <i>m</i> · <i>n</i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RAZÕES TRIGONOMÉTRICAS -->
+                <div class="card">
+                    <h3>📊 RAZÕES TRIGONOMÉTRICAS</h3>
+                    <div class="card-section">
+                        <div class="card-label">📌 Seno</div>
+                        <div class="formula-box">
+                            <div class="formula">
+                                sen <i>θ</i>
+                                <span class="op">=</span>
+                                <div class="frac">
+                                    <div class="frac-num">cateto oposto</div>
+                                    <div class="frac-den">hipotenusa</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">📌 Cosseno</div>
+                        <div class="formula-box">
+                            <div class="formula">
+                                cos <i>θ</i>
+                                <span class="op">=</span>
+                                <div class="frac">
+                                    <div class="frac-num">cateto adjacente</div>
+                                    <div class="frac-den">hipotenusa</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">📌 Tangente</div>
+                        <div class="formula-box">
+                            <div class="formula">
+                                tg <i>θ</i>
+                                <span class="op">=</span>
+                                <div class="frac">
+                                    <div class="frac-num">cateto oposto</div>
+                                    <div class="frac-den">cateto adjacente</div>
+                                </div>
+                                <span class="op">=</span>
+                                <div class="frac">
+                                    <div class="frac-num">sen <i>θ</i></div>
+                                    <div class="frac-den">cos <i>θ</i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">⚡ Relação Fundamental</div>
+                        <div class="formula-box">
+                            <div class="formula">
+                                sen<span class="sup">2</span><i>θ</i>
+                                <span class="op">+</span>
+                                cos<span class="sup">2</span><i>θ</i>
+                                <span class="op">=</span>
+                                1
+                            </div>
+                        </div>
+                        <div class="dica">
+                            <strong>💡 Se sei um, sei todos!</strong><br>
+                            Conhecendo sen θ, uso a relação fundamental para achar cos θ, depois tg θ = sen θ / cos θ
                         </div>
                     </div>
                 </div>
@@ -541,206 +520,94 @@ x₁ = 3, x₂ = 2
                     <h3>⚖️ REGRA DE TRÊS</h3>
                     <div class="card-section">
                         <div class="card-label">📌 Regra de Três Simples</div>
-                        <div class="card-content">
-                            Relaciona 2 grandezas com 3 valores conhecidos e 1 desconhecido.
-                        </div>
-                        <div class="formula">
-                            A / B = C / x<br>
-                            x = (B × C) / A
+                        <div class="formula-box">
+                            <div class="formula">
+                                <div class="frac">
+                                    <div class="frac-num"><i>A</i></div>
+                                    <div class="frac-den"><i>B</i></div>
+                                </div>
+                                <span class="op">=</span>
+                                <div class="frac">
+                                    <div class="frac-num"><i>C</i></div>
+                                    <div class="frac-den"><i>x</i></div>
+                                </div>
+                            </div>
+                            <div style="text-align: center; margin-top: 15px; font-size: 16px;">
+                                ⬇️
+                            </div>
+                            <div class="formula">
+                                <i>x</i>
+                                <span class="op">=</span>
+                                <div class="frac">
+                                    <div class="frac-num"><i>B</i> × <i>C</i></div>
+                                    <div class="frac-den"><i>A</i></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="card-section">
                         <div class="card-label">📌 Grandezas</div>
                         <div class="card-content">
-                            • <strong>Diretamente proporcionais:</strong> uma aumenta, outra aumenta<br>
-                            • <strong>Inversamente proporcionais:</strong> uma aumenta, outra diminui
-                        </div>
-                    </div>
-                    <div class="card-section">
-                        <div class="card-label">💡 Exemplo</div>
-                        <div class="exemplo">
-3 operários → 12 dias
-5 operários → x dias
-(inversamente proporcional)
-3×12 = 5×x → x = 7,2 dias
-                        </div>
-                    </div>
-                    <div class="card-section">
-                        <div class="card-label">📌 Regra de Três Composta</div>
-                        <div class="card-content">
-                            3 ou mais grandezas relacionadas. Analise cada par com a incógnita.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- SEMELHANÇA -->
-                <div class="card">
-                    <h3>📏 SEMELHANÇA DE TRIÂNGULOS</h3>
-                    <div class="card-section">
-                        <div class="card-label">📌 Conceito</div>
-                        <div class="card-content">
-                            Triângulos com mesma forma, mas tamanhos diferentes. Ângulos correspondentes iguais e lados proporcionais.
-                        </div>
-                    </div>
-                    <div class="card-section">
-                        <div class="card-label">✅ Casos de Semelhança</div>
-                        <div class="card-content">
-                            • <strong>AA:</strong> dois ângulos iguais<br>
-                            • <strong>LAL:</strong> dois lados proporcionais e ângulo entre eles igual<br>
-                            • <strong>LLL:</strong> três lados proporcionais
-                        </div>
-                    </div>
-                    <div class="card-section">
-                        <div class="card-label">🔢 Razão de Semelhança</div>
-                        <div class="formula">
-                            k = L₁/L₂ = L'₁/L'₂ = L"₁/L"₂
-                        </div>
-                        <div class="card-content">
-                            Se k = 2, o triângulo maior tem lados 2× maiores.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- RELAÇÕES MÉTRICAS -->
-                <div class="card">
-                    <h3>📐 TRIÂNGULO RETÂNGULO</h3>
-                    <div class="card-section">
-                        <div class="card-label">📌 Teorema de Pitágoras</div>
-                        <div class="formula">
-                            a² = b² + c²<br>
-                            (hipotenusa² = cateto² + cateto²)
-                        </div>
-                    </div>
-                    <div class="card-section">
-                        <div class="card-label">📌 Relações Métricas</div>
-                        <div class="card-content">
-                            h = altura relativa à hipotenusa<br>
-                            m, n = projeções dos catetos
-                        </div>
-                        <div class="formula">
-                            a·h = b·c<br>
-                            b² = a·m<br>
-                            c² = a·n<br>
-                            h² = m·n
-                        </div>
-                    </div>
-                </div>
-
-                <!-- RAZÕES TRIGONOMÉTRICAS -->
-                <div class="card">
-                    <h3>📊 RAZÕES TRIGONOMÉTRICAS</h3>
-                    <div class="card-section">
-                        <div class="card-label">📌 Definições</div>
-                        <div class="formula">
-                            sen θ = cateto oposto / hipotenusa<br><br>
-                            cos θ = cateto adjacente / hipotenusa<br><br>
-                            tg θ = cateto oposto / cateto adjacente
-                        </div>
-                    </div>
-                    <div class="card-section">
-                        <div class="card-label">🔢 Ângulos Notáveis</div>
-                        <div class="card-content">
-                            <strong>30°:</strong> sen=1/2, cos=√3/2, tg=√3/3<br>
-                            <strong>45°:</strong> sen=√2/2, cos=√2/2, tg=1<br>
-                            <strong>60°:</strong> sen=√3/2, cos=1/2, tg=√3
-                        </div>
-                    </div>
-                    <div class="card-section">
-                        <div class="card-label">⚡ Relação Fundamental</div>
-                        <div class="formula">
-                            sen²θ + cos²θ = 1
-                        </div>
-                        <div class="dica">
-                            <strong>💡 Se sei um, sei todos!</strong> Conhecendo sen, acho cos pela relação fundamental, depois tg = sen/cos.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- RAZÕES INVERSAS -->
-                <div class="card">
-                    <h3>🔄 RAZÕES TRIGONOMÉTRICAS INVERSAS</h3>
-                    <div class="card-section">
-                        <div class="card-label">📌 Definições</div>
-                        <div class="formula">
-                            cossec θ = 1/sen θ = hip/cat.op<br><br>
-                            sec θ = 1/cos θ = hip/cat.adj<br><br>
-                            cotg θ = 1/tg θ = cat.adj/cat.op
-                        </div>
-                    </div>
-                    <div class="card-section">
-                        <div class="dica">
-                            <strong>💡 Dica:</strong> "Inversas" porque são recíprocas (1 dividido por). Cossecante é inversa de seno, secante de cosseno, cotangente de tangente.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- CONJUNTOS -->
-                <div class="card">
-                    <h3>🔢 TEORIA DOS CONJUNTOS</h3>
-                    <div class="card-section">
-                        <div class="card-label">📌 Operações</div>
-                        <div class="card-content">
-                            • <strong>União (A ∪ B):</strong> elementos que estão em A OU em B<br>
-                            • <strong>Interseção (A ∩ B):</strong> elementos em A E em B<br>
-                            • <strong>Diferença (A - B):</strong> elementos em A, mas NÃO em B
-                        </div>
-                    </div>
-                    <div class="card-section">
-                        <div class="card-label">🔢 Fórmula dos Conjuntos</div>
-                        <div class="formula">
-                            n(A ∪ B) = n(A) + n(B) - n(A ∩ B)
-                        </div>
-                    </div>
-                    <div class="card-section">
-                        <div class="card-label">💡 Exemplo</div>
-                        <div class="exemplo">
-30 alunos: 20 gostam de pizza,
-15 de hambúrguer, 8 de ambos.
-Quantos não gostam de nenhum?
-
-Total = 20 + 15 - 8 = 27
-Nenhum = 30 - 27 = 3 alunos
+                            • <strong>Diretamente proporcionais:</strong> uma ↑, outra ↑<br>
+                            • <strong>Inversamente proporcionais:</strong> uma ↑, outra ↓
                         </div>
                     </div>
                 </div>
 
                 <!-- PORCENTAGEM -->
                 <div class="card">
-                    <h3>💰 MATEMÁTICA FINANCEIRA</h3>
+                    <h3>💰 PORCENTAGEM</h3>
                     <div class="card-section">
-                        <div class="card-label">📌 Porcentagem</div>
-                        <div class="formula">
-                            x% de N = (x/100) × N
-                        </div>
-                        <div class="exemplo">
-20% de 150 = (20/100)×150 = 30
+                        <div class="card-label">📌 Cálculo de Porcentagem</div>
+                        <div class="formula-box">
+                            <div class="formula">
+                                <i>x</i>%  de  <i>N</i>
+                                <span class="op">=</span>
+                                <div class="frac">
+                                    <div class="frac-num"><i>x</i></div>
+                                    <div class="frac-den">100</div>
+                                </div>
+                                <span class="op">×</span>
+                                <i>N</i>
+                            </div>
                         </div>
                     </div>
                     <div class="card-section">
-                        <div class="card-label">📈 Aumento Simples</div>
-                        <div class="formula">
-                            Valor Final = Valor × (1 + i/100)
-                        </div>
-                        <div class="exemplo">
-Aumento de 10% em R$100:
-100 × 1,10 = R$110
+                        <div class="card-label">📈 Aumento</div>
+                        <div class="formula-box">
+                            <div class="formula">
+                                Valor Final = Valor × 
+                                <span class="paren">(</span>
+                                1 + 
+                                <div class="frac">
+                                    <div class="frac-num"><i>i</i></div>
+                                    <div class="frac-den">100</div>
+                                </div>
+                                <span class="paren">)</span>
+                            </div>
                         </div>
                     </div>
                     <div class="card-section">
-                        <div class="card-label">📉 Desconto Simples</div>
-                        <div class="formula">
-                            Valor Final = Valor × (1 - i/100)
+                        <div class="card-label">📉 Desconto</div>
+                        <div class="formula-box">
+                            <div class="formula">
+                                Valor Final = Valor × 
+                                <span class="paren">(</span>
+                                1 − 
+                                <div class="frac">
+                                    <div class="frac-num"><i>i</i></div>
+                                    <div class="frac-den">100</div>
+                                </div>
+                                <span class="paren">)</span>
+                            </div>
                         </div>
                     </div>
                     <div class="card-section">
-                        <div class="card-label">📊 Aumentos/Descontos Sucessivos</div>
-                        <div class="card-content">
-                            <strong>MULTIPLIQUE os fatores!</strong>
-                        </div>
-                        <div class="exemplo">
-+10% depois +20%:
-100 × 1,10 × 1,20 = 132
-(NÃO é +30%!)
+                        <div class="dica">
+                            <strong>💡 Aumentos Sucessivos:</strong><br>
+                            MULTIPLIQUE os fatores!<br>
+                            Ex: +10% depois +20%:<br>
+                            100 × 1,10 × 1,20 = 132 (NÃO é +30%!)
                         </div>
                     </div>
                 </div>
@@ -750,28 +617,34 @@ Aumento de 10% em R$100:
                     <h3>📈 FUNÇÃO AFIM (1° GRAU)</h3>
                     <div class="card-section">
                         <div class="card-label">📌 Forma Geral</div>
-                        <div class="formula">
-                            f(x) = ax + b<br>
-                            (com a ≠ 0)
-                        </div>
-                        <div class="card-content">
-                            • <strong>a:</strong> coeficiente angular (inclinação)<br>
-                            • <strong>b:</strong> coeficiente linear (onde corta eixo y)
+                        <div class="formula-box">
+                            <div class="formula">
+                                <i>f</i>(<i>x</i>)
+                                <span class="op">=</span>
+                                <i>a</i><i>x</i>
+                                <span class="op">+</span>
+                                <i>b</i>
+                            </div>
+                            <div style="text-align: center; margin-top: 10px; font-size: 14px;">
+                                (com <i>a</i> ≠ 0)
+                            </div>
                         </div>
                     </div>
                     <div class="card-section">
-                        <div class="card-label">📊 Comportamento</div>
+                        <div class="card-label">📊 Coeficientes</div>
                         <div class="card-content">
-                            • <strong>a > 0:</strong> função crescente ↗<br>
-                            • <strong>a < 0:</strong> função decrescente ↘
+                            • <strong>a:</strong> coeficiente angular (inclinação)<br>
+                            • <strong>b:</strong> coeficiente linear (corta eixo y)
                         </div>
                     </div>
                     <div class="card-section">
                         <div class="card-label">🎯 Casos Especiais</div>
-                        <div class="card-content">
-                            • <strong>Linear:</strong> f(x) = ax (passa pela origem)<br>
-                            • <strong>Identidade:</strong> f(x) = x (a=1, b=0)<br>
-                            • <strong>Constante:</strong> f(x) = b (a=0)
+                        <div class="formula-box" style="background: white; border-color: #00a86b;">
+                            <div class="formula" style="flex-direction: column; gap: 12px; font-size: 18px;">
+                                <div><strong>Linear:</strong> f(x) = ax</div>
+                                <div><strong>Identidade:</strong> f(x) = x</div>
+                                <div><strong>Constante:</strong> f(x) = b</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -781,58 +654,83 @@ Aumento de 10% em R$100:
                     <h3>📊 FUNÇÃO DO 2° GRAU</h3>
                     <div class="card-section">
                         <div class="card-label">📌 Forma Geral</div>
-                        <div class="formula">
-                            f(x) = ax² + bx + c<br>
-                            (com a ≠ 0)
+                        <div class="formula-box">
+                            <div class="formula">
+                                <i>f</i>(<i>x</i>)
+                                <span class="op">=</span>
+                                <i>a</i><i>x</i><span class="sup">2</span>
+                                <span class="op">+</span>
+                                <i>b</i><i>x</i>
+                                <span class="op">+</span>
+                                <i>c</i>
+                            </div>
                         </div>
                     </div>
                     <div class="card-section">
-                        <div class="card-label">🎯 Raízes (Zeros)</div>
-                        <div class="card-content">
-                            Valores de x onde f(x) = 0. Usa Bhaskara!
+                        <div class="card-label">📍 Coordenadas do Vértice</div>
+                        <div class="formula-box">
+                            <div class="formula" style="flex-direction: column; gap: 15px;">
+                                <div>
+                                    <i>x</i><span class="sub">v</span>
+                                    <span class="op">=</span>
+                                    <div class="frac">
+                                        <div class="frac-num">−<i>b</i></div>
+                                        <div class="frac-den">2<i>a</i></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <i>y</i><span class="sub">v</span>
+                                    <span class="op">=</span>
+                                    <div class="frac">
+                                        <div class="frac-num">−Δ</div>
+                                        <div class="frac-den">4<i>a</i></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="card-section">
-                        <div class="card-label">📊 Vértice (Ponto Máx/Mín)</div>
-                        <div class="formula">
-                            x_v = -b/2a<br>
-                            y_v = -Δ/4a
-                        </div>
+                        <div class="card-label">📊 Concavidade</div>
                         <div class="card-content">
-                            • <strong>a > 0:</strong> parábola ∪ (mínimo)<br>
-                            • <strong>a < 0:</strong> parábola ∩ (máximo)
+                            • <i>a</i> > 0: parábola ∪ (vértice é <strong>mínimo</strong>)<br>
+                            • <i>a</i> < 0: parábola ∩ (vértice é <strong>máximo</strong>)
                         </div>
                     </div>
                 </div>
 
                 <!-- MÓDULO -->
                 <div class="card">
-                    <h3>| | MÓDULO (VALOR ABSOLUTO)</h3>
+                    <h3>| | MÓDULO</h3>
                     <div class="card-section">
                         <div class="card-label">📌 Definição</div>
-                        <div class="formula">
-                            |x| = x, se x ≥ 0<br>
-                            |x| = -x, se x < 0
-                        </div>
-                        <div class="card-content">
-                            Sempre resultado positivo!<br>
-                            |5| = 5 e |-5| = 5
+                        <div class="formula-box">
+                            <div class="formula" style="flex-direction: column; gap: 15px; font-size: 20px;">
+                                <div>
+                                    |<i>x</i>| = <i>x</i>, se <i>x</i> ≥ 0
+                                </div>
+                                <div>
+                                    |<i>x</i>| = −<i>x</i>, se <i>x</i> < 0
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="card-section">
                         <div class="card-label">🔢 Equações Modulares</div>
-                        <div class="card-content">
-                            Se |x| = a, então x = a OU x = -a
-                        </div>
-                        <div class="exemplo">
-|x| = 3 → x = 3 ou x = -3
+                        <div class="formula-box">
+                            <div class="formula">
+                                Se |<i>x</i>| = <i>a</i>
+                            </div>
+                            <div style="text-align: center; margin: 10px 0;">⬇️</div>
+                            <div class="formula">
+                                <i>x</i> = <i>a</i>  ou  <i>x</i> = −<i>a</i>
+                            </div>
                         </div>
                     </div>
                     <div class="card-section">
-                        <div class="card-label">📊 Função Modular</div>
-                        <div class="card-content">
-                            f(x) = |x| tem gráfico em "V"<br>
-                            Vértice na origem (0,0)
+                        <div class="exemplo">
+|5| = 5
+|−5| = 5
+|0| = 0
                         </div>
                     </div>
                 </div>
@@ -842,25 +740,42 @@ Aumento de 10% em R$100:
                     <h3>📈 FUNÇÃO EXPONENCIAL</h3>
                     <div class="card-section">
                         <div class="card-label">📌 Forma Geral</div>
-                        <div class="formula">
-                            f(x) = a^x<br>
-                            (com a > 0 e a ≠ 1)
-                        </div>
-                    </div>
-                    <div class="card-section">
-                        <div class="card-label">📊 Comportamento</div>
-                        <div class="card-content">
-                            • <strong>a > 1:</strong> função crescente (ex: 2^x)<br>
-                            • <strong>0 < a < 1:</strong> função decrescente (ex: (1/2)^x)
+                        <div class="formula-box">
+                            <div class="formula">
+                                <i>f</i>(<i>x</i>)
+                                <span class="op">=</span>
+                                <i>a</i><span class="sup"><i>x</i></span>
+                            </div>
+                            <div style="text-align: center; margin-top: 10px; font-size: 14px;">
+                                (com <i>a</i> > 0 e <i>a</i> ≠ 1)
+                            </div>
                         </div>
                     </div>
                     <div class="card-section">
                         <div class="card-label">⚡ Propriedades</div>
-                        <div class="formula">
-                            a^m · a^n = a^(m+n)<br>
-                            a^m / a^n = a^(m-n)<br>
-                            (a^m)^n = a^(m·n)<br>
-                            a^0 = 1
+                        <div class="formula-box">
+                            <div class="formula" style="flex-direction: column; gap: 12px; font-size: 18px;">
+                                <div>
+                                    <i>a</i><span class="sup"><i>m</i></span> ·
+                                    <i>a</i><span class="sup"><i>n</i></span> =
+                                    <i>a</i><span class="sup"><i>m</i>+<i>n</i></span>
+                                </div>
+                                <div>
+                                    <div class="frac">
+                                        <div class="frac-num"><i>a</i><span class="sup"><i>m</i></span></div>
+                                        <div class="frac-den"><i>a</i><span class="sup"><i>n</i></span></div>
+                                    </div>
+                                    =
+                                    <i>a</i><span class="sup"><i>m</i>−<i>n</i></span>
+                                </div>
+                                <div>
+                                    (<i>a</i><span class="sup"><i>m</i></span>)<span class="sup"><i>n</i></span> =
+                                    <i>a</i><span class="sup"><i>m</i>·<i>n</i></span>
+                                </div>
+                                <div>
+                                    <i>a</i><span class="sup">0</span> = 1
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -870,766 +785,179 @@ Aumento de 10% em R$100:
                     <h3>📐 LOGARITMOS</h3>
                     <div class="card-section">
                         <div class="card-label">📌 Definição</div>
-                        <div class="formula">
-                            log_a(b) = x ⟺ a^x = b
+                        <div class="formula-box">
+                            <div class="formula">
+                                log<span class="sub"><i>a</i></span>(<i>b</i>)
+                                <span class="op">=</span>
+                                <i>x</i>
+                                <span class="op">⟺</span>
+                                <i>a</i><span class="sup"><i>x</i></span>
+                                <span class="op">=</span>
+                                <i>b</i>
+                            </div>
                         </div>
-                        <div class="card-content">
-                            "A que expoente devo elevar <strong>a</strong> para obter <strong>b</strong>?"
-                        </div>
-                        <div class="exemplo">
-log₂(8) = 3 pois 2³ = 8
+                        <div style="text-align: center; margin-top: 10px; font-size: 14px;">
+                            "A que expoente elevo <i>a</i> para obter <i>b</i>?"
                         </div>
                     </div>
                     <div class="card-section">
                         <div class="card-label">⚡ Propriedades</div>
-                        <div class="formula">
-                            log(a·b) = log(a) + log(b)<br>
-                            log(a/b) = log(a) - log(b)<br>
-                            log(a^n) = n·log(a)<br>
-                            log_a(a) = 1<br>
-                            log_a(1) = 0
+                        <div class="formula-box">
+                            <div class="formula" style="flex-direction: column; gap: 15px; font-size: 18px;">
+                                <div>
+                                    log(<i>a</i> · <i>b</i>) = log(<i>a</i>) + log(<i>b</i>)
+                                </div>
+                                <div>
+                                    log<span class="paren">(</span>
+                                    <div class="frac">
+                                        <div class="frac-num"><i>a</i></div>
+                                        <div class="frac-den"><i>b</i></div>
+                                    </div>
+                                    <span class="paren">)</span>
+                                    = log(<i>a</i>) − log(<i>b</i>)
+                                </div>
+                                <div>
+                                    log(<i>a</i><span class="sup"><i>n</i></span>) = <i>n</i> · log(<i>a</i>)
+                                </div>
+                                <div>
+                                    log<span class="sub"><i>a</i></span>(<i>a</i>) = 1
+                                </div>
+                                <div>
+                                    log<span class="sub"><i>a</i></span>(1) = 0
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="card-section">
                         <div class="card-label">🔄 Mudança de Base</div>
-                        <div class="formula">
-                            log_a(b) = log_c(b) / log_c(a)
+                        <div class="formula-box">
+                            <div class="formula">
+                                log<span class="sub"><i>a</i></span>(<i>b</i>)
+                                <span class="op">=</span>
+                                <div class="frac">
+                                    <div class="frac-num">log<span class="sub"><i>c</i></span>(<i>b</i>)</div>
+                                    <div class="frac-den">log<span class="sub"><i>c</i></span>(<i>a</i>)</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- CONJUNTOS -->
+                <div class="card">
+                    <h3>🔢 TEORIA DOS CONJUNTOS</h3>
+                    <div class="card-section">
+                        <div class="card-label">📌 Fórmula Principal</div>
+                        <div class="formula-box">
+                            <div class="formula">
+                                <i>n</i>(<i>A</i> ∪ <i>B</i>)
+                                <span class="op">=</span>
+                                <i>n</i>(<i>A</i>)
+                                <span class="op">+</span>
+                                <i>n</i>(<i>B</i>)
+                                <span class="op">−</span>
+                                <i>n</i>(<i>A</i> ∩ <i>B</i>)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">🎯 Operações</div>
+                        <div class="card-content">
+                            • <strong>União (∪):</strong> elementos em A OU B<br>
+                            • <strong>Interseção (∩):</strong> elementos em A E B<br>
+                            • <strong>Diferença (−):</strong> em A mas NÃO em B
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="dica">
+                            <strong>💡 Por que subtraímos a interseção?</strong><br>
+                            Ao somar n(A) + n(B), contamos os elementos da interseção DUAS VEZES. Precisamos subtrair uma vez!
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ÂNGULOS NOTÁVEIS -->
+                <div class="card">
+                    <h3>📐 ÂNGULOS NOTÁVEIS</h3>
+                    <div class="card-section">
+                        <table class="tabela">
+                            <tr>
+                                <th>Ângulo</th>
+                                <th>Seno</th>
+                                <th>Cosseno</th>
+                                <th>Tangente</th>
+                            </tr>
+                            <tr>
+                                <td><strong>30°</strong></td>
+                                <td>
+                                    <div class="frac" style="font-size: 16px; display: inline-flex;">
+                                        <div class="frac-num">1</div>
+                                        <div class="frac-den">2</div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="frac" style="font-size: 16px; display: inline-flex;">
+                                        <div class="frac-num">√3</div>
+                                        <div class="frac-den">2</div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="frac" style="font-size: 16px; display: inline-flex;">
+                                        <div class="frac-num">√3</div>
+                                        <div class="frac-den">3</div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>45°</strong></td>
+                                <td>
+                                    <div class="frac" style="font-size: 16px; display: inline-flex;">
+                                        <div class="frac-num">√2</div>
+                                        <div class="frac-den">2</div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="frac" style="font-size: 16px; display: inline-flex;">
+                                        <div class="frac-num">√2</div>
+                                        <div class="frac-den">2</div>
+                                    </div>
+                                </td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td><strong>60°</strong></td>
+                                <td>
+                                    <div class="frac" style="font-size: 16px; display: inline-flex;">
+                                        <div class="frac-num">√3</div>
+                                        <div class="frac-den">2</div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="frac" style="font-size: 16px; display: inline-flex;">
+                                        <div class="frac-num">1</div>
+                                        <div class="frac-den">2</div>
+                                    </div>
+                                </td>
+                                <td>√3</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="card-section">
+                        <div class="dica">
+                            <strong>💡 MACETE:</strong><br>
+                            Seno: 1/2, √2/2, √3/2 (crescente)<br>
+                            Cosseno: √3/2, √2/2, 1/2 (decrescente)<br>
+                            Tangente: √3/3, 1, √3
+                        </div>
+                    </div>
+                </div>
+
             </div>
-        </div>
-
-        <!-- CONTEÚDO DETALHADO -->
-        <div id="detalhado" class="content">
-            
-            <div style="page-break-after: always; text-align: center; padding: 100px 0;">
-                <h1 style="color: #00a86b; font-size: 48px; margin-bottom: 20px;">📖 CONTEÚDO DETALHADO</h1>
-                <p style="font-size: 24px; color: #666;">Com resoluções passo a passo</p>
-            </div>
-            
-            <!-- EQUAÇÃO 2 GRAU -->
-            <div class="detalhado-section">
-                <h2>📐 EQUAÇÃO DO 2° GRAU</h2>
-                
-                <div class="palavras-chave">
-                    <span class="palavra">Bhaskara</span>
-                    <span class="palavra">Discriminante</span>
-                    <span class="palavra">Raízes</span>
-                    <span class="palavra">Parábola</span>
-                </div>
-
-                <div class="destaque">
-                    <strong>FORMA GERAL:</strong> ax² + bx + c = 0 (com a ≠ 0)
-                </div>
-
-                <h3>🔢 Fórmula de Bhaskara</h3>
-                
-                <div class="formula">
-                    Δ = b² - 4ac<br><br>
-                    x = (-b ± √Δ) / 2a
-                </div>
-
-                <div class="passo-passo">
-                    <h4>📝 PASSO A PASSO:</h4>
-                    <div class="passo">Identifique a, b e c</div>
-                    <div class="passo">Calcule o discriminante: Δ = b² - 4ac</div>
-                    <div class="passo">Se Δ < 0: não há raízes reais (PARE!)</div>
-                    <div class="passo">Se Δ ≥ 0: calcule x = (-b ± √Δ) / 2a</div>
-                    <div class="passo">x₁ usa o +, x₂ usa o -</div>
-                </div>
-
-                <div class="exemplo">
-<strong>EXEMPLO COMPLETO:</strong>
-
-Resolver: x² - 5x + 6 = 0
-
-<strong>Passo 1:</strong> Identificar coeficientes
-a = 1, b = -5, c = 6
-
-<strong>Passo 2:</strong> Calcular Δ
-Δ = (-5)² - 4(1)(6)
-Δ = 25 - 24 = 1
-
-<strong>Passo 3:</strong> Aplicar Bhaskara
-x = (-(-5) ± √1) / 2(1)
-x = (5 ± 1) / 2
-
-<strong>Passo 4:</strong> Calcular raízes
-x₁ = (5 + 1)/2 = 6/2 = 3
-x₂ = (5 - 1)/2 = 4/2 = 2
-
-<strong>Resposta:</strong> S = {2, 3}
-                </div>
-
-                <div class="dica">
-                    <strong>💡 ANÁLISE DO DISCRIMINANTE:</strong><br>
-                    • Δ > 0: duas raízes reais diferentes (parábola corta eixo x em 2 pontos)<br>
-                    • Δ = 0: duas raízes iguais (parábola tangencia eixo x)<br>
-                    • Δ < 0: não há raízes reais (parábola não toca eixo x)
-                </div>
-            </div>
-
-            <!-- REGRA DE TRÊS -->
-            <div class="detalhado-section">
-                <h2>⚖️ REGRA DE TRÊS</h2>
-                
-                <div class="palavras-chave">
-                    <span class="palavra">Proporcionalidade</span>
-                    <span class="palavra">Direta</span>
-                    <span class="palavra">Inversa</span>
-                    <span class="palavra">Composta</span>
-                </div>
-
-                <h3>📊 Regra de Três Simples</h3>
-
-                <div class="destaque">
-                    <strong>QUANDO USAR:</strong> Problemas com 2 grandezas e 3 valores conhecidos.
-                </div>
-
-                <div class="passo-passo">
-                    <h4>📝 MÉTODO:</h4>
-                    <div class="passo">Monte a tabela com as grandezas</div>
-                    <div class="passo">Identifique se é direta ou inversa</div>
-                    <div class="passo">Se DIRETA: multiplique cruzado</div>
-                    <div class="passo">Se INVERSA: multiplique em linha</div>
-                </div>
-
-                <div class="exemplo">
-<strong>EXEMPLO 1 - DIRETAMENTE PROPORCIONAL:</strong>
-
-Se 3 canetas custam R$12, quanto custam 5 canetas?
-
-3 canetas → R$12
-5 canetas → R$x
-
-Mais canetas = mais dinheiro (DIRETA)
-
-3/5 = 12/x
-3x = 60
-x = 20
-
-<strong>Resposta:</strong> R$20
-                </div>
-
-                <div class="exemplo">
-<strong>EXEMPLO 2 - INVERSAMENTE PROPORCIONAL:</strong>
-
-3 operários fazem um trabalho em 12 dias.
-5 operários farão em quantos dias?
-
-3 operários → 12 dias
-5 operários → x dias
-
-Mais operários = menos dias (INVERSA)
-
-3×12 = 5×x
-36 = 5x
-x = 7,2 dias
-
-<strong>Resposta:</strong> 7,2 dias (ou 7 dias e 5 horas)
-                </div>
-
-                <h3>📊 Regra de Três Composta</h3>
-
-                <div class="destaque">
-                    <strong>QUANDO USAR:</strong> Problemas com 3 ou mais grandezas relacionadas.
-                </div>
-
-                <div class="passo-passo">
-                    <h4>📝 MÉTODO:</h4>
-                    <div class="passo">Identifique a grandeza com a incógnita (x)</div>
-                    <div class="passo">Analise CADA outra grandeza em relação a x</div>
-                    <div class="passo">Monte a equação multiplicando as frações</div>
-                    <div class="passo">Se inversa, INVERTA a fração</div>
-                </div>
-
-                <div class="exemplo">
-<strong>EXEMPLO - 3 GRANDEZAS:</strong>
-
-5 operários, trabalhando 8h/dia, fazem 200 peças em 10 dias.
-Quantas peças farão 8 operários, trabalhando 6h/dia, em 15 dias?
-
-Grandezas: operários, horas, dias, peças
-
-Análise com "peças":
-• Mais operários → mais peças (DIRETA)
-• Menos horas → menos peças (DIRETA)
-• Mais dias → mais peças (DIRETA)
-
-5/8 × 8/6 × 10/15 = 200/x
-
-(5×8×10)/(8×6×15) = 200/x
-
-400/720 = 200/x
-
-400x = 144000
-x = 360 peças
-
-<strong>Resposta:</strong> 360 peças
-                </div>
-            </div>
-
-            <!-- TRIGONOMETRIA -->
-            <div class="detalhado-section">
-                <h2>📊 TRIGONOMETRIA NO TRIÂNGULO RETÂNGULO</h2>
-                
-                <div class="palavras-chave">
-                    <span class="palavra">Seno</span>
-                    <span class="palavra">Cosseno</span>
-                    <span class="palavra">Tangente</span>
-                    <span class="palavra">Relação Fundamental</span>
-                </div>
-
-                <h3>📐 Razões Trigonométricas</h3>
-
-                <div class="destaque">
-                    <strong>NO TRIÂNGULO RETÂNGULO:</strong><br>
-                    • Hipotenusa: lado oposto ao ângulo reto (maior lado)<br>
-                    • Cateto oposto: lado oposto ao ângulo θ<br>
-                    • Cateto adjacente: lado ao lado do ângulo θ
-                </div>
-
-                <div class="formula">
-                    <strong>SENO:</strong> sen θ = cateto oposto / hipotenusa<br><br>
-                    <strong>COSSENO:</strong> cos θ = cateto adjacente / hipotenusa<br><br>
-                    <strong>TANGENTE:</strong> tg θ = cateto oposto / cateto adjacente
-                </div>
-
-                <div class="dica">
-                    <strong>💡 MACETE SOH-CAH-TOA:</strong><br>
-                    <strong>S</strong>eno = <strong>O</strong>posto / <strong>H</strong>ipotenusa<br>
-                    <strong>C</strong>osseno = <strong>A</strong>djacente / <strong>H</strong>ipotenusa<br>
-                    <strong>T</strong>angente = <strong>O</strong>posto / <strong>A</strong>djacente
-                </div>
-
-                <h3>📊 Tabela de Ângulos Notáveis</h3>
-
-                <table class="tabela">
-                    <tr>
-                        <th>Ângulo</th>
-                        <th>Seno</th>
-                        <th>Cosseno</th>
-                        <th>Tangente</th>
-                    </tr>
-                    <tr>
-                        <td>30°</td>
-                        <td>1/2</td>
-                        <td>√3/2</td>
-                        <td>√3/3</td>
-                    </tr>
-                    <tr>
-                        <td>45°</td>
-                        <td>√2/2</td>
-                        <td>√2/2</td>
-                        <td>1</td>
-                    </tr>
-                    <tr>
-                        <td>60°</td>
-                        <td>√3/2</td>
-                        <td>1/2</td>
-                        <td>√3</td>
-                    </tr>
-                </table>
-
-                <h3>⚡ Relação Fundamental da Trigonometria</h3>
-
-                <div class="formula">
-                    sen²θ + cos²θ = 1
-                </div>
-
-                <div class="destaque">
-                    <strong>💡 SE SEI UM, SEI TODOS!</strong><br>
-                    Se você conhece o seno, pode calcular o cosseno pela relação fundamental,
-                    e depois a tangente usando tg = sen/cos.
-                </div>
-
-                <div class="exemplo">
-<strong>EXEMPLO - "Se sei um, sei todos":</strong>
-
-Dado: sen θ = 3/5
-
-<strong>Encontrar cos θ:</strong>
-sen²θ + cos²θ = 1
-(3/5)² + cos²θ = 1
-9/25 + cos²θ = 1
-cos²θ = 16/25
-cos θ = 4/5
-
-<strong>Encontrar tg θ:</strong>
-tg θ = sen θ / cos θ
-tg θ = (3/5) / (4/5)
-tg θ = 3/4
-
-<strong>Resposta:</strong> cos θ = 4/5 e tg θ = 3/4
-                </div>
-
-                <h3>🔄 Razões Trigonométricas Inversas</h3>
-
-                <div class="formula">
-                    <strong>COSSECANTE:</strong> cossec θ = 1/sen θ<br><br>
-                    <strong>SECANTE:</strong> sec θ = 1/cos θ<br><br>
-                    <strong>COTANGENTE:</strong> cotg θ = 1/tg θ
-                </div>
-            </div>
-
-            <!-- CONJUNTOS -->
-            <div class="detalhado-section">
-                <h2>🔢 TEORIA DOS CONJUNTOS</h2>
-                
-                <div class="palavras-chave">
-                    <span class="palavra">União</span>
-                    <span class="palavra">Interseção</span>
-                    <span class="palavra">Diferença</span>
-                    <span class="palavra">Diagrama de Venn</span>
-                </div>
-
-                <h3>📊 Operações com Conjuntos</h3>
-
-                <div class="destaque">
-                    <strong>NOTAÇÕES:</strong><br>
-                    • n(A) = número de elementos do conjunto A<br>
-                    • ∈ = pertence<br>
-                    • ∪ = união<br>
-                    • ∩ = interseção<br>
-                    • - = diferença
-                </div>
-
-                <table class="tabela">
-                    <tr>
-                        <th>Operação</th>
-                        <th>Símbolo</th>
-                        <th>Significado</th>
-                    </tr>
-                    <tr>
-                        <td>União</td>
-                        <td>A ∪ B</td>
-                        <td>Elementos em A <strong>OU</strong> B (ou em ambos)</td>
-                    </tr>
-                    <tr>
-                        <td>Interseção</td>
-                        <td>A ∩ B</td>
-                        <td>Elementos em A <strong>E</strong> B (nos dois)</td>
-                    </tr>
-                    <tr>
-                        <td>Diferença</td>
-                        <td>A - B</td>
-                        <td>Elementos em A, mas <strong>NÃO</strong> em B</td>
-                    </tr>
-                </table>
-
-                <h3>🔢 Fórmula Fundamental</h3>
-
-                <div class="formula">
-                    n(A ∪ B) = n(A) + n(B) - n(A ∩ B)
-                </div>
-
-                <div class="dica">
-                    <strong>💡 POR QUE SUBTRAÍMOS A INTERSEÇÃO?</strong><br>
-                    Porque ao somar n(A) + n(B), contamos os elementos da interseção DUAS VEZES!
-                    Então precisamos subtrair uma vez para corrigir.
-                </div>
-
-                <div class="exemplo">
-<strong>PROBLEMA TÍPICO:</strong>
-
-Numa turma de 40 alunos:
-• 25 gostam de matemática
-• 20 gostam de física
-• 10 gostam de ambas
-
-a) Quantos gostam de pelo menos uma?
-b) Quantos gostam só de matemática?
-c) Quantos não gostam de nenhuma?
-
-<strong>SOLUÇÃO:</strong>
-
-a) União (pelo menos uma):
-n(M ∪ F) = n(M) + n(F) - n(M ∩ F)
-n(M ∪ F) = 25 + 20 - 10 = 35 alunos
-
-b) Só matemática:
-n(M) - n(M ∩ F) = 25 - 10 = 15 alunos
-
-c) Nenhuma:
-Total - União = 40 - 35 = 5 alunos
-                </div>
-            </div>
-
-            <!-- MATEMÁTICA FINANCEIRA -->
-            <div class="detalhado-section">
-                <h2>💰 MATEMÁTICA FINANCEIRA</h2>
-                
-                <div class="palavras-chave">
-                    <span class="palavra">Porcentagem</span>
-                    <span class="palavra">Aumento</span>
-                    <span class="palavra">Desconto</span>
-                    <span class="palavra">Sucessivos</span>
-                </div>
-
-                <h3>📊 Porcentagem</h3>
-
-                <div class="formula">
-                    x% de N = (x/100) × N
-                </div>
-
-                <div class="exemplo">
-<strong>EXEMPLOS:</strong>
-
-1) 20% de 150:
-(20/100) × 150 = 0,2 × 150 = 30
-
-2) Quanto % é 30 de 150?
-(30/150) × 100 = 20%
-                </div>
-
-                <h3>📈 Aumentos e Descontos Simples</h3>
-
-                <div class="destaque">
-                    <strong>FATOR MULTIPLICATIVO:</strong><br>
-                    • Aumento de i%: multiplique por (1 + i/100)<br>
-                    • Desconto de i%: multiplique por (1 - i/100)
-                </div>
-
-                <table class="tabela">
-                    <tr>
-                        <th>Situação</th>
-                        <th>Fator</th>
-                        <th>Exemplo</th>
-                    </tr>
-                    <tr>
-                        <td>Aumento de 10%</td>
-                        <td>× 1,10</td>
-                        <td>100 × 1,10 = 110</td>
-                    </tr>
-                    <tr>
-                        <td>Desconto de 20%</td>
-                        <td>× 0,80</td>
-                        <td>100 × 0,80 = 80</td>
-                    </tr>
-                    <tr>
-                        <td>Aumento de 50%</td>
-                        <td>× 1,50</td>
-                        <td>100 × 1,50 = 150</td>
-                    </tr>
-                </table>
-
-                <h3>📊 Aumentos e Descontos Sucessivos</h3>
-
-                <div class="destaque">
-                    <strong>⚠️ IMPORTANTE:</strong> Aumentos/descontos sucessivos NÃO se somam!<br>
-                    Você deve MULTIPLICAR os fatores.
-                </div>
-
-                <div class="exemplo">
-<strong>EXEMPLO - AUMENTOS SUCESSIVOS:</strong>
-
-Um produto custa R$100. Sofre aumento de 10% e depois
-mais 20%. Qual o preço final?
-
-<strong>ERRADO:</strong> 10% + 20% = 30% → 130 ❌
-
-<strong>CERTO:</strong>
-Fator 1: 1,10 (aumento de 10%)
-Fator 2: 1,20 (aumento de 20%)
-100 × 1,10 × 1,20 = 132
-
-<strong>Resposta:</strong> R$132 (aumento total de 32%)
-                </div>
-
-                <div class="exemplo">
-<strong>EXEMPLO - AUMENTO E DESCONTO:</strong>
-
-Aumento de 20% seguido de desconto de 20%.
-Volta ao valor original?
-
-100 × 1,20 × 0,80 = 96
-
-<strong>NÃO!</strong> Fica com 96 (perdeu 4%)
-                </div>
-            </div>
-
-            <!-- FUNÇÕES -->
-            <div class="detalhado-section">
-                <h2>📈 FUNÇÕES</h2>
-                
-                <div class="palavras-chave">
-                    <span class="palavra">Função Afim</span>
-                    <span class="palavra">Função 2° Grau</span>
-                    <span class="palavra">Gráficos</span>
-                    <span class="palavra">Vértice</span>
-                </div>
-
-                <h3>📊 Função Afim (1° Grau)</h3>
-
-                <div class="formula">
-                    f(x) = ax + b (com a ≠ 0)
-                </div>
-
-                <div class="destaque">
-                    <strong>COEFICIENTES:</strong><br>
-                    • <strong>a:</strong> coeficiente angular (inclinação da reta)<br>
-                    • <strong>b:</strong> coeficiente linear (onde corta eixo y)
-                </div>
-
-                <table class="tabela">
-                    <tr>
-                        <th>Tipo</th>
-                        <th>Forma</th>
-                        <th>Característica</th>
-                    </tr>
-                    <tr>
-                        <td>Função Afim Geral</td>
-                        <td>f(x) = ax + b</td>
-                        <td>Reta inclinada</td>
-                    </tr>
-                    <tr>
-                        <td>Função Linear</td>
-                        <td>f(x) = ax (b=0)</td>
-                        <td>Passa pela origem</td>
-                    </tr>
-                    <tr>
-                        <td>Função Identidade</td>
-                        <td>f(x) = x (a=1, b=0)</td>
-                        <td>Bissetriz (45°)</td>
-                    </tr>
-                    <tr>
-                        <td>Função Constante</td>
-                        <td>f(x) = b (a=0)</td>
-                        <td>Reta horizontal</td>
-                    </tr>
-                </table>
-
-                <div class="dica">
-                    <strong>💡 CRESCENTE OU DECRESCENTE?</strong><br>
-                    • a > 0: função CRESCENTE ↗<br>
-                    • a < 0: função DECRESCENTE ↘
-                </div>
-
-                <h3>📊 Função do 2° Grau</h3>
-
-                <div class="formula">
-                    f(x) = ax² + bx + c (com a ≠ 0)
-                </div>
-
-                <div class="destaque">
-                    <strong>GRÁFICO:</strong> Parábola<br>
-                    • a > 0: parábola "para cima" ∪ (tem ponto MÍNIMO)<br>
-                    • a < 0: parábola "para baixo" ∩ (tem ponto MÁXIMO)
-                </div>
-
-                <h3>🎯 Raízes (Zeros da Função)</h3>
-
-                <div class="destaque">
-                    Valores de x onde f(x) = 0. Use Bhaskara para encontrar!
-                </div>
-
-                <h3>📍 Vértice (Ponto de Máximo ou Mínimo)</h3>
-
-                <div class="formula">
-                    x_vértice = -b / 2a<br><br>
-                    y_vértice = -Δ / 4a
-                </div>
-
-                <div class="exemplo">
-<strong>EXEMPLO COMPLETO:</strong>
-
-f(x) = -x² + 4x - 3
-
-<strong>Identificar:</strong>
-a = -1, b = 4, c = -3
-
-<strong>a) Concavidade:</strong>
-a < 0 → parábola ∩ (tem MÁXIMO)
-
-<strong>b) Raízes:</strong>
-Δ = 16 - 12 = 4
-x = (-4 ± 2)/-2
-x₁ = 1, x₂ = 3
-
-<strong>c) Vértice:</strong>
-x_v = -4/(-2) = 2
-y_v = -4/(-4) = 1
-V(2, 1) → ponto de MÁXIMO
-
-<strong>Valor máximo:</strong> y = 1 (quando x = 2)
-                </div>
-            </div>
-
-            <!-- MÓDULO -->
-            <div class="detalhado-section">
-                <h2>| | MÓDULO (VALOR ABSOLUTO)</h2>
-                
-                <div class="palavras-chave">
-                    <span class="palavra">Definição</span>
-                    <span class="palavra">Equações</span>
-                    <span class="palavra">Funções Modulares</span>
-                </div>
-
-                <div class="formula">
-                    |x| = x, se x ≥ 0<br>
-                    |x| = -x, se x < 0
-                </div>
-
-                <div class="destaque">
-                    <strong>SIGNIFICADO:</strong> Distância até o zero. Sempre POSITIVO!
-                </div>
-
-                <div class="exemplo">
-|5| = 5
-|-5| = 5
-|0| = 0
-|-3,7| = 3,7
-                </div>
-
-                <h3>🔢 Equações Modulares</h3>
-
-                <div class="destaque">
-                    <strong>REGRA:</strong> Se |x| = a (com a ≥ 0), então x = a OU x = -a
-                </div>
-
-                <div class="exemplo">
-<strong>EXEMPLO 1:</strong>
-|x| = 7
-x = 7 ou x = -7
-
-<strong>EXEMPLO 2:</strong>
-|x - 3| = 5
-x - 3 = 5  ou  x - 3 = -5
-x = 8  ou  x = -2
-
-<strong>EXEMPLO 3:</strong>
-|2x + 1| = 9
-2x + 1 = 9  ou  2x + 1 = -9
-2x = 8  ou  2x = -10
-x = 4  ou  x = -5
-                </div>
-
-                <h3>📊 Função Modular</h3>
-
-                <div class="destaque">
-                    <strong>f(x) = |x|</strong><br>
-                    Gráfico em forma de "V" com vértice na origem (0,0)
-                </div>
-            </div>
-
-            <!-- EXPONENCIAL E LOGARITMO -->
-            <div class="detalhado-section">
-                <h2>📈 EXPONENCIAL E LOGARITMOS</h2>
-                
-                <div class="palavras-chave">
-                    <span class="palavra">Potenciação</span>
-                    <span class="palavra">Logaritmo</span>
-                    <span class="palavra">Propriedades</span>
-                    <span class="palavra">Equações</span>
-                </div>
-
-                <h3>📊 Função Exponencial</h3>
-
-                <div class="formula">
-                    f(x) = a^x (com a > 0 e a ≠ 1)
-                </div>
-
-                <div class="destaque">
-                    <strong>PROPRIEDADES DAS POTÊNCIAS:</strong>
-                </div>
-
-                <div class="formula">
-                    a^m · a^n = a^(m+n)<br>
-                    a^m / a^n = a^(m-n)<br>
-                    (a^m)^n = a^(m·n)<br>
-                    a^0 = 1<br>
-                    a^(-n) = 1/a^n
-                </div>
-
-                <h3>📐 Logaritmos</h3>
-
-                <div class="formula">
-                    log_a(b) = x  ⟺  a^x = b
-                </div>
-
-                <div class="destaque">
-                    <strong>SIGNIFICADO:</strong> "A que expoente devo elevar <strong>a</strong> para obter <strong>b</strong>?"
-                </div>
-
-                <div class="exemplo">
-log₂(8) = 3, pois 2³ = 8
-log₁₀(100) = 2, pois 10² = 100
-log₃(27) = 3, pois 3³ = 27
-                </div>
-
-                <h3>⚡ Propriedades dos Logaritmos</h3>
-
-                <div class="formula">
-                    <strong>1) Logaritmo do produto:</strong>
-                    log(a·b) = log(a) + log(b)<br><br>
-
-                    <strong>2) Logaritmo do quociente:</strong>
-                    log(a/b) = log(a) - log(b)<br><br>
-
-                    <strong>3) Logaritmo da potência:</strong>
-                    log(a^n) = n · log(a)<br><br>
-
-                    <strong>4) Casos especiais:</strong>
-                    log_a(a) = 1<br>
-                    log_a(1) = 0<br>
-                    a^(log_a(b)) = b
-                </div>
-
-                <h3>🔄 Mudança de Base</h3>
-
-                <div class="formula">
-                    log_a(b) = log_c(b) / log_c(a)
-                </div>
-
-                <div class="exemplo">
-<strong>EXEMPLO:</strong>
-Calcular log₂(10) usando base 10:
-
-log₂(10) = log₁₀(10) / log₁₀(2)
-log₂(10) = 1 / 0,301
-log₂(10) ≈ 3,32
-                </div>
-
-                <h3>🔢 Equações Logarítmicas</h3>
-
-                <div class="passo-passo">
-                    <h4>📝 MÉTODO:</h4>
-                    <div class="passo">Use propriedades para juntar logs</div>
-                    <div class="passo">Se log_a(x) = log_a(y), então x = y</div>
-                    <div class="passo">Ou transforme em exponencial</div>
-                    <div class="passo">Verifique se as soluções são válidas (logaritmando > 0)</div>
-                </div>
-
-                <div class="exemplo">
-<strong>EXEMPLO:</strong>
-log₂(x) + log₂(x-3) = 2
-
-<strong>Passo 1:</strong> Juntar logs (produto)
-log₂[x(x-3)] = 2
-
-<strong>Passo 2:</strong> Transformar em exponencial
-x(x-3) = 2²
-x² - 3x = 4
-x² - 3x - 4 = 0
-
-<strong>Passo 3:</strong> Resolver (Bhaskara)
-Δ = 9 + 16 = 25
-x = (3 ± 5)/2
-x₁ = 4, x₂ = -1
-
-<strong>Passo 4:</strong> Verificar
-x₂ = -1 não serve (log de negativo não existe)
-
-<strong>Resposta:</strong> x = 4
-                </div>
-            </div>
-
         </div>
 
     </div>
 
-    <button class="print-btn" onclick="window.print()">🖨️ Imprimir Tudo</button>
+    <button class="print-btn" onclick="window.print()">🖨️ Imprimir</button>
 
     <script>
         function showTab(tabName) {
