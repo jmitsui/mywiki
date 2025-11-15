@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English - Material de Estudo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #0077cc;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        .aviso {
+            background: #d4edda;
+            border: 2px solid #28a745;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .aviso strong {
+            color: #155724;
+            font-size: 18px;
+        }
+
+        .aviso p {
+            color: #155724;
+            margin-top: 10px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .tab {
+            padding: 12px 30px;
+            background: #f0f0f0;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .tab:hover {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .tab.active {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: white;
+        }
+
+        .content {
+            display: none;
+        }
+
+        .content.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* MAPA MENTAL */
+        .mapa-mental {
+            padding: 30px 20px;
+            background: #e8f4ff;
+            border-radius: 15px;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        .mapa-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nivel-1 {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 15px;
+            font-size: clamp(18px, 4vw, 24px);
+            font-weight: bold;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            text-align: center;
+            width: 90%;
+            max-width: 500px;
+        }
+
+        .nivel-2-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+            width: 100%;
+            padding: 0 10px;
+        }
+
+        .nivel-2-container > div {
+            width: 100%;
+            min-width: 0;
+        }
+
+        .nivel-2 {
+            background: #0077cc;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 12px;
+            font-size: clamp(15px, 2.8vw, 17px);
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            text-align: center;
+            word-wrap: break-word;
+        }
+
+        .nivel-3-container {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 12px;
+        }
+
+        .nivel-3 {
+            background: white;
+            color: #0077cc;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: clamp(11px, 2.2vw, 13px);
+            border: 2px solid #0077cc;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+            flex: 0 1 auto;
+            word-wrap: break-word;
+            max-width: 100%;
+        }
+
+        /* CARDS */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #e8f4ff 0%, #d0ebff 100%);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-left: 5px solid #0077cc;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .card h3 {
+            color: #0077cc;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .card-section {
+            margin: 12px 0;
+        }
+
+        .card-label {
+            font-weight: 700;
+            color: #005599;
+            font-size: 14px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .card-content {
+            color: #333;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .regra {
+            background: #fff3cd;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 8px 0;
+            border-left: 3px solid #ffc107;
+        }
+
+        .exemplo {
+            background: #d4edda;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 8px 0;
+            border-left: 3px solid #28a745;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* CONTEÚDO DETALHADO */
+        .detalhado-section {
+            background: #e8f4ff;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-left: 5px solid #0077cc;
+        }
+
+        .detalhado-section h2 {
+            color: #0077cc;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .detalhado-section h3 {
+            color: #005599;
+            font-size: 22px;
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
+
+        .destaque {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #ffc107;
+        }
+
+        .palavras-chave {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .palavra {
+            background: #0077cc;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .dica {
+            background: #d4edda;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #28a745;
+        }
+
+        .dica strong {
+            color: #155724;
+        }
+
+        .tabela {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .tabela th {
+            background: #0077cc;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .tabela td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .tabela tr:hover {
+            background: #f5f5f5;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        li {
+            margin: 8px 0;
+            color: #333;
+        }
+
+        .print-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .print-btn:hover {
+            background: #218838;
+            transform: scale(1.05);
+        }
+
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #d63384;
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            .container { padding: 20px; border-radius: 15px; }
+            h1 { font-size: 2em; }
+            .subtitle { font-size: 1em; }
+            .tabs { gap: 5px; }
+            .tab { padding: 10px 20px; font-size: 14px; }
+            .cards-grid { grid-template-columns: 1fr; gap: 20px; }
+            .card { padding: 20px; }
+            .card h3 { font-size: 20px; }
+            .detalhado-section { padding: 20px; }
+            .detalhado-section h2 { font-size: 24px; }
+            .palavras-chave { gap: 8px; }
+            .palavra { font-size: 12px; padding: 6px 12px; }
+            .print-btn { bottom: 20px; right: 20px; padding: 12px 25px; font-size: 14px; }
+            .mapa-mental { padding: 20px 10px; }
+            .nivel-1 { padding: 15px 25px; margin-bottom: 30px; width: 95%; }
+            .nivel-2-container { grid-template-columns: 1fr; gap: 20px; padding: 0 5px; }
+            .nivel-2 { padding: 12px 15px; }
+            .nivel-3-container { gap: 6px; margin-top: 10px; }
+            .nivel-3 { padding: 5px 10px; }
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 15px; }
+            h1 { font-size: 1.8em; }
+            .tab { padding: 8px 15px; font-size: 12px; flex: 1; }
+            .card { padding: 15px; }
+            .card h3 { font-size: 18px; }
+            .card-content { font-size: 14px; }
+            .detalhado-section { padding: 15px; }
+            .detalhado-section h2 { font-size: 20px; }
+            .palavras-chave { gap: 6px; }
+            .palavra { font-size: 11px; padding: 5px 10px; }
+            .destaque, .dica { padding: 12px; font-size: 14px; }
+            .print-btn { bottom: 15px; right: 15px; padding: 10px 20px; font-size: 13px; }
+            .mapa-mental { padding: 15px 5px; }
+            .nivel-1 { padding: 12px 15px; font-size: 16px; width: 98%; }
+            .nivel-2 { padding: 10px 12px; font-size: 14px; }
+            .nivel-3 { padding: 4px 8px; font-size: 11px; }
+        }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .tabs, .print-btn, .aviso { display: none; }
+            .content { display: block !important; animation: none; }
+            .container { box-shadow: none; padding: 20px; max-width: 100%; }
+            h1 { page-break-after: avoid; font-size: 32pt; }
+            .subtitle { page-break-after: always; padding-bottom: 50px; }
+            .mapa-mental { page-break-after: always; padding: 15px; }
+            .cards-grid { display: block; }
+            .card { page-break-after: always; page-break-inside: avoid; box-shadow: none; border: 2px solid #0077cc; width: 100%; }
+            .detalhado-section { page-break-before: always; page-break-inside: avoid; box-shadow: none; border: 2px solid #0077cc; }
+            .destaque, .dica, .palavras-chave, .tabela { page-break-inside: avoid; }
+            ul, ol { page-break-inside: avoid; }
+            li, p { orphans: 3; widows: 3; }
+            h2, h3 { page-break-after: avoid; }
+            @page { margin: 2cm; }
+            .card, .detalhado-section { background: white !important; }
+            .regra, .exemplo, .destaque, .dica { border: 1px solid #ccc; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🇬🇧 English Grammar - Material de Estudo</h1>
+        <p class="subtitle">1º Ano do Ensino Médio - Exame Final</p>
+        
+        <div class="aviso">
+            <strong>💡 DICA DE IMPRESSÃO:</strong>
+            <p>Clique no botão verde abaixo para imprimir. O material está otimizado com quebras de página automáticas!</p>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('mapa')">🗺️ Mapa Mental</button>
+            <button class="tab" onclick="showTab('cards')">📇 Cards Resumo</button>
+            <button class="tab" onclick="showTab('detalhado')">📖 Conteúdo Detalhado</button>
+        </div>
+
+        <!-- MAPA MENTAL -->
+        <div id="mapa" class="content active">
+            <div class="mapa-mental">
+                <div class="mapa-container">
+                    <div class="nivel-1">ENGLISH GRAMMAR</div>
+                    
+                    <div class="nivel-2-container">
+                        <div>
+                            <div class="nivel-2">VERB TENSES</div>
+                            <div class="nivel-3-container">
+                                <div class="nivel-3">Simple Present</div>
+                                <div class="nivel-3">Simple Past</div>
+                                <div class="nivel-3">Past Continuous</div>
+                                <div class="nivel-3">Future</div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="nivel-2">PRONOUNS</div>
+                            <div class="nivel-3-container">
+                                <div class="nivel-3">Reflexive</div>
+                                <div class="nivel-3">Indefinite</div>
+                                <div class="nivel-3">Relative</div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="nivel-2">NOUNS & QUESTIONS</div>
+                            <div class="nivel-3-container">
+                                <div class="nivel-3">Plurals</div>
+                                <div class="nivel-3">Countable/Uncountable</div>
+                                <div class="nivel-3">Wh-questions</div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="nivel-2">MODIFIERS</div>
+                            <div class="nivel-3-container">
+                                <div class="nivel-3">Comparisons</div>
+                                <div class="nivel-3">Adverbs</div>
+                                <div class="nivel-3">Prepositions</div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="nivel-2">MODAL VERBS & USED TO</div>
+                            <div class="nivel-3-container">
+                                <div class="nivel-3">Modal Verbs</div>
+                                <div class="nivel-3">Used to</div>
+                                <div class="nivel-3">Be/Get used to</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARDS -->
+        <div id="cards" class="content">
+            
+            <div style="page-break-after: always; text-align: center; padding: 100px 0;">
+                <h1 style="color: #0077cc; font-size: 48px; margin-bottom: 20px;">📇 GRAMMAR CARDS</h1>
+                <p style="font-size: 24px; color: #666;">Regras essenciais com exemplos</p>
+            </div>
+            
+            <div class="cards-grid">
+                <!-- SIMPLE PRESENT -->
+                <div class="card">
+                    <h3>📝 SIMPLE PRESENT</h3>
+                    <div class="card-section">
+                        <div class="card-label">📌 Uso</div>
+                        <div class="card-content regra">
+                            Ações habituais, verdades universais, fatos gerais, rotinas.
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">✅ Estrutura</div>
+                        <div class="card-content">
+                            • <strong>Afirmativa:</strong> Subject + verb (+ s/es para he/she/it)<br>
+                            • <strong>Negativa:</strong> Subject + don't/doesn't + verb<br>
+                            • <strong>Interrogativa:</strong> Do/Does + subject + verb?
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">💡 Exemplos</div>
+                        <div class="card-content exemplo">
+                            ✓ I <strong>study</strong> English every day.<br>
+                            ✓ She <strong>works</strong> at a hospital. (+ s)<br>
+                            ✗ He <strong>doesn't like</strong> coffee.<br>
+                            ? <strong>Do</strong> you <strong>speak</strong> Portuguese?
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">⚠️ Atenção: Verb TO BE</div>
+                        <div class="card-content">
+                            I <strong>am</strong> • You/We/They <strong>are</strong> • He/She/It <strong>is</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SIMPLE PAST -->
+                <div class="card">
+                    <h3>⏮️ SIMPLE PAST</h3>
+                    <div class="card-section">
+                        <div class="card-label">📌 Uso</div>
+                        <div class="card-content regra">
+                            Ações completadas no passado, em tempo específico.
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">✅ Estrutura</div>
+                        <div class="card-content">
+                            • <strong>Afirmativa:</strong> Subject + verb-ed (regular) / 2nd form (irregular)<br>
+                            • <strong>Negativa:</strong> Subject + didn't + verb<br>
+                            • <strong>Interrogativa:</strong> Did + subject + verb?
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">💡 Exemplos</div>
+                        <div class="card-content exemplo">
+                            ✓ I <strong>studied</strong> yesterday. (regular)<br>
+                            ✓ She <strong>went</strong> to school. (irregular: go→went)<br>
+                            ✗ They <strong>didn't watch</strong> the movie.<br>
+                            ? <strong>Did</strong> you <strong>see</strong> him?
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">⚠️ Atenção: TO BE no passado</div>
+                        <div class="card-content">
+                            I/He/She/It <strong>was</strong> • You/We/They <strong>were</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PAST CONTINUOUS -->
+                <div class="card">
+                    <h3>🔄 PAST CONTINUOUS</h3>
+                    <div class="card-section">
+                        <div class="card-label">📌 Uso</div>
+                        <div class="card-content regra">
+                            Ação em progresso no passado OU duas ações simultâneas.
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">✅ Estrutura</div>
+                        <div class="card-content">
+                            Subject + <strong>was/were + verb-ing</strong>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">💡 Exemplos</div>
+                        <div class="card-content exemplo">
+                            ✓ I <strong>was studying</strong> at 8pm yesterday.<br>
+                            ✓ They <strong>were watching</strong> TV when I arrived.<br>
+                            ✓ While I <strong>was cooking</strong>, he <strong>was reading</strong>.
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">⚡ Dica</div>
+                        <div class="card-content">
+                            Comum com: <strong>while</strong> (enquanto), <strong>when</strong> (quando)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FUTURE -->
+                <div class="card">
+                    <h3>⏭️ FUTURE</h3>
+                    <div class="card-section">
+                        <div class="card-label">📌 3 Formas Principais</div>
+                        <div class="card-content regra">
+                            <strong>1. WILL:</strong> Decisões imediatas, promessas, previsões<br>
+                            <strong>2. BE GOING TO:</strong> Planos, intenções, evidências<br>
+                            <strong>3. PRESENT CONTINUOUS:</strong> Planos definidos
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">✅ Estruturas</div>
+                        <div class="card-content">
+                            • <strong>Will:</strong> Subject + will + verb<br>
+                            • <strong>Going to:</strong> Subject + am/is/are going to + verb<br>
+                            • <strong>Present Cont.:</strong> Subject + am/is/are + verb-ing
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">💡 Exemplos</div>
+                        <div class="card-content exemplo">
+                            ✓ I <strong>will help</strong> you. (decisão agora)<br>
+                            ✓ I'm <strong>going to study</strong> tonight. (plano)<br>
+                            ✓ I'm <strong>traveling</strong> next week. (já definido)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PLURALS -->
+                <div class="card">
+                    <h3>📦 PLURALS</h3>
+                    <div class="card-section">
+                        <div class="card-label">📌 Regras Gerais</div>
+                        <div class="card-content regra">
+                            Maioria: <strong>+ s</strong><br>
+                            Termina em s/x/z/sh/ch: <strong>+ es</strong><br>
+                            Consoante + y: <strong>y → ies</strong><br>
+                            Termina em f/fe: <strong>f → ves</strong>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">💡 Exemplos</div>
+                        <div class="card-content exemplo">
+                            book → book<strong>s</strong><br>
+                            box → box<strong>es</strong><br>
+                            baby → bab<strong>ies</strong><br>
+                            knife → kni<strong>ves</strong>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">⚠️ Irregulares</div>
+                        <div class="card-content">
+                            man → <strong>men</strong> • woman → <strong>women</strong><br>
+                            child → <strong>children</strong> • person → <strong>people</strong><br>
+                            tooth → <strong>teeth</strong> • foot → <strong>feet</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COUNTABLE/UNCOUNTABLE -->
+                <div class="card">
+                    <h3>🔢 COUNTABLE / UNCOUNTABLE</h3>
+                    <div class="card-section">
+                        <div class="card-label">📌 Countable (contáveis)</div>
+                        <div class="card-content regra">
+                            Pode contar: one book, two books, three cars<br>
+                            Usa: <strong>a/an, many, few</strong>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">📌 Uncountable (incontáveis)</div>
+                        <div class="card-content regra">
+                            NÃO pode contar: water, milk, sugar, music<br>
+                            Usa: <strong>much, little, some</strong> (SEM plural!)
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">💡 Exemplos</div>
+                        <div class="card-content exemplo">
+                            ✓ <strong>How many</strong> books? (countable)<br>
+                            ✓ <strong>How much</strong> water? (uncountable)<br>
+                            ✗ <del>two waters</del> → two bottles of water
+                        </div>
+                    </div>
+                </div>
+
+                <!-- WH-QUESTIONS -->
+                <div class="card">
+                    <h3>❓ WH-QUESTIONS</h3>
+                    <div class="card-section">
+                        <div class="card-label">📌 Palavras Interrogativas</div>
+                        <div class="card-content">
+                            <strong>What</strong> = O quê?<br>
+                            <strong>Where</strong> = Onde?<br>
+                            <strong>When</strong> = Quando?<br>
+                            <strong>Who</strong> = Quem?<br>
+                            <strong>Why</strong> = Por quê?<br>
+                            <strong>How</strong> = Como?<br>
+                            <strong>Which</strong> = Qual?
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">✅ Estrutura</div>
+                        <div class="card-content regra">
+                            <strong>Wh-word + do/does/did + subject + verb?</strong>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">💡 Exemplos</div>
+                        <div class="card-content exemplo">
+                            <strong>What</strong> do you do? (O que você faz?)<br>
+                            <strong>Where</strong> does she live? (Onde ela mora?)<br>
+                            <strong>When</strong> did they arrive? (Quando chegaram?)<br>
+                            <strong>Why</strong> are you sad? (Por que está triste?)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COMPARISONS -->
+                <div class="card">
+                    <h3>⚖️ COMPARISONS</h3>
+                    <div class="card-section">
+                        <div class="card-label">📌 Comparative (comparativo)</div>
+                        <div class="card-content regra">
+                            • Adjetivo curto (1 sílaba): <strong>+ er</strong><br>
+                            • Adjetivo longo (2+ sílabas): <strong>more + adjective</strong>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">📌 Superlative (superlativo)</div>
+                        <div class="card-content regra">
+                            • Adjetivo curto: <strong>the + est</strong><br>
+                            • Adjetivo longo: <strong>the most + adjective</strong>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">💡 Exemplos</div>
+                        <div class="card-content exemplo">
+                            tall → tall<strong>er</strong> than → the tall<strong>est</strong><br>
+                            beautiful → <strong>more</strong> beautiful → the <strong>most</strong> beautiful
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">⚠️ Irregulares</div>
+                        <div class="card-content">
+                            good → <strong>better</strong> → <strong>best</strong><br>
+                            bad → <strong>worse</strong> → <strong>worst</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- REFLEXIVE PRONOUNS -->
+                <div class="card">
+                    <h3>🪞 REFLEXIVE PRONOUNS</h3>
+                    <div class="card-section">
+                        <div class="card-label">📌 Quando usar</div>
+                        <div class="card-content regra">
+                            Quando sujeito e objeto são a mesma pessoa.<br>
+                            Significado: "a si mesmo/mesma"
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">✅ Lista Completa</div>
+                        <div class="card-content">
+                            I → my<strong>self</strong><br>
+                            You → your<strong>self</strong><br>
+                            He → him<strong>self</strong><br>
+                            She → her<strong>self</strong><br>
+                            It → it<strong>self</strong><br>
+                            We → our<strong>selves</strong><br>
+                            You (plural) → your<strong>selves</strong><br>
+                            They → them<strong>selves</strong>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">💡 Exemplos</div>
+                        <div class="card-content exemplo">
+                            ✓ I cut <strong>myself</strong>. (Eu me cortei)<br>
+                            ✓ She taught <strong>herself</strong> English.<br>
+                            ✓ They enjoyed <strong>themselves</strong>.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- INDEFINITE PRONOUNS -->
+                <div class="card">
+                    <h3>❔ INDEFINITE PRONOUNS</h3>
+                    <div class="card-section">
+                        <div class="card-label">📌 Principais</div>
+                        <div class="card-content">
+                            <strong>SOME-:</strong> Algo/Alguém (frases afirmativas)<br>
+                            <strong>ANY-:</strong> Qualquer (negativas e perguntas)<br>
+                            <strong>NO-:</strong> Nenhum (negação)<br>
+                            <strong>EVERY-:</strong> Todo/Todos
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">✅ Combinações</div>
+                        <div class="card-content regra">
+                            -<strong>one/-body</strong> (pessoas): someone, anyone<br>
+                            -<strong>thing</strong> (coisas): something, anything<br>
+                            -<strong>where</strong> (lugares): somewhere, anywhere
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">💡 Exemplos</div>
+                        <div class="card-content exemplo">
+                            ✓ There is <strong>someone</strong> at the door.<br>
+                            ✓ I don't see <strong>anything</strong>.<br>
+                            ? Is there <strong>anyone</strong> home?<br>
+                            ✓ <strong>Everyone</strong> is here.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RELATIVE PRONOUNS -->
+                <div class="card">
+                    <h3>🔗 RELATIVE PRONOUNS</h3>
+                    <div class="card-section">
+                        <div class="card-label">📌 Principais</div>
+                        <div class="card-content">
+                            <strong>WHO</strong> = pessoas (sujeito/objeto)<br>
+                            <strong>WHICH</strong> = coisas/animais<br>
+                            <strong>THAT</strong> = pessoas OU coisas<br>
+                            <strong>WHERE</strong> = lugares<br>
+                            <strong>WHEN</strong> = tempo<br>
+                            <strong>WHOSE</strong> = posse (de quem)
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">💡 Exemplos</div>
+                        <div class="card-content exemplo">
+                            The man <strong>who</strong> called you is my father.<br>
+                            The book <strong>which/that</strong> I bought is great.<br>
+                            The city <strong>where</strong> I live is beautiful.<br>
+                            The man <strong>whose</strong> car is red is my neighbor.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ADVERBS -->
+                <div class="card">
+                    <h3>⚡ ADVERBS</h3>
+                    <div class="card-section">
+                        <div class="card-label">📌 Adverbs of Manner (como?)</div>
+                        <div class="card-content regra">
+                            Geralmente: adjective + <strong>ly</strong><br>
+                            Posição: DEPOIS do verbo
+                        </div>
+                        <div class="card-content exemplo">
+                            quick → quick<strong>ly</strong> • careful → careful<strong>ly</strong><br>
+                            She speaks <strong>slowly</strong>. He drives <strong>carefully</strong>.
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">📌 Adverbs of Time (quando?)</div>
+                        <div class="card-content">
+                            now, today, yesterday, tomorrow, already, yet, still, soon
+                        </div>
+                        <div class="card-content exemplo">
+                            I am studying <strong>now</strong>.<br>
+                            She <strong>already</strong> finished her homework.
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">⚠️ Ordem dos Advérbios</div>
+                        <div class="card-content regra">
+                            <strong>MANNER → PLACE → TIME</strong><br>
+                            (como → onde → quando)
+                        </div>
+                        <div class="card-content exemplo">
+                            She sang <strong>beautifully</strong> (manner) <strong>on stage</strong> (place) <strong>yesterday</strong> (time).
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MODAL VERBS -->
+                <div class="card">
+                    <h3>🎯 MODAL VERBS</h3>
+                    <div class="card-section">
+                        <div class="card-label">📌 Principais e Usos</div>
+                        <div class="card-content">
+                            <strong>CAN:</strong> Habilidade, permissão<br>
+                            <strong>COULD:</strong> Passado de can, pedido educado<br>
+                            <strong>MAY:</strong> Permissão formal, possibilidade<br>
+                            <strong>MIGHT:</strong> Possibilidade menor<br>
+                            <strong>MUST:</strong> Obrigação forte<br>
+                            <strong>SHOULD:</strong> Conselho, recomendação<br>
+                            <strong>WOULD:</strong> Pedido educado, conditional
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">✅ Estrutura</div>
+                        <div class="card-content regra">
+                            Subject + <strong>modal + verb (infinitivo sem to)</strong>
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">💡 Exemplos</div>
+                        <div class="card-content exemplo">
+                            I <strong>can swim</strong>. (sei nadar)<br>
+                            You <strong>should study</strong> more. (deveria)<br>
+                            She <strong>must go</strong> now. (precisa ir)<br>
+                            <strong>May</strong> I help you? (posso ajudar?)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- USED TO -->
+                <div class="card">
+                    <h3>🕐 USED TO / BE USED TO / GET USED TO</h3>
+                    <div class="card-section">
+                        <div class="card-label">📌 USED TO</div>
+                        <div class="card-content regra">
+                            Hábitos passados que NÃO existem mais
+                        </div>
+                        <div class="card-content exemplo">
+                            I <strong>used to play</strong> soccer. (Eu jogava futebol - não jogo mais)
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">📌 BE USED TO</div>
+                        <div class="card-content regra">
+                            Estar acostumado com algo (estado atual)
+                        </div>
+                        <div class="card-content exemplo">
+                            I <strong>am used to waking</strong> up early. (Estou acostumado a acordar cedo)
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">📌 GET USED TO</div>
+                        <div class="card-content regra">
+                            Processo de se acostumar (ação em progresso)
+                        </div>
+                        <div class="card-content exemplo">
+                            I'm <strong>getting used to</strong> the new school. (Estou me acostumando)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PREPOSITIONS -->
+                <div class="card">
+                    <h3>📍 PREPOSITIONS</h3>
+                    <div class="card-section">
+                        <div class="card-label">📌 Prepositions of Place (onde?)</div>
+                        <div class="card-content">
+                            <strong>IN:</strong> dentro (in the box, in Brazil)<br>
+                            <strong>ON:</strong> sobre (on the table, on the wall)<br>
+                            <strong>AT:</strong> ponto específico (at school, at home)<br>
+                            <strong>UNDER:</strong> embaixo<br>
+                            <strong>BETWEEN:</strong> entre dois<br>
+                            <strong>AMONG:</strong> entre vários
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <div class="card-label">📌 Prepositions of Time (quando?)</div>
+                        <div class="card-content">
+                            <strong>IN:</strong> meses, anos, estações (in June, in 2024)<br>
+                            <strong>ON:</strong> dias específicos (on Monday, on May 1st)<br>
+                            <strong>AT:</strong> horas (at 3pm, at night)<br>
+                            <strong>BEFORE:</strong> antes<br>
+                            <strong>AFTER:</strong> depois
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONTEÚDO DETALHADO -->
+        <div id="detalhado" class="content">
+            
+            <div style="page-break-after: always; text-align: center; padding: 100px 0;">
+                <h1 style="color: #0077cc; font-size: 48px; margin-bottom: 20px;">📖 DETAILED CONTENT</h1>
+                <p style="font-size: 24px; color: #666;">Explicações completas com tabelas e exemplos</p>
+            </div>
+            
+            <!-- VERB TENSES -->
+            <div class="detalhado-section">
+                <h2>⏰ VERB TENSES (Tempos Verbais)</h2>
+                
+                <div class="palavras-chave">
+                    <span class="palavra">Simple Present</span>
+                    <span class="palavra">Simple Past</span>
+                    <span class="palavra">Past Continuous</span>
+                    <span class="palavra">Future</span>
+                </div>
+
+                <h3>📝 Simple Present</h3>
+                
+                <div class="destaque">
+                    <strong>QUANDO USAR:</strong> Rotinas, hábitos, verdades universais, fatos gerais, horários fixos.
+                </div>
+
+                <table class="tabela">
+                    <tr>
+                        <th>Forma</th>
+                        <th>Estrutura</th>
+                        <th>Exemplo</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Affirmative</strong></td>
+                        <td>Subject + verb (+ s/es para 3ª pessoa)</td>
+                        <td>I work. / She work<strong>s</strong>.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Negative</strong></td>
+                        <td>Subject + don't/doesn't + verb</td>
+                        <td>I don't work. / She doesn't work.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Interrogative</strong></td>
+                        <td>Do/Does + subject + verb?</td>
+                        <td>Do you work? / Does she work?</td>
+                    </tr>
+                </table>
+
+                <div class="dica">
+                    <strong>💡 ATENÇÃO com 3ª pessoa (he/she/it):</strong><br>
+                    • Verbos terminados em -s, -sh, -ch, -x, -o → adiciona <strong>ES</strong> (go → goes, watch → watches)<br>
+                    • Consoante + y → <strong>y vira IES</strong> (study → studies)<br>
+                    • Vogal + y → apenas <strong>S</strong> (play → plays)
+                </div>
+
+                <div class="exemplo">
+                    <strong>EXEMPLOS:</strong><br>
+                    • The sun <strong>rises</strong> in the east. (verdade universal)<br>
+                    • I <strong>study</strong> English every day. (rotina)<br>
+                    • The train <strong>leaves</strong> at 6pm. (horário fixo)<br>
+                    • She <strong>doesn't like</strong> coffee. (negativa)<br>
+                    • Do you <strong>speak</strong> French? (pergunta)
+                </div>
+
+                <h3>⏮️ Simple Past</h3>
+                
+                <div class="destaque">
+                    <strong>QUANDO USAR:</strong> Ações completadas no passado, em tempo específico.
+                </div>
+
+                <p><strong>Verbos Regulares:</strong> verb + <strong>ED</strong> (work → worked, play → played)</p>
+                <p><strong>Verbos Irregulares:</strong> forma própria (go → went, see → saw, eat → ate)</p>
+
+                <table class="tabela">
+                    <tr>
+                        <th>Forma</th>
+                        <th>Estrutura</th>
+                        <th>Exemplo</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Affirmative</strong></td>
+                        <td>Subject + verb-ed / 2nd form</td>
+                        <td>I worked. / I went.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Negative</strong></td>
+                        <td>Subject + didn't + verb (infinitive)</td>
+                        <td>I didn't work.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Interrogative</strong></td>
+                        <td>Did + subject + verb?</td>
+                        <td>Did you work?</td>
+                    </tr>
+                </table>
+
+                <div class="dica">
+                    <strong>⚠️ IMPORTANTE:</strong> Na negativa e interrogativa, o verbo volta para o INFINITIVO (sem -ed), porque o "did" já indica passado.
+                </div>
+
+                <div class="exemplo">
+                    <strong>VERBOS IRREGULARES COMUNS:</strong><br>
+                    go → <strong>went</strong> • see → <strong>saw</strong> • eat → <strong>ate</strong> • drink → <strong>drank</strong><br>
+                    come → <strong>came</strong> • take → <strong>took</strong> • make → <strong>made</strong> • have → <strong>had</strong>
+                </div>
+
+                <h3>🔄 Past Continuous</h3>
+                
+                <div class="destaque">
+                    <strong>QUANDO USAR:</strong> Ação em progresso no passado OU ação interrompida por outra.
+                </div>
+
+                <p><strong>Estrutura:</strong> Subject + <strong>was/were + verb-ing</strong></p>
+
+                <div class="exemplo">
+                    <strong>USOS:</strong><br>
+                    1. Ação em progresso: I <strong>was studying</strong> at 8pm.<br>
+                    2. Duas ações simultâneas: While I <strong>was cooking</strong>, she <strong>was reading</strong>.<br>
+                    3. Ação interrompida: I <strong>was watching</strong> TV when the phone rang.
+                </div>
+
+                <div class="dica">
+                    <strong>💡 DICA:</strong> Palavras-chave: <strong>while</strong> (enquanto), <strong>when</strong> (quando). Geralmente: Past Continuous + WHEN + Simple Past.
+                </div>
+
+                <h3>⏭️ Future</h3>
+                
+                <p><strong>1. WILL</strong> - Decisões imediatas, promessas, previsões sem evidência</p>
+                <div class="exemplo">
+                    • I <strong>will help</strong> you. (promessa)<br>
+                    • It <strong>will rain</strong> tomorrow. (previsão)
+                </div>
+
+                <p><strong>2. GOING TO</strong> - Planos, intenções, previsões com evidência</p>
+                <div class="exemplo">
+                    • I'm <strong>going to visit</strong> my grandmother. (plano)<br>
+                    • Look at those clouds! It's <strong>going to rain</strong>. (evidência)
+                </div>
+
+                <p><strong>3. PRESENT CONTINUOUS</strong> - Planos já definidos/agendados</p>
+                <div class="exemplo">
+                    • I'm <strong>traveling</strong> to Paris next month. (já comprei passagem)
+                </div>
+            </div>
+
+            <!-- PRONOUNS -->
+            <div class="detalhado-section">
+                <h2>👤 PRONOUNS (Pronomes)</h2>
+                
+                <div class="palavras-chave">
+                    <span class="palavra">Reflexive</span>
+                    <span class="palavra">Indefinite</span>
+                    <span class="palavra">Relative</span>
+                </div>
+
+                <h3>🪞 Reflexive Pronouns</h3>
+                
+                <div class="destaque">
+                    <strong>USO:</strong> Quando sujeito e objeto são a MESMA pessoa. "A si mesmo/mesma".
+                </div>
+
+                <table class="tabela">
+                    <tr>
+                        <th>Subject</th>
+                        <th>Reflexive</th>
+                        <th>Example</th>
+                    </tr>
+                    <tr><td>I</td><td>myself</td><td>I hurt myself.</td></tr>
+                    <tr><td>You</td><td>yourself</td><td>You cut yourself.</td></tr>
+                    <tr><td>He</td><td>himself</td><td>He taught himself.</td></tr>
+                    <tr><td>She</td><td>herself</td><td>She enjoyed herself.</td></tr>
+                    <tr><td>It</td><td>itself</td><td>The cat cleaned itself.</td></tr>
+                    <tr><td>We</td><td>ourselves</td><td>We helped ourselves.</td></tr>
+                    <tr><td>You (pl)</td><td>yourselves</td><td>You made yourselves.</td></tr>
+                    <tr><td>They</td><td>themselves</td><td>They introduced themselves.</td></tr>
+                </table>
+
+                <div class="dica">
+                    <strong>💡 USO ENFÁTICO:</strong> Também pode dar ênfase = "eu mesmo, você mesmo"<br>
+                    I made this cake <strong>myself</strong>. (Eu mesma fiz este bolo)
+                </div>
+
+                <h3>❔ Indefinite Pronouns</h3>
+                
+                <div class="destaque">
+                    <strong>USO:</strong> Referir-se a pessoas, coisas ou lugares de forma indefinida/geral.
+                </div>
+
+                <table class="tabela">
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Pessoas</th>
+                        <th>Coisas</th>
+                        <th>Lugares</th>
+                    </tr>
+                    <tr>
+                        <td><strong>SOME-</strong> (afirmativas)</td>
+                        <td>someone<br>somebody</td>
+                        <td>something</td>
+                        <td>somewhere</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ANY-</strong> (negativas/perguntas)</td>
+                        <td>anyone<br>anybody</td>
+                        <td>anything</td>
+                        <td>anywhere</td>
+                    </tr>
+                    <tr>
+                        <td><strong>NO-</strong> (nenhum)</td>
+                        <td>no one<br>nobody</td>
+                        <td>nothing</td>
+                        <td>nowhere</td>
+                    </tr>
+                    <tr>
+                        <td><strong>EVERY-</strong> (todos)</td>
+                        <td>everyone<br>everybody</td>
+                        <td>everything</td>
+                        <td>everywhere</td>
+                    </tr>
+                </table>
+
+                <div class="exemplo">
+                    <strong>EXEMPLOS:</strong><br>
+                    • <strong>Someone</strong> is calling you. (alguém - afirmativa)<br>
+                    • I don't see <strong>anyone</strong>. (ninguém - negativa)<br>
+                    • Is there <strong>anything</strong> to eat? (algo - pergunta)<br>
+                    • <strong>Everyone</strong> is here. (todos)
+                </div>
+
+                <h3>🔗 Relative Pronouns</h3>
+                
+                <div class="destaque">
+                    <strong>USO:</strong> Conectar duas frases, dando mais informação sobre algo/alguém.
+                </div>
+
+                <table class="tabela">
+                    <tr>
+                        <th>Pronoun</th>
+                        <th>Use</th>
+                        <th>Example</th>
+                    </tr>
+                    <tr>
+                        <td><strong>WHO</strong></td>
+                        <td>Pessoas (sujeito/objeto)</td>
+                        <td>The man <strong>who</strong> called is my father.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>WHICH</strong></td>
+                        <td>Coisas/Animais</td>
+                        <td>The book <strong>which</strong> I read was good.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>THAT</strong></td>
+                        <td>Pessoas OU coisas</td>
+                        <td>The car <strong>that</strong> I bought is red.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>WHERE</strong></td>
+                        <td>Lugares</td>
+                        <td>The city <strong>where</strong> I live is beautiful.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>WHEN</strong></td>
+                        <td>Tempo</td>
+                        <td>The day <strong>when</strong> we met was special.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>WHOSE</strong></td>
+                        <td>Posse</td>
+                        <td>The man <strong>whose</strong> car is red is my neighbor.</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- MODAL VERBS -->
+            <div class="detalhado-section">
+                <h2>🎯 MODAL VERBS & USED TO</h2>
+                
+                <div class="palavras-chave">
+                    <span class="palavra">Can/Could</span>
+                    <span class="palavra">May/Might</span>
+                    <span class="palavra">Must/Should</span>
+                    <span class="palavra">Used to</span>
+                </div>
+
+                <h3>Modal Verbs</h3>
+
+                <table class="tabela">
+                    <tr>
+                        <th>Modal</th>
+                        <th>Uso</th>
+                        <th>Exemplo</th>
+                    </tr>
+                    <tr>
+                        <td><strong>CAN</strong></td>
+                        <td>Habilidade, permissão</td>
+                        <td>I <strong>can</strong> swim. / <strong>Can</strong> I go?</td>
+                    </tr>
+                    <tr>
+                        <td><strong>COULD</strong></td>
+                        <td>Passado de can, pedido educado</td>
+                        <td><strong>Could</strong> you help me?</td>
+                    </tr>
+                    <tr>
+                        <td><strong>MAY</strong></td>
+                        <td>Permissão formal, possibilidade</td>
+                        <td><strong>May</strong> I enter? / It <strong>may</strong> rain.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>MIGHT</strong></td>
+                        <td>Possibilidade menor que may</td>
+                        <td>She <strong>might</strong> come.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>MUST</strong></td>
+                        <td>Obrigação forte, dedução</td>
+                        <td>You <strong>must</strong> study. / He <strong>must</strong> be tired.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SHOULD</strong></td>
+                        <td>Conselho, recomendação</td>
+                        <td>You <strong>should</strong> see a doctor.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>WOULD</strong></td>
+                        <td>Pedido educado, conditional</td>
+                        <td><strong>Would</strong> you like coffee?</td>
+                    </tr>
+                </table>
+
+                <div class="dica">
+                    <strong>⚠️ REGRA DE OURO:</strong> Modal + verb (infinitivo SEM "to")<br>
+                    ✓ I can swim. ✗ I can to swim.
+                </div>
+
+                <h3>Used to / Be used to / Get used to</h3>
+
+                <table class="tabela">
+                    <tr>
+                        <th>Expressão</th>
+                        <th>Significado</th>
+                        <th>Estrutura</th>
+                        <th>Exemplo</th>
+                    </tr>
+                    <tr>
+                        <td><strong>USED TO</strong></td>
+                        <td>Hábito passado (não existe mais)</td>
+                        <td>used to + infinitive</td>
+                        <td>I <strong>used to play</strong> soccer. (jogava, não jogo mais)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>BE USED TO</strong></td>
+                        <td>Estar acostumado (estado atual)</td>
+                        <td>am/is/are used to + verb-ing/noun</td>
+                        <td>I <strong>am used to waking</strong> up early. (estou acostumado)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>GET USED TO</strong></td>
+                        <td>Processo de se acostumar</td>
+                        <td>get used to + verb-ing/noun</td>
+                        <td>I'm <strong>getting used to</strong> the weather. (me acostumando)</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- COMPARISONS & ADVERBS -->
+            <div class="detalhado-section">
+                <h2>⚖️ COMPARISONS & ADVERBS</h2>
+                
+                <h3>Comparative & Superlative</h3>
+
+                <table class="tabela">
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Comparative</th>
+                        <th>Superlative</th>
+                    </tr>
+                    <tr>
+                        <td><strong>1 sílaba</strong></td>
+                        <td>adj + <strong>er</strong> + than</td>
+                        <td><strong>the</strong> + adj + <strong>est</strong></td>
+                    </tr>
+                    <tr>
+                        <td>tall</td>
+                        <td>tall<strong>er</strong> than</td>
+                        <td>the tall<strong>est</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>2+ sílabas</strong></td>
+                        <td><strong>more</strong> + adj + than</td>
+                        <td><strong>the most</strong> + adj</td>
+                    </tr>
+                    <tr>
+                        <td>beautiful</td>
+                        <td><strong>more</strong> beautiful than</td>
+                        <td><strong>the most</strong> beautiful</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Irregulares</strong></td>
+                        <td>good → <strong>better</strong><br>bad → <strong>worse</strong></td>
+                        <td>good → <strong>best</strong><br>bad → <strong>worst</strong></td>
+                    </tr>
+                </table>
+
+                <h3>Adverbs</h3>
+
+                <div class="destaque">
+                    <strong>ORDEM DOS ADVÉRBIOS:</strong> MANNER (como) → PLACE (onde) → TIME (quando)
+                </div>
+
+                <div class="exemplo">
+                    She sang <strong>beautifully</strong> (manner) <strong>on stage</strong> (place) <strong>yesterday</strong> (time).
+                </div>
+
+                <div class="dica">
+                    <strong>💡 FORMAÇÃO:</strong> Maioria dos adverbs of manner: adjective + <strong>LY</strong><br>
+                    quick → quick<strong>ly</strong> • careful → careful<strong>ly</strong> • happy → happi<strong>ly</strong>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <button class="print-btn" onclick="window.print()">🖨️ Imprimir Tudo</button>
+
+    <script>
+        function showTab(tabName) {
+            const contents = document.querySelectorAll('.content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
