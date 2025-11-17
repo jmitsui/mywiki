@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>História - Material de Estudo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #d4a574 0%, #8b6914 100%);
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #8b6914;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        .aviso {
+            background: #d4edda;
+            border: 2px solid #28a745;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .aviso strong {
+            color: #155724;
+            font-size: 18px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .tab {
+            padding: 12px 30px;
+            background: #f0f0f0;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .tab:hover {
+            background: linear-gradient(135deg, #d4a574, #8b6914);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .tab.active {
+            background: linear-gradient(135deg, #d4a574, #8b6914);
+            color: white;
+        }
+
+        .content {
+            display: none;
+        }
+
+        .content.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* MAPA MENTAL */
+        .mapa-mental {
+            padding: 30px 20px;
+            background: #fff8e1;
+            border-radius: 15px;
+            overflow-x: auto;
+        }
+
+        .mapa-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 900px;
+        }
+
+        .nivel-1 {
+            background: linear-gradient(135deg, #d4a574, #8b6914);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 15px;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .nivel-2-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            width: 100%;
+        }
+
+        .nivel-2 {
+            background: #b8860b;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            text-align: center;
+        }
+
+        .nivel-3-container {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 12px;
+        }
+
+        .nivel-3 {
+            background: white;
+            color: #8b6914;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            border: 2px solid #8b6914;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* CARDS RESUMO */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #fff8e1 0%, #ffe4b5 100%);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-left: 5px solid #8b6914;
+            min-height: 280px;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .card h3 {
+            color: #8b6914;
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .card-content {
+            color: #333;
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+
+        .dica-card {
+            background: #e3f2fd;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 10px;
+            border-left: 3px solid #2196f3;
+            font-size: 13px;
+        }
+
+        .dica-card strong {
+            color: #0d47a1;
+        }
+
+        .destaque-card {
+            background: #fff3e0;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 8px 0;
+            border-left: 3px solid #ff9800;
+            font-size: 14px;
+        }
+
+        /* CONTEÚDO DETALHADO */
+        .detalhado-section {
+            background: #fffaf0;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-left: 5px solid #8b6914;
+        }
+
+        .detalhado-section h2 {
+            color: #8b6914;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .detalhado-section h3 {
+            color: #b8860b;
+            font-size: 22px;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        .exemplo {
+            background: #e8f5e9;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 3px solid #4caf50;
+        }
+
+        .tabela {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .tabela th {
+            background: #8b6914;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .tabela td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .tabela tr:hover {
+            background: #f5f5f5;
+        }
+
+        .linha-tempo {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #8b6914;
+        }
+
+        .print-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .print-btn:hover {
+            background: #218838;
+            transform: scale(1.05);
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            .container { padding: 20px; border-radius: 10px; }
+            h1 { font-size: 2em; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .nivel-2-container { grid-template-columns: 1fr; }
+            .mapa-container { min-width: 100%; }
+            .tab { padding: 10px 20px; font-size: 14px; }
+            .card { min-height: auto; }
+            .detalhado-section { padding: 20px; }
+        }
+        
+        @media (max-width: 480px) {
+            h1 { font-size: 1.5em; }
+            .subtitle { font-size: 0.9em; }
+            .tab { padding: 8px 15px; font-size: 13px; }
+            .card h3 { font-size: 18px; }
+            .print-btn { bottom: 15px; right: 15px; padding: 12px 20px; font-size: 14px; }
+        }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .tabs, .print-btn, .aviso { display: none; }
+            .content { display: block !important; }
+            .container { box-shadow: none; }
+            .card { page-break-inside: avoid; }
+            @page { margin: 2cm; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📜 História - Material de Estudo</h1>
+        <p class="subtitle">1º Ano do Ensino Médio - Exame Final</p>
+        
+        <div class="aviso">
+            <strong>💡 Formato OTIMIZADO!</strong>
+            <p>Cards Resumo para revisão rápida • Conteúdo Detalhado para aprofundar</p>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('mapa')">🗺️ Mapa Mental</button>
+            <button class="tab" onclick="showTab('cards')">📇 Cards Resumo</button>
+            <button class="tab" onclick="showTab('detalhado')">📖 Conteúdo Detalhado</button>
+        </div>
+
+        <!-- MAPA MENTAL -->
+        <div id="mapa" class="content active">
+            <div class="mapa-mental">
+                <div class="mapa-container">
+                    <div class="nivel-1">HISTÓRIA - TEMAS PRINCIPAIS</div>
+                    
+                    <div class="nivel-2-container">
+                        <div>
+                            <div class="nivel-2">HISTÓRIA GERAL</div>
+                            <div class="nivel-3-container">
+                                <div class="nivel-3">Grécia Antiga</div>
+                                <div class="nivel-3">Feudalismo</div>
+                                <div class="nivel-3">Renascimento</div>
+                                <div class="nivel-3">Reforma</div>
+                                <div class="nivel-3">Absolutismo</div>
+                                <div class="nivel-3">Iluminismo</div>
+                                <div class="nivel-3">Rev. Francesa</div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="nivel-2">BRASIL COLONIAL</div>
+                            <div class="nivel-3-container">
+                                <div class="nivel-3">Cana-de-açúcar</div>
+                                <div class="nivel-3">Mineração</div>
+                                <div class="nivel-3">Escravidão</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="nivel-2-container" style="margin-top: 30px;">
+                        <div style="grid-column: 1/-1;">
+                            <div class="nivel-2">HISTÓRIA DA ARTE</div>
+                            <div class="nivel-3-container">
+                                <div class="nivel-3">Renascentista</div>
+                                <div class="nivel-3">Barroca</div>
+                                <div class="nivel-3">Rococó</div>
+                                <div class="nivel-3">Neoclassicismo</div>
+                                <div class="nivel-3">Romantismo</div>
+                                <div class="nivel-3">Impressionismo</div>
+                                <div class="nivel-3">Vanguardas</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARDS RESUMO -->
+        <div id="cards" class="content">
+            
+            <h2 style="text-align: center; color: #8b6914; margin: 40px 0 20px;">📇 CARDS PARA REVISÃO RÁPIDA</h2>
+            
+            <h3 style="text-align: center; color: #666; margin-bottom: 20px;">🏛️ HISTÓRIA GERAL</h3>
+            
+            <div class="cards-grid">
+                
+                <!-- GRÉCIA -->
+                <div class="card">
+                    <h3>🏛️ Grécia Antiga</h3>
+                    <div class="card-content">
+                        <strong>Período:</strong> 2000 a.C. - 146 a.C.<br>
+                        <strong>Pólis:</strong> Cidades-Estado independentes<br>
+                        <strong>Principais:</strong> Atenas e Esparta
+                    </div>
+                    <div class="destaque-card">
+                        <strong>Atenas:</strong> Democracia, cultura<br>
+                        <strong>Esparta:</strong> Militarismo, guerra
+                    </div>
+                    <div class="dica-card">
+                        <strong>💡 Legado:</strong> Filosofia, democracia, teatro, Jogos Olímpicos
+                    </div>
+                </div>
+
+                <!-- FEUDALISMO -->
+                <div class="card">
+                    <h3>🏰 Feudalismo</h3>
+                    <div class="card-content">
+                        <strong>Período:</strong> Idade Média (séc. V-XV)<br>
+                        <strong>Base:</strong> Terra = poder<br>
+                        <strong>Relação:</strong> Suserania e vassalagem
+                    </div>
+                    <div class="destaque-card">
+                        <strong>Pirâmide:</strong><br>
+                        Rei → Nobres → Cavaleiros → Servos
+                    </div>
+                    <div class="dica-card">
+                        <strong>💡 Economia:</strong> Agrícola, autossuficiente (feudo)
+                    </div>
+                </div>
+
+                <!-- RENASCIMENTO -->
+                <div class="card">
+                    <h3>🎨 Renascimento Cultural</h3>
+                    <div class="card-content">
+                        <strong>Período:</strong> Séculos XIV-XVI<br>
+                        <strong>Origem:</strong> Itália<br>
+                        <strong>Foco:</strong> Antropocentrismo (homem)
+                    </div>
+                    <div class="destaque-card">
+                        <strong>Características:</strong><br>
+                        • Valorização greco-romana<br>
+                        • Humanismo<br>
+                        • Racionalismo
+                    </div>
+                    <div class="dica-card">
+                        <strong>💡 Artistas:</strong> Da Vinci, Michelangelo, Rafael
+                    </div>
+                </div>
+
+                <!-- REFORMA -->
+                <div class="card">
+                    <h3>⛪ Reforma Protestante</h3>
+                    <div class="card-content">
+                        <strong>Quando:</strong> 1517<br>
+                        <strong>Quem:</strong> Martinho Lutero<br>
+                        <strong>Motivo:</strong> Crítica à venda de indulgências
+                    </div>
+                    <div class="destaque-card">
+                        <strong>95 Teses:</strong> Questionam Igreja<br>
+                        <strong>Contrarreforma:</strong> Resposta católica
+                    </div>
+                    <div class="dica-card">
+                        <strong>💡 Resultado:</strong> Divisão do cristianismo
+                    </div>
+                </div>
+
+                <!-- ABSOLUTISMO -->
+                <div class="card">
+                    <h3>👑 Absolutismo</h3>
+                    <div class="card-content">
+                        <strong>Período:</strong> Séculos XVI-XVIII<br>
+                        <strong>Poder:</strong> Concentrado no rei<br>
+                        <strong>Lema:</strong> "O Estado sou eu"
+                    </div>
+                    <div class="destaque-card">
+                        <strong>Características:</strong><br>
+                        • Poder divino<br>
+                        • Sem limites<br>
+                        • Mercantilismo
+                    </div>
+                    <div class="dica-card">
+                        <strong>💡 Exemplo:</strong> Luís XIV (França)
+                    </div>
+                </div>
+
+                <!-- ILUMINISMO -->
+                <div class="card">
+                    <h3>💡 Iluminismo</h3>
+                    <div class="card-content">
+                        <strong>Período:</strong> Século XVIII<br>
+                        <strong>Ideias:</strong> Razão, liberdade, igualdade<br>
+                        <strong>Contra:</strong> Absolutismo e Igreja
+                    </div>
+                    <div class="destaque-card">
+                        <strong>Pensadores:</strong><br>
+                        Voltaire, Rousseau, Montesquieu
+                    </div>
+                    <div class="dica-card">
+                        <strong>💡 Base:</strong> Revolução Francesa
+                    </div>
+                </div>
+
+                <!-- REVOLUÇÃO FRANCESA -->
+                <div class="card">
+                    <h3>🗡️ Revolução Francesa</h3>
+                    <div class="card-content">
+                        <strong>Quando:</strong> 1789-1799<br>
+                        <strong>Lema:</strong> Liberdade, Igualdade, Fraternidade<br>
+                        <strong>Resultado:</strong> Fim do absolutismo
+                    </div>
+                    <div class="destaque-card">
+                        <strong>Fases:</strong><br>
+                        Estados Gerais → Bastilha → Terror → Napoleão
+                    </div>
+                    <div class="dica-card">
+                        <strong>💡 Marco:</strong> Queda da monarquia
+                    </div>
+                </div>
+
+            </div>
+
+            <h3 style="text-align: center; color: #666; margin: 40px 0 20px;">🇧🇷 BRASIL COLONIAL</h3>
+            
+            <div class="cards-grid">
+                
+                <!-- CANA -->
+                <div class="card">
+                    <h3>🌾 Cana-de-Açúcar</h3>
+                    <div class="card-content">
+                        <strong>Período:</strong> Século XVI-XVII<br>
+                        <strong>Região:</strong> Nordeste<br>
+                        <strong>Sistema:</strong> Plantation (monocultura)
+                    </div>
+                    <div class="destaque-card">
+                        <strong>Engenho:</strong><br>
+                        Casa-grande + Senzala + Moenda
+                    </div>
+                    <div class="dica-card">
+                        <strong>💡 Mão de obra:</strong> Escrava (africanos)
+                    </div>
+                </div>
+
+                <!-- MINERAÇÃO -->
+                <div class="card">
+                    <h3>⛏️ Mineração</h3>
+                    <div class="card-content">
+                        <strong>Período:</strong> Século XVIII<br>
+                        <strong>Região:</strong> Minas Gerais<br>
+                        <strong>Produto:</strong> Ouro e diamantes
+                    </div>
+                    <div class="destaque-card">
+                        <strong>Impostos:</strong><br>
+                        Quinto (20%) + Derrama
+                    </div>
+                    <div class="dica-card">
+                        <strong>💡 Resultado:</strong> Desenvolvimento urbano
+                    </div>
+                </div>
+
+                <!-- ESCRAVIDÃO -->
+                <div class="card">
+                    <h3>⛓️ Escravidão</h3>
+                    <div class="card-content">
+                        <strong>Período:</strong> 1530-1888<br>
+                        <strong>Origem:</strong> África (tráfico negreiro)<br>
+                        <strong>Trabalho:</strong> Engenhos e minas
+                    </div>
+                    <div class="destaque-card">
+                        <strong>Resistência:</strong><br>
+                        Quilombos (Palmares - Zumbi)
+                    </div>
+                    <div class="dica-card">
+                        <strong>💡 Fim:</strong> Lei Áurea (1888)
+                    </div>
+                </div>
+
+            </div>
+
+            <h3 style="text-align: center; color: #666; margin: 40px 0 20px;">🎨 HISTÓRIA DA ARTE</h3>
+            
+            <div class="cards-grid">
+                
+                <!-- RENASCENTISTA -->
+                <div class="card">
+                    <h3>🎨 Arte Renascentista</h3>
+                    <div class="card-content">
+                        <strong>Período:</strong> Séc. XIV-XVI<br>
+                        <strong>Características:</strong> Realismo, perspectiva, proporção
+                    </div>
+                    <div class="destaque-card">
+                        <strong>Artistas:</strong> Da Vinci, Michelangelo<br>
+                        <strong>Obras:</strong> Mona Lisa, Davi
+                    </div>
+                    <div class="dica-card">
+                        <strong>💡 Técnica:</strong> Sfumato, chiaroscuro
+                    </div>
+                </div>
+
+                <!-- BARROCA -->
+                <div class="card">
+                    <h3>✨ Arte Barroca</h3>
+                    <div class="card-content">
+                        <strong>Período:</strong> Séc. XVII-XVIII<br>
+                        <strong>Características:</strong> Drama, movimento, emoção
+                    </div>
+                    <div class="destaque-card">
+                        <strong>Artistas:</strong> Caravaggio, Bernini<br>
+                        <strong>Contexto:</strong> Contrarreforma
+                    </div>
+                    <div class="dica-card">
+                        <strong>💡 Estilo:</strong> Exagero, contraste luz/sombra
+                    </div>
+                </div>
+
+                <!-- ROCOCÓ -->
+                <div class="card">
+                    <h3>🌸 Arte Rococó</h3>
+                    <div class="card-content">
+                        <strong>Período:</strong> Séc. XVIII<br>
+                        <strong>Características:</strong> Delicado, ornamental, leve
+                    </div>
+                    <div class="destaque-card">
+                        <strong>Temas:</strong> Amor, natureza, festas<br>
+                        <strong>Cores:</strong> Pastéis, suaves
+                    </div>
+                    <div class="dica-card">
+                        <strong>💡 Contexto:</strong> Aristocracia francesa
+                    </div>
+                </div>
+
+                <!-- NEOCLASSICISMO -->
+                <div class="card">
+                    <h3>🏛️ Neoclassicismo</h3>
+                    <div class="card-content">
+                        <strong>Período:</strong> Séc. XVIII-XIX<br>
+                        <strong>Características:</strong> Retorno à Antiguidade
+                    </div>
+                    <div class="destaque-card">
+                        <strong>Valores:</strong> Razão, ordem, equilíbrio<br>
+                        <strong>Contexto:</strong> Iluminismo
+                    </div>
+                    <div class="dica-card">
+                        <strong>💡 Artista:</strong> Jacques-Louis David
+                    </div>
+                </div>
+
+                <!-- ROMANTISMO -->
+                <div class="card">
+                    <h3>💖 Romantismo</h3>
+                    <div class="card-content">
+                        <strong>Período:</strong> Séc. XIX<br>
+                        <strong>Características:</strong> Emoção, natureza, individual
+                    </div>
+                    <div class="destaque-card">
+                        <strong>Temas:</strong> Sentimentos, nacionalismo<br>
+                        <strong>Contra:</strong> Razão excessiva
+                    </div>
+                    <div class="dica-card">
+                        <strong>💡 Artista:</strong> Delacroix, Turner
+                    </div>
+                </div>
+
+                <!-- IMPRESSIONISMO -->
+                <div class="card">
+                    <h3>🌅 Impressionismo</h3>
+                    <div class="card-content">
+                        <strong>Período:</strong> Final séc. XIX<br>
+                        <strong>Características:</strong> Luz, cores, impressões
+                    </div>
+                    <div class="destaque-card">
+                        <strong>Técnica:</strong> Pinceladas soltas<br>
+                        <strong>Artistas:</strong> Monet, Renoir
+                    </div>
+                    <div class="dica-card">
+                        <strong>💡 Marco:</strong> "Impressão, nascer do sol"
+                    </div>
+                </div>
+
+                <!-- VANGUARDAS -->
+                <div class="card">
+                    <h3>🎭 Vanguardas Artísticas</h3>
+                    <div class="card-content">
+                        <strong>Período:</strong> Início séc. XX<br>
+                        <strong>Movimentos:</strong> Cubismo, Futurismo, Dadaísmo
+                    </div>
+                    <div class="destaque-card">
+                        <strong>Cubismo:</strong> Picasso (formas geométricas)<br>
+                        <strong>Surrealismo:</strong> Dalí (inconsciente)
+                    </div>
+                    <div class="dica-card">
+                        <strong>💡 Objetivo:</strong> Romper com tradição
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- CONTEÚDO DETALHADO -->
+        <div id="detalhado" class="content">
+            
+            <h2 style="text-align: center; color: #8b6914; margin: 40px 0 20px;">📖 CONTEÚDO DETALHADO</h2>
+            
+            <!-- GRÉCIA DETALHADO -->
+            <div class="detalhado-section">
+                <h2>🏛️ GRÉCIA ANTIGA</h2>
+                
+                <h3>Contexto Geográfico e Temporal</h3>
+                <p>Civilização que floresceu entre 2000 a.C. e 146 a.C. na região da Península Balcânica, sul da Europa.</p>
+
+                <h3>Pólis (Cidades-Estado)</h3>
+                <p>Unidade política básica da Grécia. Cada pólis era independente, com governo, leis e exército próprios.</p>
+
+                <h3>Atenas vs Esparta</h3>
+                <table class="tabela">
+                    <tr>
+                        <th>Aspecto</th>
+                        <th>Atenas</th>
+                        <th>Esparta</th>
+                    </tr>
+                    <tr>
+                        <td>Governo</td>
+                        <td>Democracia (cidadãos)</td>
+                        <td>Oligarquia militar (diarquia)</td>
+                    </tr>
+                    <tr>
+                        <td>Economia</td>
+                        <td>Comércio marítimo</td>
+                        <td>Agricultura (ilotas)</td>
+                    </tr>
+                    <tr>
+                        <td>Educação</td>
+                        <td>Artes, filosofia, retórica</td>
+                        <td>Militar (agogê)</td>
+                    </tr>
+                    <tr>
+                        <td>Sociedade</td>
+                        <td>Mais aberta e cultural</td>
+                        <td>Militarista e fechada</td>
+                    </tr>
+                    <tr>
+                        <td>Mulheres</td>
+                        <td>Reclusas, sem direitos</td>
+                        <td>Mais liberdade, treinamento físico</td>
+                    </tr>
+                </table>
+
+                <h3>Legado Grego</h3>
+                <ul>
+                    <li><strong>Filosofia:</strong> Sócrates, Platão, Aristóteles</li>
+                    <li><strong>Política:</strong> Democracia ateniense</li>
+                    <li><strong>Teatro:</strong> Tragédia (Ésquilo, Sófocles) e Comédia (Aristófanes)</li>
+                    <li><strong>Mitologia:</strong> Zeus, Atena, Apolo (explicação do mundo)</li>
+                    <li><strong>Jogos Olímpicos:</strong> Competições esportivas (776 a.C.)</li>
+                    <li><strong>Arquitetura:</strong> Partenon, colunas dóricas, jônicas, coríntias</li>
+                </ul>
+
+                <div class="exemplo">
+                    <strong>DEMOCRACIA ATENIENSE:</strong><br>
+                    • Participação direta dos cidadãos<br>
+                    • Assembleias (Eclésia)<br>
+                    • Cidadão = homem, livre, filho de atenienses<br>
+                    • Excluídos: mulheres, escravos, estrangeiros (metecos)
+                </div>
+            </div>
+
+            <!-- FEUDALISMO DETALHADO -->
+            <div class="detalhado-section">
+                <h2>🏰 FEUDALISMO</h2>
+                
+                <h3>Contexto Histórico</h3>
+                <p>Sistema político, econômico e social que predominou na Europa Ocidental durante a Idade Média (séculos V-XV), após a queda do Império Romano.</p>
+
+                <h3>Estrutura Social (Estamental)</h3>
+                <div class="linha-tempo">
+                    <strong>PIRÂMIDE FEUDAL:</strong><br><br>
+                    <strong>TOPO - Rei:</strong> Maior senhor feudal<br>
+                    ↓<br>
+                    <strong>Nobreza (Senhores Feudais):</strong> Donos da terra<br>
+                    ↓<br>
+                    <strong>Clero:</strong> Igreja (poder espiritual e terras)<br>
+                    ↓<br>
+                    <strong>Cavaleiros:</strong> Guerreiros (vassalos dos nobres)<br>
+                    ↓<br>
+                    <strong>BASE - Servos:</strong> Trabalhadores da terra (não eram escravos, mas presos à terra)
+                </div>
+
+                <h3>Relações Feudais</h3>
+                <p><strong>Suserania e Vassalagem:</strong></p>
+                <ul>
+                    <li><strong>Suserano:</strong> Senhor que cede o feudo</li>
+                    <li><strong>Vassalo:</strong> Nobre que recebe o feudo</li>
+                    <li><strong>Cerimônia:</strong> Homenagem (juramento de fidelidade)</li>
+                    <li><strong>Obrigações:</strong> Vassalo = proteção militar / Suserano = proteção política</li>
+                </ul>
+
+                <h3>Economia</h3>
+                <ul>
+                    <li><strong>Base:</strong> Agricultura (subsistência)</li>
+                    <li><strong>Feudo:</strong> Unidade autossuficiente</li>
+                    <li><strong>Comércio:</strong> Quase inexistente</li>
+                    <li><strong>Moeda:</strong> Pouco uso (economia natural)</li>
+                </ul>
+
+                <h3>O Feudo</h3>
+                <div class="exemplo">
+                    <strong>PARTES DO FEUDO:</strong><br>
+                    • <strong>Manso senhorial:</strong> Terras do senhor (castelo)<br>
+                    • <strong>Manso servil:</strong> Terras dos servos (vilas)<br>
+                    • <strong>Manso comunal:</strong> Florestas, pastos (uso comum)
+                </div>
+
+                <h3>Obrigações dos Servos</h3>
+                <ul>
+                    <li><strong>Corveia:</strong> Trabalhar nas terras do senhor (3-4 dias/semana)</li>
+                    <li><strong>Talha:</strong> Entregar parte da produção</li>
+                    <li><strong>Banalidades:</strong> Taxas pelo uso de moinho, forno, etc.</li>
+                    <li><strong>Capitação:</strong> Imposto por pessoa</li>
+                    <li><strong>Tostão de Pedro:</strong> Dízimo para a Igreja (10%)</li>
+                </ul>
+
+                <h3>Declínio do Feudalismo</h3>
+                <ul>
+                    <li>Cruzadas (contato com Oriente)</li>
+                    <li>Renascimento comercial e urbano</li>
+                    <li>Peste Negra (séc. XIV)</li>
+                    <li>Fortalecimento das monarquias nacionais</li>
+                </ul>
+            </div>
+
+            <!-- RENASCIMENTO DETALHADO -->
+            <div class="detalhado-section">
+                <h2>🎨 RENASCIMENTO CULTURAL</h2>
+                
+                <h3>Contexto Histórico</h3>
+                <p>Movimento cultural, artístico e científico que surgiu na Itália (séculos XIV-XVI) e se espalhou pela Europa, marcando a transição da Idade Média para a Idade Moderna.</p>
+
+                <h3>Por que Itália?</h3>
+                <ul>
+                    <li>Cidades comerciais ricas (Florença, Veneza)</li>
+                    <li>Mecenas (patrocinadores das artes)</li>
+                    <li>Ruínas romanas (inspiração clássica)</li>
+                    <li>Contato com o Oriente (Cruzadas)</li>
+                </ul>
+
+                <h3>Características</h3>
+                <table class="tabela">
+                    <tr>
+                        <th>Característica</th>
+                        <th>Descrição</th>
+                    </tr>
+                    <tr>
+                        <td>Humanismo</td>
+                        <td>Valorização do ser humano e suas capacidades</td>
+                    </tr>
+                    <tr>
+                        <td>Antropocentrismo</td>
+                        <td>Homem no centro (vs teocentrismo medieval)</td>
+                    </tr>
+                    <tr>
+                        <td>Racionalismo</td>
+                        <td>Razão e ciência (vs fé)</td>
+                    </tr>
+                    <tr>
+                        <td>Classicismo</td>
+                        <td>Retomada da cultura greco-romana</td>
+                    </tr>
+                    <tr>
+                        <td>Hedonismo</td>
+                        <td>Busca pelo prazer e beleza</td>
+                    </tr>
+                    <tr>
+                        <td>Individualismo</td>
+                        <td>Valorização do indivíduo</td>
+                    </tr>
+                </table>
+
+                <h3>Grandes Artistas</h3>
+                <div class="exemplo">
+                    <strong>LEONARDO DA VINCI (1452-1519):</strong><br>
+                    • Obras: Mona Lisa, Última Ceia<br>
+                    • "Homem renascentista" completo<br>
+                    • Cientista, inventor, anatomista<br><br>
+                    
+                    <strong>MICHELANGELO (1475-1564):</strong><br>
+                    • Obras: Davi, Capela Sistina (A Criação de Adão)<br>
+                    • Escultor, pintor, arquiteto<br><br>
+                    
+                    <strong>RAFAEL (1483-1520):</strong><br>
+                    • Obras: A Escola de Atenas<br>
+                    • Pinturas harmoniosas e equilibradas
+                </div>
+
+                <h3>Invenções e Ciência</h3>
+                <ul>
+                    <li><strong>Imprensa:</strong> Gutenberg (1450) - difusão do conhecimento</li>
+                    <li><strong>Astronomia:</strong> Copérnico (heliocentrismo)</li>
+                    <li><strong>Anatomia:</strong> Vesálio (estudo do corpo humano)</li>
+                    <li><strong>Navegações:</strong> Bússola, astrolábio</li>
+                </ul>
+            </div>
+
+            <!-- REFORMA DETALHADO -->
+            <div class="detalhado-section">
+                <h2>⛪ REFORMA PROTESTANTE E CONTRARREFORMA</h2>
+                
+                <h3>Reforma Protestante (1517)</h3>
+                
+                <p><strong>Causas:</strong></p>
+                <ul>
+                    <li><strong>Corrupção da Igreja:</strong> Venda de indulgências, cargos (simonia)</li>
+                    <li><strong>Acúmulo de riquezas:</strong> Igreja como maior proprietária de terras</li>
+                    <li><strong>Humanismo:</strong> Crítica ao clero</li>
+                    <li><strong>Nacionalismo:</strong> Monarquias queriam autonomia</li>
+                </ul>
+
+                <p><strong>Martinho Lutero (1483-1546):</strong></p>
+                <div class="exemplo">
+                    <strong>95 TESES (1517):</strong><br>
+                    • Afixadas na igreja de Wittenberg<br>
+                    • Criticam venda de indulgências<br>
+                    • "Salvação pela fé, não por obras"<br><br>
+                    
+                    <strong>PRINCÍPIOS LUTERANOS:</strong><br>
+                    • Salvação pela fé (sola fide)<br>
+                    • Bíblia como única autoridade (sola scriptura)<br>
+                    • Sacerdócio universal (todos são sacerdotes)<br>
+                    • Culto em língua nacional<br>
+                    • Livre interpretação da Bíblia
+                </div>
+
+                <p><strong>Outras Reformas:</strong></p>
+                <ul>
+                    <li><strong>Calvinismo (João Calvino):</strong> Predestinação, ética do trabalho</li>
+                    <li><strong>Anglicanismo (Henrique VIII):</strong> Igreja da Inglaterra (motivos políticos)</li>
+                </ul>
+
+                <h3>Contrarreforma Católica</h3>
+                <p>Resposta da Igreja Católica à Reforma Protestante.</p>
+
+                <p><strong>Medidas:</strong></p>
+                <ul>
+                    <li><strong>Concílio de Trento (1545-1563):</strong> Reafirmação de dogmas</li>
+                    <li><strong>Companhia de Jesus (Jesuítas):</strong> Educação e catequese</li>
+                    <li><strong>Inquisição:</strong> Tribunal para combater heresias</li>
+                    <li><strong>Index:</strong> Lista de livros proibidos</li>
+                    <li><strong>Arte Barroca:</strong> Emocionar e reconquistar fiéis</li>
+                </ul>
+
+                <h3>Consequências</h3>
+                <ul>
+                    <li>Divisão do cristianismo (católicos e protestantes)</li>
+                    <li>Guerras religiosas na Europa</li>
+                    <li>Fortalecimento das monarquias nacionais</li>
+                    <li>Expansão da educação (jesuítas)</li>
+                </ul>
+            </div>
+
+            <!-- REVOLUÇÃO FRANCESA DETALHADO -->
+            <div class="detalhado-section">
+                <h2>🗡️ REVOLUÇÃO FRANCESA (1789-1799)</h2>
+                
+                <h3>Causas</h3>
+                <ul>
+                    <li><strong>Crise econômica:</strong> Gastos da monarquia, guerras</li>
+                    <li><strong>Desigualdade social:</strong> Privilégios do clero e nobreza</li>
+                    <li><strong>Ideias iluministas:</strong> Liberdade, igualdade</li>
+                    <li><strong>Fome:</strong> Más colheitas</li>
+                </ul>
+
+                <h3>Sociedade Francesa (3 Estados)</h3>
+                <table class="tabela">
+                    <tr>
+                        <th>Estado</th>
+                        <th>Composição</th>
+                        <th>Privilégios</th>
+                    </tr>
+                    <tr>
+                        <td>1º Estado</td>
+                        <td>Clero (0,5% população)</td>
+                        <td>Isentos de impostos</td>
+                    </tr>
+                    <tr>
+                        <td>2º Estado</td>
+                        <td>Nobreza (1,5% população)</td>
+                        <td>Isentos de impostos</td>
+                    </tr>
+                    <tr>
+                        <td>3º Estado</td>
+                        <td>Povo (98% população)</td>
+                        <td>Pagavam TODOS os impostos</td>
+                    </tr>
+                </table>
+
+                <h3>Fases da Revolução</h3>
+                
+                <div class="linha-tempo">
+                    <strong>1789 - Estados Gerais:</strong><br>
+                    • Convocação pelo rei Luís XVI<br>
+                    • 3º Estado se revolta (voto por cabeça vs voto por estado)<br>
+                    • Formação da Assembleia Nacional Constituinte<br><br>
+                    
+                    <strong>14 de julho de 1789 - Queda da Bastilha:</strong><br>
+                    • Prisão símbolo do absolutismo<br>
+                    • Marco inicial da Revolução<br><br>
+                    
+                    <strong>1789 - Declaração dos Direitos do Homem:</strong><br>
+                    • Liberdade, igualdade, propriedade<br>
+                    • Base dos direitos humanos<br><br>
+                    
+                    <strong>1792-1794 - Convenção (Terror):</strong><br>
+                    • República proclamada<br>
+                    • Guilhotina de Luís XVI e Maria Antonieta<br>
+                    • Robespierre e jacobinos no poder<br>
+                    • Execuções em massa<br><br>
+                    
+                    <strong>1795-1799 - Diretório:</strong><br>
+                    • Governo burguês moderado<br>
+                    • Instabilidade política<br><br>
+                    
+                    <strong>1799 - Golpe de Napoleão:</strong><br>
+                    • Fim da Revolução<br>
+                    • Início do Consulado
+                </div>
+
+                <h3>Consequências</h3>
+                <ul>
+                    <li>Fim do absolutismo na França</li>
+                    <li>Ascensão da burguesia</li>
+                    <li>Difusão de ideias liberais</li>
+                    <li>Inspiração para outras revoluções</li>
+                    <li>Napoleão Bonaparte no poder</li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+
+    <button class="print-btn" onclick="window.print()">🖨️ Imprimir</button>
+
+    <script>
+        function showTab(tabName) {
+            const contents = document.querySelectorAll('.content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
