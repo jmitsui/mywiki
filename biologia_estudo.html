@@ -102,7 +102,7 @@
         /* MAPA MENTAL */
         .mapa-mental {
             padding: 30px 20px;
-            background: #f3f0ff;
+            background: #f3e8ff;
             border-radius: 15px;
             overflow-x: auto;
         }
@@ -127,7 +127,7 @@
 
         .nivel-2-container {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 30px;
             width: 100%;
         }
@@ -161,21 +161,22 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        /* CARDS */
+        /* CARDS RESUMO */
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
             margin-top: 20px;
         }
 
         .card {
-            background: linear-gradient(135deg, #f3f0ff 0%, #e8e0ff 100%);
+            background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
             border-radius: 15px;
-            padding: 25px;
+            padding: 20px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s, box-shadow 0.3s;
             border-left: 5px solid #667eea;
+            min-height: 280px;
         }
 
         .card:hover {
@@ -185,70 +186,42 @@
 
         .card h3 {
             color: #667eea;
-            font-size: 22px;
-            margin-bottom: 15px;
-        }
-
-        .card-section {
-            margin: 12px 0;
-        }
-
-        .card-label {
-            font-weight: 700;
-            color: #5a4d8a;
-            font-size: 13px;
-            text-transform: uppercase;
-            margin-bottom: 5px;
+            font-size: 20px;
+            margin-bottom: 12px;
         }
 
         .card-content {
             color: #333;
             font-size: 15px;
-            line-height: 1.6;
-        }
-
-        .destaque-bio {
-            background: #fff9e6;
-            padding: 12px;
-            border-radius: 8px;
-            margin: 10px 0;
-            border-left: 3px solid #ffc107;
-        }
-
-        .exemplo-bio {
-            background: #e3f2fd;
-            padding: 12px;
-            border-radius: 8px;
-            margin: 10px 0;
-            border-left: 3px solid #2196f3;
-        }
-
-        .dica-bio {
-            background: #d4edda;
-            padding: 12px;
-            border-radius: 8px;
-            margin: 10px 0;
-            border-left: 3px solid #28a745;
-        }
-
-        .dica-bio strong {
-            color: #155724;
-        }
-
-        .esquema {
-            background: white;
-            padding: 15px;
-            border-radius: 10px;
-            margin: 15px 0;
-            border: 2px solid #667eea;
-            font-family: monospace;
-            white-space: pre-wrap;
             line-height: 1.8;
+            margin-bottom: 12px;
+        }
+
+        .dica-card {
+            background: #e3f2fd;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 10px;
+            border-left: 3px solid #2196f3;
+            font-size: 13px;
+        }
+
+        .dica-card strong {
+            color: #0d47a1;
+        }
+
+        .destaque-card {
+            background: #fff3e0;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 8px 0;
+            border-left: 3px solid #ff9800;
+            font-size: 14px;
         }
 
         /* CONTEÚDO DETALHADO */
         .detalhado-section {
-            background: #f3f0ff;
+            background: #faf5ff;
             border-radius: 15px;
             padding: 30px;
             margin-bottom: 30px;
@@ -262,45 +235,10 @@
         }
 
         .detalhado-section h3 {
-            color: #5a4d8a;
+            color: #764ba2;
             font-size: 22px;
             margin-top: 25px;
             margin-bottom: 15px;
-        }
-
-        .palavras-chave {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin: 15px 0;
-        }
-
-        .palavra {
-            background: #667eea;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
-        }
-
-        .comparacao {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin: 15px 0;
-        }
-
-        .comparacao-item {
-            background: white;
-            padding: 15px;
-            border-radius: 10px;
-            border: 2px solid #667eea;
-        }
-
-        .comparacao-item h4 {
-            color: #667eea;
-            margin-bottom: 10px;
         }
 
         .tabela {
@@ -330,14 +268,23 @@
             background: #f5f5f5;
         }
 
-        ul {
-            margin-left: 20px;
-            margin-top: 10px;
+        .exemplo {
+            background: #e8f5e9;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 3px solid #4caf50;
         }
 
-        li {
-            margin: 8px 0;
-            color: #333;
+        .diagrama {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border: 2px solid #667eea;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.8;
         }
 
         .print-btn {
@@ -362,28 +309,27 @@
             transform: scale(1.05);
         }
 
-        /* RESPONSIVIDADE */
+        ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
         @media (max-width: 768px) {
-            body { padding: 10px; }
-            .container { padding: 20px; }
-            h1 { font-size: 2em; }
-            .tabs { gap: 5px; }
-            .tab { padding: 10px 20px; font-size: 14px; }
             .cards-grid { grid-template-columns: 1fr; }
-            .mapa-container { min-width: 100%; }
             .nivel-2-container { grid-template-columns: 1fr; }
-            .comparacao { grid-template-columns: 1fr; }
         }
 
         @media print {
             body { background: white; padding: 0; }
             .tabs, .print-btn, .aviso { display: none; }
             .content { display: block !important; }
-            .container { box-shadow: none; padding: 20px; }
-            .card { page-break-after: always; page-break-inside: avoid; border: 2px solid #667eea; }
-            .detalhado-section { page-break-before: always; page-break-inside: avoid; border: 2px solid #667eea; }
+            .container { box-shadow: none; }
+            .card { page-break-inside: avoid; }
             @page { margin: 2cm; }
-            .card, .detalhado-section { background: white !important; }
         }
     </style>
 </head>
@@ -393,8 +339,8 @@
         <p class="subtitle">1º Ano do Ensino Médio - Exame Final</p>
         
         <div class="aviso">
-            <strong>💡 DICA DE IMPRESSÃO:</strong>
-            <p>Clique no botão verde abaixo para imprimir. Material otimizado com quebras de página!</p>
+            <strong>💡 Formato OTIMIZADO para TDAH!</strong>
+            <p>Cards Resumo para revisão rápida • Conteúdo Detalhado para aprofundar</p>
         </div>
 
         <div class="tabs">
@@ -407,15 +353,17 @@
         <div id="mapa" class="content active">
             <div class="mapa-mental">
                 <div class="mapa-container">
-                    <div class="nivel-1">BIOLOGIA - TEMAS PRINCIPAIS</div>
+                    <div class="nivel-1">BIOLOGIA - ÁREAS PRINCIPAIS</div>
                     
                     <div class="nivel-2-container">
                         <div>
                             <div class="nivel-2">BIOLOGIA MOLECULAR</div>
                             <div class="nivel-3-container">
                                 <div class="nivel-3">DNA e RNA</div>
+                                <div class="nivel-3">Duplicação</div>
+                                <div class="nivel-3">Transcrição</div>
+                                <div class="nivel-3">Tradução</div>
                                 <div class="nivel-3">Divisão Celular</div>
-                                <div class="nivel-3">Síntese Proteica</div>
                             </div>
                         </div>
 
@@ -424,17 +372,19 @@
                             <div class="nivel-3-container">
                                 <div class="nivel-3">Sistema Respiratório</div>
                                 <div class="nivel-3">Sistema Circulatório</div>
+                                <div class="nivel-3">Sistema Digestório</div>
                                 <div class="nivel-3">Sistema Nervoso</div>
                             </div>
                         </div>
+                    </div>
 
+                    <div class="nivel-2-container" style="margin-top: 30px;">
                         <div>
                             <div class="nivel-2">ECOLOGIA</div>
                             <div class="nivel-3-container">
-                                <div class="nivel-3">Conceitos</div>
-                                <div class="nivel-3">Cadeias Alimentares</div>
+                                <div class="nivel-3">Cadeia Alimentar</div>
                                 <div class="nivel-3">Relações Ecológicas</div>
-                                <div class="nivel-3">Problemas Ambientais</div>
+                                <div class="nivel-3">Ciclos Biogeoquímicos</div>
                             </div>
                         </div>
 
@@ -442,9 +392,9 @@
                             <div class="nivel-2">HISTOLOGIA</div>
                             <div class="nivel-3-container">
                                 <div class="nivel-3">Tecido Epitelial</div>
-                                <div class="nivel-3">Tecidos Conjuntivos</div>
+                                <div class="nivel-3">Tecido Conjuntivo</div>
                                 <div class="nivel-3">Tecido Muscular</div>
-                                <div class="nivel-3">Imunidade</div>
+                                <div class="nivel-3">Tecido Nervoso</div>
                             </div>
                         </div>
                     </div>
@@ -452,1244 +402,479 @@
             </div>
         </div>
 
-        <!-- CARDS -->
+        <!-- CARDS RESUMO -->
         <div id="cards" class="content">
             
-            <div style="page-break-after: always; text-align: center; padding: 100px 0;">
-                <h1 style="color: #667eea; font-size: 48px; margin-bottom: 20px;">📇 CARDS RESUMO</h1>
-                <p style="font-size: 24px; color: #666;">Conceitos essenciais de Biologia</p>
-            </div>
+            <h2 style="text-align: center; color: #667eea; margin: 40px 0 20px;">📇 CARDS PARA REVISÃO RÁPIDA</h2>
             
             <div class="cards-grid">
-                <!-- DNA E RNA -->
+                
+                <!-- DNA -->
                 <div class="card">
-                    <h3>🧬 ÁCIDOS NUCLEICOS</h3>
-                    <div class="card-section">
-                        <div class="card-label">📌 DNA (Ácido Desoxirribonucleico)</div>
-                        <div class="card-content">
-                            <strong>Função:</strong> Armazena informação genética<br>
-                            <strong>Estrutura:</strong> Dupla-hélice (2 fitas)<br>
-                            <strong>Açúcar:</strong> Desoxirribose<br>
-                            <strong>Bases:</strong> Adenina, Timina, Citosina, Guanina<br>
-                            <strong>Localização:</strong> Núcleo (eucariotos)
-                        </div>
+                    <h3>🧬 DNA - Ácido Desoxirribonucleico</h3>
+                    <div class="card-content">
+                        <strong>Estrutura:</strong> Dupla hélice<br>
+                        <strong>Bases:</strong> A-T e C-G<br>
+                        <strong>Função:</strong> Armazenar informação genética
                     </div>
-                    <div class="card-section">
-                        <div class="card-label">📌 RNA (Ácido Ribonucleico)</div>
-                        <div class="card-content">
-                            <strong>Função:</strong> Síntese de proteínas<br>
-                            <strong>Estrutura:</strong> Fita simples<br>
-                            <strong>Açúcar:</strong> Ribose<br>
-                            <strong>Bases:</strong> Adenina, <strong>Uracila</strong>, Citosina, Guanina
-                        </div>
+                    <div class="destaque-card">
+                        • Adenina (A) com Timina (T)<br>
+                        • Citosina (C) com Guanina (G)
                     </div>
-                    <div class="card-section">
-                        <div class="dica-bio">
-                            <strong>💡 PAREAMENTO:</strong><br>
-                            DNA: A-T (2 ligações) e C-G (3 ligações)<br>
-                            RNA: A-U e C-G
-                        </div>
+                    <div class="dica-card">
+                        <strong>💡 Dica:</strong> DNA = receita do corpo!
                     </div>
                 </div>
 
-                <!-- MITOSE -->
+                <!-- RNA -->
                 <div class="card">
-                    <h3>🔄 MITOSE</h3>
-                    <div class="card-section">
-                        <div class="card-label">📌 Conceito</div>
-                        <div class="card-content">
-                            Divisão que produz 2 células-filhas IDÊNTICAS à célula-mãe. Mantém o número de cromossomos.
-                        </div>
+                    <h3>🧬 RNA - Ácido Ribonucleico</h3>
+                    <div class="card-content">
+                        <strong>Estrutura:</strong> Fita simples<br>
+                        <strong>Bases:</strong> A-U e C-G<br>
+                        <strong>Função:</strong> Produzir proteínas
                     </div>
-                    <div class="card-section">
-                        <div class="card-label">🎯 Função</div>
-                        <div class="card-content">
-                            • Crescimento<br>
-                            • Regeneração de tecidos<br>
-                            • Reprodução assexuada
-                        </div>
+                    <div class="destaque-card">
+                        RNA tem Uracila (U) no lugar da Timina!
                     </div>
-                    <div class="card-section">
-                        <div class="card-label">📊 Fases (PMAT)</div>
-                        <div class="esquema">
-<strong>PRÓFASE:</strong> Cromatina → cromossomos
-<strong>METÁFASE:</strong> Cromossomos no equador
-<strong>ANÁFASE:</strong> Separação das cromátides
-<strong>TELÓFASE:</strong> Formação de 2 núcleos
-                        </div>
-                    </div>
-                    <div class="card-section">
-                        <div class="destaque-bio">
-                            <strong>Resultado:</strong> 2n → 2n + 2n (diploides)
-                        </div>
-                    </div>
-                </div>
-
-                <!-- MEIOSE -->
-                <div class="card">
-                    <h3>🎲 MEIOSE</h3>
-                    <div class="card-section">
-                        <div class="card-label">📌 Conceito</div>
-                        <div class="card-content">
-                            Duas divisões sucessivas que produzem 4 células-filhas com METADE dos cromossomos (haploides).
-                        </div>
-                    </div>
-                    <div class="card-section">
-                        <div class="card-label">🎯 Função</div>
-                        <div class="card-content">
-                            Produção de GAMETAS (espermatozoides e óvulos) para reprodução sexuada.
-                        </div>
-                    </div>
-                    <div class="card-section">
-                        <div class="card-label">📊 Etapas</div>
-                        <div class="card-content">
-                            <strong>MEIOSE I:</strong> Redução (2n → n)<br>
-                            - Crossing-over (troca de genes)<br>
-                            <strong>MEIOSE II:</strong> Semelhante à mitose
-                        </div>
-                    </div>
-                    <div class="card-section">
-                        <div class="destaque-bio">
-                            <strong>Resultado:</strong> 2n → n + n + n + n<br>
-                            (4 células haploides DIFERENTES)
-                        </div>
+                    <div class="dica-card">
+                        <strong>💡 Tipos:</strong> RNAm (mensageiro), RNAt (transportador), RNAr (ribossômico)
                     </div>
                 </div>
 
                 <!-- SÍNTESE PROTEICA -->
                 <div class="card">
-                    <h3>🧪 SÍNTESE PROTEICA</h3>
-                    <div class="card-section">
-                        <div class="card-label">📌 Etapa 1: TRANSCRIÇÃO</div>
-                        <div class="card-content">
-                            <strong>Local:</strong> Núcleo<br>
-                            <strong>Processo:</strong> DNA → RNA mensageiro (RNAm)<br>
-                            Enzima RNA polimerase "copia" o gene
-                        </div>
+                    <h3>⚙️ Síntese Proteica</h3>
+                    <div class="card-content">
+                        <strong>1. TRANSCRIÇÃO:</strong><br>
+                        DNA → RNAm (no núcleo)
                     </div>
-                    <div class="card-section">
-                        <div class="card-label">📌 Etapa 2: TRADUÇÃO</div>
-                        <div class="card-content">
-                            <strong>Local:</strong> Ribossomos (citoplasma)<br>
-                            <strong>Processo:</strong> RNAm → Proteína<br>
-                            RNA transportador (RNAt) traz aminoácidos
-                        </div>
+                    <div class="card-content">
+                        <strong>2. TRADUÇÃO:</strong><br>
+                        RNAm → Proteína (ribossomo)
                     </div>
-                    <div class="card-section">
-                        <div class="card-label">🔤 Código Genético</div>
-                        <div class="card-content">
-                            <strong>CÓDON:</strong> Trinca de bases no RNAm<br>
-                            <strong>ANTICÓDON:</strong> Trinca no RNAt<br>
-                            Cada códon = 1 aminoácido
-                        </div>
+                    <div class="dica-card">
+                        <strong>💡 Sequência:</strong> DNA faz RNA, RNA faz proteína!
                     </div>
-                    <div class="card-section">
-                        <div class="dica-bio">
-                            <strong>💡 Fluxo:</strong> DNA → RNA → Proteína<br>
-                            (Dogma Central da Biologia)
-                        </div>
+                </div>
+
+                <!-- MITOSE -->
+                <div class="card">
+                    <h3>🔄 Mitose</h3>
+                    <div class="card-content">
+                        <strong>Tipo:</strong> Divisão equacional<br>
+                        <strong>Resultado:</strong> 2 células idênticas<br>
+                        <strong>Onde:</strong> Crescimento e regeneração
+                    </div>
+                    <div class="destaque-card">
+                        <strong>Fases:</strong> Prófase → Metáfase → Anáfase → Telófase
+                    </div>
+                    <div class="dica-card">
+                        <strong>💡 Mnemônico:</strong> Pro-Meta-Ana-Telo
+                    </div>
+                </div>
+
+                <!-- MEIOSE -->
+                <div class="card">
+                    <h3>🔀 Meiose</h3>
+                    <div class="card-content">
+                        <strong>Tipo:</strong> Divisão reducional<br>
+                        <strong>Resultado:</strong> 4 células diferentes<br>
+                        <strong>Onde:</strong> Formação de gametas
+                    </div>
+                    <div class="destaque-card">
+                        Reduz pela metade o n° de cromossomos!<br>
+                        (46 → 23)
+                    </div>
+                    <div class="dica-card">
+                        <strong>💡 Lembrar:</strong> Meiose = gametas (óvulo/espermatozoide)
                     </div>
                 </div>
 
                 <!-- SISTEMA RESPIRATÓRIO -->
                 <div class="card">
-                    <h3>🫁 SISTEMA RESPIRATÓRIO</h3>
-                    <div class="card-section">
-                        <div class="card-label">📌 Função</div>
-                        <div class="card-content">
-                            Captar O₂ do ar e eliminar CO₂ (hematose = troca gasosa)
-                        </div>
+                    <h3>🫁 Sistema Respiratório</h3>
+                    <div class="card-content">
+                        <strong>Caminho do ar:</strong><br>
+                        Nariz → Faringe → Laringe → Traqueia → Brônquios → Bronquíolos → Alvéolos
                     </div>
-                    <div class="card-section">
-                        <div class="card-label">🎯 Órgãos</div>
-                        <div class="esquema">
-<strong>VIA SUPERIOR:</strong>
-• Fossas nasais (filtram, umidificam, aquecem)
-• Faringe
-• Laringe (cordas vocais)
-
-<strong>VIA INFERIOR:</strong>
-• Traqueia
-• Brônquios → Bronquíolos
-• <strong>ALVÉOLOS</strong> (hematose!)
-                        </div>
+                    <div class="destaque-card">
+                        <strong>Hematose:</strong> Troca gasosa nos alvéolos<br>
+                        (O₂ entra, CO₂ sai)
                     </div>
-                    <div class="card-section">
-                        <div class="card-label">💨 Mecânica</div>
-                        <div class="card-content">
-                            <strong>INSPIRAÇÃO:</strong> Diafragma desce → pulmões expandem<br>
-                            <strong>EXPIRAÇÃO:</strong> Diafragma sobe → pulmões contraem
-                        </div>
+                    <div class="dica-card">
+                        <strong>💡 Lembrar:</strong> Alvéolos = onde acontece a magia!
                     </div>
                 </div>
 
                 <!-- SISTEMA CIRCULATÓRIO -->
                 <div class="card">
-                    <h3>❤️ SISTEMA CIRCULATÓRIO</h3>
-                    <div class="card-section">
-                        <div class="card-label">📌 Função</div>
-                        <div class="card-content">
-                            Transportar O₂, nutrientes, hormônios e retirar CO₂ e resíduos
-                        </div>
+                    <h3>❤️ Sistema Circulatório</h3>
+                    <div class="card-content">
+                        <strong>Coração:</strong> 4 cavidades<br>
+                        • 2 átrios (recebem sangue)<br>
+                        • 2 ventrículos (bombeiam sangue)
                     </div>
-                    <div class="card-section">
-                        <div class="card-label">🎯 Coração (4 cavidades)</div>
-                        <div class="card-content">
-                            <strong>ÁTRIOS:</strong> Recebem sangue (direito e esquerdo)<br>
-                            <strong>VENTRÍCULOS:</strong> Bombeiam sangue (direito e esquerdo)
-                        </div>
+                    <div class="destaque-card">
+                        <strong>Circulação dupla:</strong><br>
+                        Pequena (pulmão) + Grande (corpo)
                     </div>
-                    <div class="card-section">
-                        <div class="card-label">🔄 Circulação Dupla</div>
-                        <div class="esquema">
-<strong>PEQUENA (pulmonar):</strong>
-Coração → Pulmões → Coração
-(leva CO₂, volta O₂)
+                    <div class="dica-card">
+                        <strong>💡 Veias:</strong> levam sangue AO coração<br>
+                        <strong>Artérias:</strong> levam sangue DO coração
+                    </div>
+                </div>
 
-<strong>GRANDE (sistêmica):</strong>
-Coração → Corpo → Coração
-(leva O₂ e nutrientes)
-                        </div>
+                <!-- SISTEMA DIGESTÓRIO -->
+                <div class="card">
+                    <h3>🍽️ Sistema Digestório</h3>
+                    <div class="card-content">
+                        <strong>Caminho do alimento:</strong><br>
+                        Boca → Esôfago → Estômago → Intestino Delgado → Intestino Grosso
                     </div>
-                    <div class="card-section">
-                        <div class="card-label">🩸 Vasos</div>
-                        <div class="card-content">
-                            <strong>ARTÉRIAS:</strong> Saem do coração (parede espessa)<br>
-                            <strong>VEIAS:</strong> Chegam ao coração (válvulas)<br>
-                            <strong>CAPILARES:</strong> Trocas (muito finos)
-                        </div>
+                    <div class="destaque-card">
+                        <strong>Absorção:</strong> Intestino delgado<br>
+                        <strong>Água:</strong> Intestino grosso
+                    </div>
+                    <div class="dica-card">
+                        <strong>💡 Enzimas:</strong> Quebram o alimento em pedaços menores
                     </div>
                 </div>
 
                 <!-- SISTEMA NERVOSO -->
                 <div class="card">
-                    <h3>🧠 SISTEMA NERVOSO</h3>
-                    <div class="card-section">
-                        <div class="card-label">📌 Divisão</div>
-                        <div class="card-content">
-                            <strong>SNC:</strong> Encéfalo + Medula espinhal<br>
-                            <strong>SNP:</strong> Nervos (levam/trazem info)
-                        </div>
+                    <h3>🧠 Sistema Nervoso</h3>
+                    <div class="card-content">
+                        <strong>SNC:</strong> Cérebro + Medula<br>
+                        <strong>SNP:</strong> Nervos periféricos
                     </div>
-                    <div class="card-section">
-                        <div class="card-label">🧩 Neurônio</div>
-                        <div class="esquema">
-<strong>DENDRITOS:</strong> Recebem estímulo
-      ↓
-<strong>CORPO CELULAR:</strong> Núcleo
-      ↓
-<strong>AXÔNIO:</strong> Conduz impulso
-      ↓
-<strong>SINAPSE:</strong> Comunicação química
-                        </div>
+                    <div class="destaque-card">
+                        <strong>Neurônio:</strong> Célula nervosa<br>
+                        Dendritos → Corpo → Axônio
                     </div>
-                    <div class="card-section">
-                        <div class="card-label">⚡ Impulso Nervoso</div>
-                        <div class="card-content">
-                            Sinal elétrico que viaja pelo axônio. Comunicação entre neurônios via neurotransmissores (sinapse).
-                        </div>
-                    </div>
-                    <div class="card-section">
-                        <div class="card-label">🎯 Encéfalo</div>
-                        <div class="card-content">
-                            <strong>CÉREBRO:</strong> Pensamento, memória, movimento<br>
-                            <strong>CEREBELO:</strong> Equilíbrio, coordenação<br>
-                            <strong>BULBO:</strong> Funções vitais (respiração, batimentos)
-                        </div>
+                    <div class="dica-card">
+                        <strong>💡 Sinapse:</strong> Comunicação entre neurônios
                     </div>
                 </div>
 
-                <!-- ECOLOGIA - CONCEITOS -->
+                <!-- CADEIA ALIMENTAR -->
                 <div class="card">
-                    <h3>🌍 ECOLOGIA - CONCEITOS</h3>
-                    <div class="card-section">
-                        <div class="card-label">📌 Níveis de Organização</div>
-                        <div class="esquema">
-INDIVÍDUO → POPULAÇÃO → COMUNIDADE 
-   → ECOSSISTEMA → BIOSFERA
-                        </div>
+                    <h3>🌿 Cadeia Alimentar</h3>
+                    <div class="card-content">
+                        <strong>Produtores:</strong> Plantas (fotossíntese)<br>
+                        <strong>Consumidores:</strong> Herbívoros e carnívoros<br>
+                        <strong>Decompositores:</strong> Fungos e bactérias
                     </div>
-                    <div class="card-section">
-                        <div class="card-label">🎯 Definições</div>
-                        <div class="card-content">
-                            <strong>POPULAÇÃO:</strong> Indivíduos da mesma espécie<br>
-                            <strong>COMUNIDADE:</strong> Populações interagindo<br>
-                            <strong>ECOSSISTEMA:</strong> Comunidade + fatores abióticos<br>
-                            <strong>HABITAT:</strong> "Endereço" da espécie<br>
-                            <strong>NICHO ECOLÓGICO:</strong> "Profissão" da espécie
-                        </div>
+                    <div class="destaque-card">
+                        Planta → Gafanhoto → Sapo → Cobra → Gavião
                     </div>
-                    <div class="card-section">
-                        <div class="dica-bio">
-                            <strong>💡 Fatores:</strong><br>
-                            <strong>Bióticos:</strong> Seres vivos<br>
-                            <strong>Abióticos:</strong> Luz, água, temperatura, solo
-                        </div>
-                    </div>
-                </div>
-
-                <!-- CADEIAS ALIMENTARES -->
-                <div class="card">
-                    <h3>🍃 CADEIAS E TEIAS ALIMENTARES</h3>
-                    <div class="card-section">
-                        <div class="card-label">📌 Cadeia Alimentar</div>
-                        <div class="esquema">
-PRODUTOR → CONSUMIDOR 1° → CONSUMIDOR 2°
-         → CONSUMIDOR 3° → DECOMPOSITORES
-                        </div>
-                    </div>
-                    <div class="card-section">
-                        <div class="card-label">🎯 Níveis Tróficos</div>
-                        <div class="card-content">
-                            <strong>PRODUTORES:</strong> Plantas (fotossíntese)<br>
-                            <strong>CONSUMIDORES 1°:</strong> Herbívoros<br>
-                            <strong>CONSUMIDORES 2°:</strong> Carnívoros<br>
-                            <strong>CONSUMIDORES 3°:</strong> Carnívoros topo<br>
-                            <strong>DECOMPOSITORES:</strong> Fungos e bactérias
-                        </div>
-                    </div>
-                    <div class="card-section">
-                        <div class="card-label">⚡ Fluxo de Energia</div>
-                        <div class="destaque-bio">
-                            <strong>Unidirecional!</strong> Sol → Produtores → Consumidores<br>
-                            Cada nível: apenas 10% da energia passa adiante
-                        </div>
-                    </div>
-                    <div class="card-section">
-                        <div class="card-label">🕸️ Teia Alimentar</div>
-                        <div class="card-content">
-                            Várias cadeias interligadas (mais realista)
-                        </div>
+                    <div class="dica-card">
+                        <strong>💡 Energia:</strong> Flui dos produtores aos consumidores
                     </div>
                 </div>
 
                 <!-- RELAÇÕES ECOLÓGICAS -->
                 <div class="card">
-                    <h3>🤝 RELAÇÕES ECOLÓGICAS</h3>
-                    <div class="card-section">
-                        <div class="card-label">📌 Intraespecíficas (mesma espécie)</div>
-                        <div class="card-content">
-                            <strong>HARMÔNICAS (+):</strong><br>
-                            • Sociedade (abelhas, formigas)<br>
-                            • Colônia (corais)<br><br>
-                            <strong>DESARMÔNICAS (-):</strong><br>
-                            • Competição (território, fêmeas)
-                        </div>
+                    <h3>🤝 Relações Ecológicas</h3>
+                    <div class="card-content">
+                        <strong>Harmônicas:</strong> Ambos ganham<br>
+                        • Mutualismo, Comensalismo
                     </div>
-                    <div class="card-section">
-                        <div class="card-label">📌 Interespecíficas (espécies diferentes)</div>
-                        <div class="card-content">
-                            <strong>HARMÔNICAS:</strong><br>
-                            • Mutualismo (+ +) - líquen<br>
-                            • Protocooperação (+ +) opcional<br>
-                            • Comensalismo (+ 0) - tubarão/rêmora<br><br>
-                            <strong>DESARMÔNICAS:</strong><br>
-                            • Predação (+ -) - leão come zebra<br>
-                            • Parasitismo (+ -) - carrapato<br>
-                            • Competição (- -) - mesmo recurso
-                        </div>
+                    <div class="card-content">
+                        <strong>Desarmônicas:</strong> Um perde<br>
+                        • Predação, Parasitismo, Competição
+                    </div>
+                    <div class="dica-card">
+                        <strong>💡 Mutualismo:</strong> Abelha + Flor<br>
+                        <strong>Parasitismo:</strong> Carrapato + Cachorro
                     </div>
                 </div>
 
-                <!-- PROBLEMAS AMBIENTAIS -->
+                <!-- CICLOS -->
                 <div class="card">
-                    <h3>⚠️ PROBLEMAS AMBIENTAIS</h3>
-                    <div class="card-section">
-                        <div class="card-label">🌡️ Efeito Estufa</div>
-                        <div class="card-content">
-                            <strong>Natural:</strong> Mantém temperatura da Terra<br>
-                            <strong>Intensificado:</strong> Excesso de CO₂ → aquecimento global
-                        </div>
+                    <h3>♻️ Ciclos Biogeoquímicos</h3>
+                    <div class="card-content">
+                        <strong>Carbono:</strong> Fotossíntese/Respiração<br>
+                        <strong>Nitrogênio:</strong> Fixação por bactérias<br>
+                        <strong>Água:</strong> Evaporação/Chuva
                     </div>
-                    <div class="card-section">
-                        <div class="card-label">☀️ Camada de Ozônio</div>
-                        <div class="card-content">
-                            <strong>Função:</strong> Filtra raios UV<br>
-                            <strong>Problema:</strong> CFCs destroem O₃ (ozônio)
-                        </div>
-                    </div>
-                    <div class="card-section">
-                        <div class="card-label">🌧️ Chuva Ácida</div>
-                        <div class="card-content">
-                            <strong>Causa:</strong> SO₂ e NO₂ (indústrias, carros)<br>
-                            <strong>Efeito:</strong> Acidifica solo e água, corrói estruturas
-                        </div>
-                    </div>
-                    <div class="card-section">
-                        <div class="card-label">🌳 Desmatamento</div>
-                        <div class="card-content">
-                            Perda de biodiversidade, erosão do solo, alteração climática
-                        </div>
-                    </div>
-                    <div class="card-section">
-                        <div class="card-label">💧 Poluição</div>
-                        <div class="card-content">
-                            <strong>Água:</strong> Eutrofização (excesso nutrientes)<br>
-                            <strong>Ar:</strong> Gases tóxicos<br>
-                            <strong>Solo:</strong> Agrotóxicos, lixo
-                        </div>
+                    <div class="dica-card">
+                        <strong>💡 Lembrar:</strong> Ciclos = substâncias circulam na natureza
                     </div>
                 </div>
 
-                <!-- TECIDO EPITELIAL -->
+                <!-- TECIDOS -->
                 <div class="card">
-                    <h3>🧱 TECIDO EPITELIAL</h3>
-                    <div class="card-section">
-                        <div class="card-label">📌 Características</div>
-                        <div class="card-content">
-                            • Células justapostas (pouca matriz)<br>
-                            • Avascular (sem vasos)<br>
-                            • Alta capacidade de regeneração
-                        </div>
+                    <h3>🔬 4 Tecidos Humanos</h3>
+                    <div class="card-content">
+                        <strong>Epitelial:</strong> Revestimento/Proteção<br>
+                        <strong>Conjuntivo:</strong> Sustentação/Preenchimento<br>
+                        <strong>Muscular:</strong> Movimento<br>
+                        <strong>Nervoso:</strong> Comunicação
                     </div>
-                    <div class="card-section">
-                        <div class="card-label">🎯 Tipos</div>
-                        <div class="card-content">
-                            <strong>1. REVESTIMENTO:</strong><br>
-                            • Proteção (pele)<br>
-                            • Absorção (intestino)<br><br>
-                            <strong>2. GLANDULAR:</strong><br>
-                            • Produz secreções<br>
-                            • Exócrinas (suor, saliva)<br>
-                            • Endócrinas (hormônios)
-                        </div>
+                    <div class="dica-card">
+                        <strong>💡 Mnemônico:</strong> E-Co-Mu-Ne<br>
+                        (Epitelial, Conjuntivo, Muscular, Nervoso)
                     </div>
                 </div>
 
-                <!-- TECIDOS CONJUNTIVOS -->
-                <div class="card">
-                    <h3>🔗 TECIDOS CONJUNTIVOS</h3>
-                    <div class="card-section">
-                        <div class="card-label">📌 Características Gerais</div>
-                        <div class="card-content">
-                            • Células espaçadas<br>
-                            • MUITA matriz extracelular<br>
-                            • Vascularizado
-                        </div>
-                    </div>
-                    <div class="card-section">
-                        <div class="card-label">🎯 T.C. Propriamente Dito</div>
-                        <div class="card-content">
-                            <strong>Funções:</strong> Sustentação, preenchimento<br>
-                            <strong>Células:</strong> Fibroblastos (produzem colágeno)
-                        </div>
-                    </div>
-                    <div class="card-section">
-                        <div class="card-label">🩸 Tecido Sanguíneo (sangue)</div>
-                        <div class="card-content">
-                            <strong>Plasma:</strong> Parte líquida (água + proteínas)<br>
-                            <strong>Células:</strong><br>
-                            • Hemácias (eritrócitos) - transportam O₂<br>
-                            • Leucócitos - defesa<br>
-                            • Plaquetas - coagulação
-                        </div>
-                    </div>
-                    <div class="card-section">
-                        <div class="card-label">🦴 Outros T.C.</div>
-                        <div class="card-content">
-                            • <strong>Ósseo:</strong> Sustentação rígida<br>
-                            • <strong>Cartilaginoso:</strong> Sustentação flexível<br>
-                            • <strong>Adiposo:</strong> Armazena gordura
-                        </div>
-                    </div>
-                </div>
-
-                <!-- TECIDOS MUSCULARES -->
-                <div class="card">
-                    <h3>💪 TECIDOS MUSCULARES</h3>
-                    <div class="card-section">
-                        <div class="card-label">🎯 Tipos</div>
-                        <div class="card-content">
-                            <strong>1. ESTRIADO ESQUELÉTICO:</strong><br>
-                            • Contração voluntária<br>
-                            • Multinucleado<br>
-                            • Movimentos corporais<br><br>
-                            
-                            <strong>2. ESTRIADO CARDÍACO:</strong><br>
-                            • Contração involuntária<br>
-                            • Mononucleado<br>
-                            • Apenas no coração<br>
-                            • Discos intercalares<br><br>
-                            
-                            <strong>3. LISO (NÃO ESTRIADO):</strong><br>
-                            • Contração involuntária<br>
-                            • Mononucleado<br>
-                            • Órgãos internos (estômago, intestino)
-                        </div>
-                    </div>
-                </div>
-
-                <!-- IMUNIDADE -->
-                <div class="card">
-                    <h3>🛡️ SISTEMA IMUNOLÓGICO</h3>
-                    <div class="card-section">
-                        <div class="card-label">📌 Função</div>
-                        <div class="card-content">
-                            Defesa contra agentes patógenos (vírus, bactérias, fungos)
-                        </div>
-                    </div>
-                    <div class="card-section">
-                        <div class="card-label">🎯 Células de Defesa</div>
-                        <div class="card-content">
-                            <strong>LEUCÓCITOS (glóbulos brancos):</strong><br>
-                            • Fagócitos - "comem" invasores<br>
-                            • Linfócitos B - produzem anticorpos<br>
-                            • Linfócitos T - coordenam resposta
-                        </div>
-                    </div>
-                    <div class="card-section">
-                        <div class="card-label">🔬 Tipos de Imunidade</div>
-                        <div class="card-content">
-                            <strong>INATA:</strong> Nascemos com ela (pele, fagócitos)<br>
-                            <strong>ADQUIRIDA:</strong><br>
-                            • Natural (contraiu a doença)<br>
-                            • Artificial (vacina)
-                        </div>
-                    </div>
-                    <div class="card-section">
-                        <div class="card-label">💉 Vacinas vs Soros</div>
-                        <div class="card-content">
-                            <strong>VACINA:</strong> Antígeno → corpo produz anticorpos (preventiva)<br>
-                            <strong>SORO:</strong> Anticorpos prontos (curativa)
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 
         <!-- CONTEÚDO DETALHADO -->
         <div id="detalhado" class="content">
             
-            <div style="page-break-after: always; text-align: center; padding: 100px 0;">
-                <h1 style="color: #667eea; font-size: 48px; margin-bottom: 20px;">📖 CONTEÚDO DETALHADO</h1>
-                <p style="font-size: 24px; color: #666;">Com comparações e esquemas visuais</p>
-            </div>
+            <h2 style="text-align: center; color: #667eea; margin: 40px 0 20px;">📖 CONTEÚDO DETALHADO</h2>
             
-            <!-- ÁCIDOS NUCLEICOS -->
+            <!-- DNA E RNA DETALHADO -->
             <div class="detalhado-section">
-                <h2>🧬 ÁCIDOS NUCLEICOS - DNA E RNA</h2>
+                <h2>🧬 DNA E RNA</h2>
                 
-                <div class="palavras-chave">
-                    <span class="palavra">DNA</span>
-                    <span class="palavra">RNA</span>
-                    <span class="palavra">Nucleotídeos</span>
-                    <span class="palavra">Duplicação</span>
-                </div>
+                <h3>DNA - Estrutura</h3>
+                <p><strong>Dupla hélice</strong> formada por duas cadeias de nucleotídeos.</p>
+                
+                <p><strong>Cada nucleotídeo contém:</strong></p>
+                <ul>
+                    <li>Açúcar (desoxirribose)</li>
+                    <li>Fosfato</li>
+                    <li>Base nitrogenada</li>
+                </ul>
 
-                <h3>📊 Comparação DNA vs RNA</h3>
-
+                <p><strong>Bases nitrogenadas do DNA:</strong></p>
                 <table class="tabela">
                     <tr>
-                        <th>Característica</th>
-                        <th>DNA</th>
-                        <th>RNA</th>
+                        <th>Tipo</th>
+                        <th>Bases</th>
+                        <th>Pareamento</th>
                     </tr>
                     <tr>
-                        <td><strong>Estrutura</strong></td>
-                        <td>Dupla-hélice (2 fitas)</td>
-                        <td>Fita simples</td>
+                        <td>Purinas</td>
+                        <td>Adenina (A), Guanina (G)</td>
+                        <td>A ↔ T (2 ligações)</td>
                     </tr>
                     <tr>
-                        <td><strong>Açúcar</strong></td>
-                        <td>Desoxirribose</td>
-                        <td>Ribose</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Bases Nitrogenadas</strong></td>
-                        <td>A, T, C, G</td>
-                        <td>A, U, C, G</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Função</strong></td>
-                        <td>Armazenar informação genética</td>
-                        <td>Síntese de proteínas</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Localização</strong></td>
-                        <td>Núcleo (eucariotos)</td>
-                        <td>Núcleo e citoplasma</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Quantidade</strong></td>
-                        <td>Constante</td>
-                        <td>Variável</td>
+                        <td>Pirimidinas</td>
+                        <td>Timina (T), Citosina (C)</td>
+                        <td>C ↔ G (3 ligações)</td>
                     </tr>
                 </table>
 
-                <h3>🧩 Nucleotídeo (unidade básica)</h3>
-
-                <div class="esquema">
-    FOSFATO
-        |
-    AÇÚCAR (pentose)
-        |
-    BASE NITROGENADA
-                </div>
-
-                <div class="dica-bio">
-                    <strong>💡 PAREAMENTO DE BASES:</strong><br>
-                    • <strong>DNA:</strong> Adenina ↔ Timina (2 pontes de H) • Citosina ↔ Guanina (3 pontes de H)<br>
-                    • <strong>RNA:</strong> Adenina ↔ Uracila • Citosina ↔ Guanina<br>
-                    <strong>Macete:</strong> "Purinas (A, G) com Pirimidinas (T/U, C)"
-                </div>
-
-                <h3>🔄 Duplicação do DNA</h3>
-
-                <div class="destaque-bio">
-                    <strong>SEMICONSERVATIVA:</strong> Cada fita serve de molde. Resulta em 2 moléculas, cada uma com 1 fita antiga e 1 fita nova.
-                </div>
-
-                <div class="esquema">
-DNA original: ═════════
-              ═════════
-       ↓ Duplicação
-DNA 1: ═════════    DNA 2: ═════════
-       ─────────           ─────────
-    (1 velha + 1 nova)  (1 velha + 1 nova)
-                </div>
-            </div>
-
-            <!-- DIVISÃO CELULAR -->
-            <div class="detalhado-section">
-                <h2>🔄 DIVISÃO CELULAR - MITOSE E MEIOSE</h2>
+                <h3>RNA - Estrutura</h3>
+                <p><strong>Fita simples</strong> (geralmente).</p>
                 
-                <div class="palavras-chave">
-                    <span class="palavra">Mitose</span>
-                    <span class="palavra">Meiose</span>
-                    <span class="palavra">Cromossomos</span>
-                    <span class="palavra">Gametas</span>
-                </div>
+                <p><strong>Diferenças do DNA:</strong></p>
+                <ul>
+                    <li>Açúcar = ribose (DNA tem desoxirribose)</li>
+                    <li>Base = Uracila (U) no lugar da Timina</li>
+                    <li>Fita simples (DNA é dupla)</li>
+                </ul>
 
-                <h3>📊 Comparação Mitose vs Meiose</h3>
-
+                <h3>Tipos de RNA</h3>
                 <table class="tabela">
                     <tr>
-                        <th>Característica</th>
-                        <th>MITOSE</th>
-                        <th>MEIOSE</th>
-                    </tr>
-                    <tr>
-                        <td><strong>N° de divisões</strong></td>
-                        <td>1 divisão</td>
-                        <td>2 divisões (I e II)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Células formadas</strong></td>
-                        <td>2 células</td>
-                        <td>4 células</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Cromossomos</strong></td>
-                        <td>Mantém (2n → 2n)</td>
-                        <td>Reduz pela metade (2n → n)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Células resultantes</strong></td>
-                        <td>IDÊNTICAS</td>
-                        <td>DIFERENTES</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Função</strong></td>
-                        <td>Crescimento, regeneração</td>
-                        <td>Produção de gametas</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Onde ocorre</strong></td>
-                        <td>Células somáticas</td>
-                        <td>Células germinativas</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Variabilidade</strong></td>
-                        <td>Não gera</td>
-                        <td>Gera (crossing-over)</td>
-                    </tr>
-                </table>
-
-                <h3>🔄 MITOSE - Fases (PMAT)</h3>
-
-                <div class="esquema">
-<strong>INTERFASE (preparação):</strong>
-• G1: Crescimento
-• S: Duplicação do DNA
-• G2: Preparação para divisão
-
-<strong>PRÓFASE:</strong>
-• Cromatina condensa → cromossomos visíveis
-• Centríolos migram para polos
-• Carioteca desaparece
-
-<strong>METÁFASE:</strong>
-• Cromossomos no EQUADOR da célula
-• Fibras do fuso ligadas ao centrômero
-
-<strong>ANÁFASE:</strong>
-• Cromátides-irmãs SEPARAM
-• Migram para polos opostos
-
-<strong>TELÓFASE:</strong>
-• Cromossomos descondensam
-• Carioteca reaparece
-• Citocinese (divisão do citoplasma)
-
-<strong>RESULTADO:</strong> 2 células 2n (diploides idênticas)
-                </div>
-
-                <h3>🎲 MEIOSE - Duas Divisões</h3>
-
-                <div class="esquema">
-<strong>MEIOSE I (REDUCIONAL):</strong>
-• Prófase I: CROSSING-OVER (troca de pedaços)
-• Metáfase I: Cromossomos homólogos no equador
-• Anáfase I: Homólogos SEPARAM
-• Telófase I: 2 células n (haploides)
-
-<strong>MEIOSE II (EQUACIONAL):</strong>
-• Similar à mitose
-• Cromátides-irmãs separam
-• 4 células n (haploides DIFERENTES)
-                </div>
-
-                <div class="dica-bio">
-                    <strong>💡 CROSSING-OVER:</strong> Troca de segmentos entre cromossomos homólogos na prófase I. Aumenta variabilidade genética!
-                </div>
-            </div>
-
-            <!-- SÍNTESE PROTEICA -->
-            <div class="detalhado-section">
-                <h2>🧪 SÍNTESE PROTEICA</h2>
-                
-                <div class="palavras-chave">
-                    <span class="palavra">Transcrição</span>
-                    <span class="palavra">Tradução</span>
-                    <span class="palavra">Código Genético</span>
-                    <span class="palavra">Ribossomos</span>
-                </div>
-
-                <h3>📊 Fluxo da Informação Genética</h3>
-
-                <div class="destaque-bio">
-                    <strong>DOGMA CENTRAL DA BIOLOGIA MOLECULAR:</strong><br>
-                    DNA → RNA → Proteína
-                </div>
-
-                <div class="esquema">
-<strong>1. TRANSCRIÇÃO (Núcleo):</strong>
-DNA ━━━━━━━━━━━━━━━━━━
-       ↓ RNA polimerase
-RNA mensageiro ──────────
-       ↓ Sai do núcleo
-       
-<strong>2. TRADUÇÃO (Ribossomos):</strong>
-RNAm: ─── AUG ─── UCG ─── GAA ───
-         ↓      ↓      ↓
-RNAt:   UAC    AGC    CUU
-         |      |      |
-     Aminoácido─Aminoácido─Aminoácido
-                ↓
-            PROTEÍNA
-                </div>
-
-                <h3>🔤 Código Genético</h3>
-
-                <div class="destaque-bio">
-                    <strong>CÓDON:</strong> Sequência de 3 bases no RNAm<br>
-                    <strong>ANTICÓDON:</strong> Sequência complementar no RNAt<br>
-                    Cada códon especifica 1 aminoácido
-                </div>
-
-                <div class="exemplo-bio">
-                    <strong>EXEMPLO:</strong><br>
-                    DNA:     TAC - CGT - AAA<br>
-                    RNAm:    AUG - GCA - UUU<br>
-                    RNAt:    UAC - CGU - AAA<br>
-                    Proteína: Met - Ala - Phe
-                </div>
-
-                <div class="dica-bio">
-                    <strong>💡 CÓDONS ESPECIAIS:</strong><br>
-                    • <strong>AUG:</strong> Códon de INÍCIO (metionina)<br>
-                    • <strong>UAA, UAG, UGA:</strong> Códons de PARADA (stop)
-                </div>
-
-                <h3>🎯 Tipos de RNA</h3>
-
-                <div class="comparacao">
-                    <div class="comparacao-item">
-                        <h4>RNA mensageiro (RNAm)</h4>
-                        <p>Leva a "mensagem" do DNA até os ribossomos. Contém os códons.</p>
-                    </div>
-                    <div class="comparacao-item">
-                        <h4>RNA transportador (RNAt)</h4>
-                        <p>Transporta aminoácidos específicos. Tem o anticódon.</p>
-                    </div>
-                    <div class="comparacao-item">
-                        <h4>RNA ribossômico (RNAr)</h4>
-                        <p>Compõe os ribossomos (local da tradução).</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SISTEMAS FISIOLÓGICOS -->
-            <div class="detalhado-section">
-                <h2>🫀 FISIOLOGIA HUMANA</h2>
-                
-                <div class="palavras-chave">
-                    <span class="palavra">Respiratório</span>
-                    <span class="palavra">Circulatório</span>
-                    <span class="palavra">Nervoso</span>
-                    <span class="palavra">Homeostase</span>
-                </div>
-
-                <h3>🫁 Sistema Respiratório</h3>
-
-                <div class="esquema">
-<strong>TRAJETO DO AR:</strong>
-
-Fossas nasais → Filtram, umidificam, aquecem
-       ↓
-   Faringe → Cruzamento (ar e alimento)
-       ↓
-   Laringe → Cordas vocais, epiglote
-       ↓
-   Traqueia → Anéis cartilaginosos
-       ↓
-   Brônquios → Ramificam para pulmões
-       ↓
-Bronquíolos → Ramificações menores
-       ↓
-<strong>ALVÉOLOS</strong> → HEMATOSE (troca gasosa!)
-                </div>
-
-                <div class="destaque-bio">
-                    <strong>HEMATOSE:</strong> Troca de gases nos alvéolos<br>
-                    • O₂ do ar → sangue (hemácias)<br>
-                    • CO₂ do sangue → ar expirado
-                </div>
-
-                <div class="dica-bio">
-                    <strong>💡 DIAFRAGMA:</strong><br>
-                    • <strong>Inspiração:</strong> Diafragma DESCE (contrai) → pulmões expandem → ar entra<br>
-                    • <strong>Expiração:</strong> Diafragma SOBE (relaxa) → pulmões contraem → ar sai
-                </div>
-
-                <h3>❤️ Sistema Circulatório</h3>
-
-                <div class="esquema">
-<strong>CORAÇÃO (4 cavidades):</strong>
-
-   ÁTRIO DIREITO    ÁTRIO ESQUERDO
-        ↓                  ↓
-VENTRÍCULO DIREITO  VENTRÍCULO ESQUERDO
-
-<strong>LADO DIREITO:</strong> Sangue venoso (rico em CO₂)
-<strong>LADO ESQUERDO:</strong> Sangue arterial (rico em O₂)
-                </div>
-
-                <div class="destaque-bio">
-                    <strong>CIRCULAÇÃO DUPLA:</strong>
-                </div>
-
-                <div class="esquema">
-<strong>PEQUENA CIRCULAÇÃO (Pulmonar):</strong>
-Ventrículo Direito → Pulmões → Átrio Esquerdo
-(sangue pobre em O₂ → oxigenação → sangue rico em O₂)
-
-<strong>GRANDE CIRCULAÇÃO (Sistêmica):</strong>
-Ventrículo Esquerdo → Corpo todo → Átrio Direito
-(leva O₂ e nutrientes → recolhe CO₂ e resíduos)
-                </div>
-
-                <table class="tabela">
-                    <tr>
-                        <th>Vaso</th>
+                        <th>Tipo</th>
+                        <th>Nome</th>
                         <th>Função</th>
-                        <th>Características</th>
                     </tr>
                     <tr>
-                        <td><strong>ARTÉRIAS</strong></td>
-                        <td>Saem do coração</td>
-                        <td>Parede espessa, pressão alta</td>
+                        <td>RNAm</td>
+                        <td>Mensageiro</td>
+                        <td>Leva informação do DNA ao ribossomo</td>
                     </tr>
                     <tr>
-                        <td><strong>VEIAS</strong></td>
-                        <td>Chegam ao coração</td>
-                        <td>Parede fina, válvulas</td>
+                        <td>RNAt</td>
+                        <td>Transportador</td>
+                        <td>Transporta aminoácidos</td>
                     </tr>
                     <tr>
-                        <td><strong>CAPILARES</strong></td>
-                        <td>Trocas com tecidos</td>
-                        <td>Parede finíssima (1 célula)</td>
+                        <td>RNAr</td>
+                        <td>Ribossômico</td>
+                        <td>Compõe os ribossomos</td>
                     </tr>
                 </table>
-
-                <h3>🧠 Sistema Nervoso</h3>
-
-                <div class="esquema">
-<strong>ORGANIZAÇÃO:</strong>
-
-SISTEMA NERVOSO CENTRAL (SNC)
-├─ Encéfalo
-│  ├─ Cérebro (pensamento, memória)
-│  ├─ Cerebelo (equilíbrio, coordenação)
-│  └─ Bulbo (funções vitais)
-└─ Medula Espinhal (reflexos)
-
-SISTEMA NERVOSO PERIFÉRICO (SNP)
-├─ Nervos sensitivos (trazem info)
-└─ Nervos motores (levam comandos)
-                </div>
-
-                <h3>⚡ Neurônio</h3>
-
-                <div class="esquema">
-DENDRITOS (recebem estímulo)
-       ↓
-CORPO CELULAR (núcleo)
-       ↓
-AXÔNIO (conduz impulso elétrico)
-       ↓
-SINAPSE (comunicação com outro neurônio)
-                </div>
-
-                <div class="dica-bio">
-                    <strong>💡 SINAPSE:</strong> Comunicação entre neurônios via NEUROTRANSMISSORES (serotonina, dopamina, acetilcolina). Espaço sináptico pequeno.
-                </div>
-
-                <h3>🎯 Ato Reflexo</h3>
-
-                <div class="esquema">
-Estímulo → Receptor → Nervo sensitivo → 
-<strong>MEDULA ESPINHAL</strong> → Nervo motor → Músculo → Resposta
-
-(NÃO passa pelo cérebro = RÁPIDO!)
-                </div>
             </div>
 
-            <!-- ECOLOGIA -->
+            <!-- SÍNTESE PROTEICA DETALHADO -->
             <div class="detalhado-section">
-                <h2>🌍 ECOLOGIA</h2>
+                <h2>⚙️ SÍNTESE PROTEICA</h2>
                 
-                <div class="palavras-chave">
-                    <span class="palavra">Ecossistema</span>
-                    <span class="palavra">Cadeias Alimentares</span>
-                    <span class="palavra">Relações</span>
-                    <span class="palavra">Impactos</span>
+                <h3>1. TRANSCRIÇÃO (Núcleo)</h3>
+                <p>Processo de copiar um gene do DNA para o RNAm.</p>
+                
+                <div class="diagrama">
+<strong>PASSO A PASSO:</strong>
+
+1. DNA se abre (quebra pontes de hidrogênio)
+2. RNA polimerase lê a fita molde
+3. RNAm é sintetizado (complementar ao DNA)
+4. RNAm sai do núcleo
+
+DNA:  A T G C C T A G C
+       ↓ transcrição
+RNAm: U A C G G A U C G
                 </div>
 
-                <h3>📊 Níveis de Organização</h3>
-
-                <div class="esquema">
-<strong>INDIVÍDUO</strong> → Um ser vivo
-       ↓
-<strong>POPULAÇÃO</strong> → Indivíduos da mesma espécie
-       ↓
-<strong>COMUNIDADE</strong> → Populações interagindo (biótico)
-       ↓
-<strong>ECOSSISTEMA</strong> → Comunidade + fatores abióticos
-       ↓
-<strong>BIOSFERA</strong> → Todos os ecossistemas da Terra
+                <div class="exemplo">
+                    <strong>IMPORTANTE:</strong> Na transcrição, onde há T no DNA, vai A no RNA. Onde há A no DNA, vai U no RNA (não T!)
                 </div>
 
-                <div class="dica-bio">
-                    <strong>💡 HABITAT vs NICHO:</strong><br>
-                    • <strong>Habitat:</strong> "Endereço" onde vive (ex: rio)<br>
-                    • <strong>Nicho:</strong> "Profissão", papel no ecossistema (ex: decompositor)
+                <h3>2. TRADUÇÃO (Ribossomo)</h3>
+                <p>Processo de ler o RNAm e produzir proteína.</p>
+                
+                <div class="diagrama">
+<strong>PASSO A PASSO:</strong>
+
+1. RNAm se liga ao ribossomo
+2. RNAt traz aminoácidos
+3. Códon (RNAm) pareia com anticódon (RNAt)
+4. Aminoácidos se ligam formando proteína
+
+RNAm: AUG - CCU - AGC - UAA
+       ↓     ↓     ↓     ↓
+      Met - Pro - Ser - Stop
+      
+(Cada 3 bases = 1 códon = 1 aminoácido)
                 </div>
 
-                <h3>🍃 Cadeia e Teia Alimentar</h3>
-
-                <div class="esquema">
-<strong>CADEIA ALIMENTAR LINEAR:</strong>
-
-Capim → Gafanhoto → Sapo → Cobra → Gavião
-(P)      (C1)      (C2)    (C3)     (C4)
-
-P = Produtor | C = Consumidor
-                </div>
-
-                <div class="destaque-bio">
-                    <strong>PIRÂMIDE DE ENERGIA:</strong> A cada nível, apenas 10% da energia passa adiante. 90% é perdida em metabolismo, calor, movimento.
-                </div>
-
-                <table class="tabela">
-                    <tr>
-                        <th>Nível Trófico</th>
-                        <th>Tipo</th>
-                        <th>Exemplo</th>
-                    </tr>
-                    <tr>
-                        <td>Produtores</td>
-                        <td>Autótrofos (fotossíntese)</td>
-                        <td>Plantas, algas</td>
-                    </tr>
-                    <tr>
-                        <td>Consumidores 1°</td>
-                        <td>Herbívoros</td>
-                        <td>Gafanhoto, boi</td>
-                    </tr>
-                    <tr>
-                        <td>Consumidores 2°</td>
-                        <td>Carnívoros</td>
-                        <td>Sapo, lobo</td>
-                    </tr>
-                    <tr>
-                        <td>Consumidores 3°</td>
-                        <td>Carnívoros (topo)</td>
-                        <td>Gavião, leão</td>
-                    </tr>
-                    <tr>
-                        <td>Decompositores</td>
-                        <td>Reciclam matéria</td>
-                        <td>Fungos, bactérias</td>
-                    </tr>
-                </table>
-
-                <h3>🤝 Relações Ecológicas</h3>
-
-                <table class="tabela">
-                    <tr>
-                        <th>Tipo</th>
-                        <th>Relação</th>
-                        <th>Resultado</th>
-                        <th>Exemplo</th>
-                    </tr>
-                    <tr>
-                        <td colspan="4" style="background: #667eea; color: white;"><strong>HARMÔNICAS (pelo menos um se beneficia)</strong></td>
-                    </tr>
-                    <tr>
-                        <td>Mutualismo</td>
-                        <td>Interespecífica</td>
-                        <td>+ +</td>
-                        <td>Líquen (fungo + alga)</td>
-                    </tr>
-                    <tr>
-                        <td>Protocooperação</td>
-                        <td>Interespecífica</td>
-                        <td>+ + (opcional)</td>
-                        <td>Anu e gado (carrapatos)</td>
-                    </tr>
-                    <tr>
-                        <td>Comensalismo</td>
-                        <td>Interespecífica</td>
-                        <td>+ 0</td>
-                        <td>Tubarão e rêmora</td>
-                    </tr>
-                    <tr>
-                        <td>Sociedade</td>
-                        <td>Intraespecífica</td>
-                        <td>+ +</td>
-                        <td>Abelhas, formigas</td>
-                    </tr>
-                    <tr>
-                        <td colspan="4" style="background: #667eea; color: white;"><strong>DESARMÔNICAS (pelo menos um prejudicado)</strong></td>
-                    </tr>
-                    <tr>
-                        <td>Predação</td>
-                        <td>Interespecífica</td>
-                        <td>+ -</td>
-                        <td>Leão come zebra</td>
-                    </tr>
-                    <tr>
-                        <td>Parasitismo</td>
-                        <td>Interespecífica</td>
-                        <td>+ -</td>
-                        <td>Carrapato no cão</td>
-                    </tr>
-                    <tr>
-                        <td>Competição</td>
-                        <td>Intra ou Inter</td>
-                        <td>- -</td>
-                        <td>Leões por território</td>
-                    </tr>
-                </table>
-
-                <h3>⚠️ Problemas Ambientais</h3>
-
-                <div class="comparacao">
-                    <div class="comparacao-item">
-                        <h4>🌡️ Efeito Estufa</h4>
-                        <p><strong>Natural:</strong> Gases retêm calor, mantêm Terra habitável</p>
-                        <p><strong>Problema:</strong> Excesso CO₂ → aquecimento global</p>
-                        <p><strong>Causas:</strong> Queima combustíveis fósseis, desmatamento</p>
-                    </div>
-                    <div class="comparacao-item">
-                        <h4>☀️ Camada de Ozônio</h4>
-                        <p><strong>Função:</strong> Filtra raios UV prejudiciais</p>
-                        <p><strong>Problema:</strong> CFCs (geladeiras, sprays) destroem O₃</p>
-                        <p><strong>Efeito:</strong> Aumento câncer de pele</p>
-                    </div>
-                    <div class="comparacao-item">
-                        <h4>🌧️ Chuva Ácida</h4>
-                        <p><strong>Causa:</strong> SO₂ e NO₂ (indústrias) + água</p>
-                        <p><strong>Efeitos:</strong> Acidifica lagos, mata peixes, corrói monumentos</p>
-                    </div>
-                    <div class="comparacao-item">
-                        <h4>💧 Eutrofização</h4>
-                        <p><strong>Causa:</strong> Excesso nutrientes (esgoto, agrotóxicos)</p>
-                        <p><strong>Efeito:</strong> Proliferação algas → morte peixes</p>
-                    </div>
-                </div>
+                <h3>Código Genético</h3>
+                <p><strong>Características:</strong></p>
+                <ul>
+                    <li><strong>Universal:</strong> Igual em todos seres vivos</li>
+                    <li><strong>Degenerado:</strong> Vários códons para mesmo aminoácido</li>
+                    <li><strong>Não ambíguo:</strong> Cada códon = 1 aminoácido só</li>
+                    <li><strong>Códon de início:</strong> AUG (metionina)</li>
+                    <li><strong>Códons de parada:</strong> UAA, UAG, UGA</li>
+                </ul>
             </div>
 
-            <!-- HISTOLOGIA -->
+            <!-- DIVISÃO CELULAR DETALHADO -->
             <div class="detalhado-section">
-                <h2>🔬 HISTOLOGIA</h2>
+                <h2>🔄 DIVISÃO CELULAR</h2>
                 
-                <div class="palavras-chave">
-                    <span class="palavra">Epitélio</span>
-                    <span class="palavra">Conjuntivo</span>
-                    <span class="palavra">Muscular</span>
-                    <span class="palavra">Nervoso</span>
-                </div>
-
-                <h3>📊 Visão Geral dos Tecidos</h3>
+                <h3>MITOSE</h3>
+                <p><strong>Objetivo:</strong> Crescimento, regeneração, reprodução assexuada.</p>
+                <p><strong>Resultado:</strong> 2 células idênticas (diploides)</p>
 
                 <table class="tabela">
                     <tr>
-                        <th>Tecido</th>
-                        <th>Células</th>
-                        <th>Matriz</th>
-                        <th>Vascularização</th>
-                        <th>Função Principal</th>
+                        <th>Fase</th>
+                        <th>O que acontece</th>
                     </tr>
                     <tr>
-                        <td><strong>EPITELIAL</strong></td>
-                        <td>Justapostas</td>
-                        <td>Pouca</td>
-                        <td>Avascular</td>
-                        <td>Revestimento, secreção</td>
+                        <td><strong>PRÓFASE</strong></td>
+                        <td>Cromossomos condensam, carioteca desaparece, fuso se forma</td>
                     </tr>
                     <tr>
-                        <td><strong>CONJUNTIVO</strong></td>
-                        <td>Espaçadas</td>
-                        <td>Muita</td>
-                        <td>Vascularizado</td>
-                        <td>Suporte, preenchimento</td>
+                        <td><strong>METÁFASE</strong></td>
+                        <td>Cromossomos se alinham no equador da célula</td>
                     </tr>
                     <tr>
-                        <td><strong>MUSCULAR</strong></td>
-                        <td>Alongadas</td>
-                        <td>Pouca</td>
-                        <td>Vascularizado</td>
-                        <td>Contração, movimento</td>
+                        <td><strong>ANÁFASE</strong></td>
+                        <td>Cromátides-irmãs se separam e vão para polos opostos</td>
                     </tr>
                     <tr>
-                        <td><strong>NERVOSO</strong></td>
-                        <td>Neurônios</td>
-                        <td>Pouca</td>
-                        <td>Vascularizado</td>
-                        <td>Impulsos elétricos</td>
+                        <td><strong>TELÓFASE</strong></td>
+                        <td>Carioteca reaparece, cromossomos descondensam, célula divide</td>
                     </tr>
                 </table>
 
-                <h3>🧱 Tecido Epitelial</h3>
+                <h3>MEIOSE</h3>
+                <p><strong>Objetivo:</strong> Formar gametas (células sexuais).</p>
+                <p><strong>Resultado:</strong> 4 células diferentes (haploides)</p>
 
-                <div class="comparacao">
-                    <div class="comparacao-item">
-                        <h4>Revestimento</h4>
-                        <p>• Pele (proteção)<br>
-                        • Intestino (absorção)<br>
-                        • Bexiga (impermeabilização)</p>
-                    </div>
-                    <div class="comparacao-item">
-                        <h4>Glandular</h4>
-                        <p><strong>Exócrinas:</strong> Liberam para fora (suor, saliva)<br>
-                        <strong>Endócrinas:</strong> Liberam hormônios no sangue (tireoide)</p>
-                    </div>
+                <div class="exemplo">
+                    <strong>DIFERENÇA CRUCIAL:</strong><br><br>
+                    <strong>MITOSE:</strong> 2n → 2n (mantém n° de cromossomos)<br>
+                    <strong>MEIOSE:</strong> 2n → n (reduz pela metade)<br><br>
+                    Humanos: 46 cromossomos → gametas com 23<br>
+                    Na fecundação: 23 + 23 = 46 (volta ao normal!)
                 </div>
 
-                <h3>🔗 Tecidos Conjuntivos</h3>
+                <p><strong>Fases da Meiose:</strong></p>
+                <ul>
+                    <li><strong>MEIOSE I:</strong> Reducional (2n → n) - separa cromossomos homólogos</li>
+                    <li><strong>MEIOSE II:</strong> Equacional (n → n) - separa cromátides (igual mitose)</li>
+                </ul>
 
+                <p><strong>Importância:</strong></p>
+                <ul>
+                    <li>Variabilidade genética (crossing-over na Prófase I)</li>
+                    <li>Segregação independente dos cromossomos</li>
+                </ul>
+            </div>
+
+            <!-- SISTEMAS HUMANOS DETALHADO -->
+            <div class="detalhado-section">
+                <h2>🫀 SISTEMAS DO CORPO HUMANO</h2>
+                
+                <h3>Sistema Respiratório</h3>
+                <p><strong>Função:</strong> Captar O₂ e eliminar CO₂</p>
+
+                <p><strong>Órgãos e funções:</strong></p>
+                <ul>
+                    <li><strong>Fossas nasais:</strong> Filtram, aquecem e umidificam o ar</li>
+                    <li><strong>Faringe:</strong> Via comum (ar e alimento)</li>
+                    <li><strong>Laringe:</strong> Contém cordas vocais</li>
+                    <li><strong>Traqueia:</strong> Tubo com anéis cartilaginosos</li>
+                    <li><strong>Brônquios:</strong> Ramificações da traqueia</li>
+                    <li><strong>Bronquíolos:</strong> Ramificações menores</li>
+                    <li><strong>Alvéolos:</strong> Sacos aéreos (hematose)</li>
+                </ul>
+
+                <div class="exemplo">
+                    <strong>HEMATOSE:</strong> Troca gasosa nos alvéolos pulmonares.<br>
+                    • O₂ passa do ar para o sangue<br>
+                    • CO₂ passa do sangue para o ar<br>
+                    • Ocorre por difusão simples
+                </div>
+
+                <h3>Sistema Circulatório</h3>
+                <p><strong>Função:</strong> Transportar sangue (nutrientes, gases, hormônios)</p>
+
+                <p><strong>Coração - 4 cavidades:</strong></p>
+                <ul>
+                    <li><strong>Átrio direito:</strong> Recebe sangue venoso do corpo</li>
+                    <li><strong>Ventrículo direito:</strong> Bombeia sangue para os pulmões</li>
+                    <li><strong>Átrio esquerdo:</strong> Recebe sangue arterial dos pulmões</li>
+                    <li><strong>Ventrículo esquerdo:</strong> Bombeia sangue para o corpo</li>
+                </ul>
+
+                <p><strong>Circulação Dupla:</strong></p>
                 <table class="tabela">
                     <tr>
                         <th>Tipo</th>
-                        <th>Característica</th>
+                        <th>Caminho</th>
                         <th>Função</th>
-                        <th>Localização</th>
                     </tr>
                     <tr>
-                        <td><strong>T.C.P.D.</strong></td>
-                        <td>Fibroblastos, fibras</td>
-                        <td>Preenche espaços</td>
-                        <td>Entre órgãos</td>
+                        <td>Pequena (Pulmonar)</td>
+                        <td>VD → Pulmão → AE</td>
+                        <td>Oxigenar sangue</td>
                     </tr>
                     <tr>
-                        <td><strong>Adiposo</strong></td>
-                        <td>Adipócitos (gordura)</td>
-                        <td>Reserva energia</td>
-                        <td>Sob a pele</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Cartilaginoso</strong></td>
-                        <td>Condrócitos</td>
-                        <td>Sustentação flexível</td>
-                        <td>Nariz, orelha</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Ósseo</strong></td>
-                        <td>Osteócitos</td>
-                        <td>Sustentação rígida</td>
-                        <td>Esqueleto</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Sanguíneo</strong></td>
-                        <td>Hemácias, leucócitos</td>
-                        <td>Transporte</td>
-                        <td>Vasos sanguíneos</td>
+                        <td>Grande (Sistêmica)</td>
+                        <td>VE → Corpo → AD</td>
+                        <td>Levar O₂ aos tecidos</td>
                     </tr>
                 </table>
 
-                <h3>💪 Tecido Muscular</h3>
+                <h3>Sistema Digestório</h3>
+                <p><strong>Função:</strong> Digerir alimentos e absorver nutrientes</p>
 
-                <table class="tabela">
-                    <tr>
-                        <th>Tipo</th>
-                        <th>Estrias</th>
-                        <th>Núcleos</th>
-                        <th>Controle</th>
-                        <th>Localização</th>
-                    </tr>
-                    <tr>
-                        <td><strong>Estriado Esquelético</strong></td>
-                        <td>Sim</td>
-                        <td>Vários</td>
-                        <td>Voluntário</td>
-                        <td>Músculos esqueléticos</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Estriado Cardíaco</strong></td>
-                        <td>Sim</td>
-                        <td>1-2</td>
-                        <td>Involuntário</td>
-                        <td>Coração</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Liso</strong></td>
-                        <td>Não</td>
-                        <td>1</td>
-                        <td>Involuntário</td>
-                        <td>Órgãos internos</td>
-                    </tr>
-                </table>
+                <p><strong>Órgãos e digestão:</strong></p>
+                <ul>
+                    <li><strong>Boca:</strong> Digestão mecânica (dentes) e química (amilase salivar)</li>
+                    <li><strong>Esôfago:</strong> Transporte por peristaltismo</li>
+                    <li><strong>Estômago:</strong> Suco gástrico (HCl + pepsina) digere proteínas</li>
+                    <li><strong>Intestino delgado:</strong> Principal local de digestão e absorção</li>
+                    <li><strong>Intestino grosso:</strong> Absorve água, forma fezes</li>
+                </ul>
 
-                <h3>🛡️ Sistema Imunológico</h3>
-
-                <div class="esquema">
-<strong>DEFESA EM CAMADAS:</strong>
-
-1ª BARREIRA: Pele, mucosas
-      ↓ (se passar)
-2ª BARREIRA: Fagócitos (comem invasores)
-      ↓ (se persistir)
-3ª BARREIRA: Linfócitos (resposta específica)
-   ├─ Linfócitos B → Produzem ANTICORPOS
-   └─ Linfócitos T → Coordenam ataque
-                </div>
-
-                <div class="dica-bio">
-                    <strong>💡 VACINA vs SORO:</strong><br>
-                    • <strong>VACINA:</strong> Antígeno (patógeno morto/atenuado) → corpo produz anticorpos → PREVENTIVA (imunidade ativa)<br>
-                    • <strong>SORO:</strong> Anticorpos prontos → CURATIVA (imunidade passiva - temporária)
+                <div class="exemplo">
+                    <strong>GLÂNDULAS ANEXAS:</strong><br>
+                    • <strong>Fígado:</strong> Produz bile (emulsifica gorduras)<br>
+                    • <strong>Pâncreas:</strong> Produz suco pancreático (várias enzimas)<br>
+                    • <strong>Glândulas salivares:</strong> Produzem saliva (amilase)
                 </div>
             </div>
 
@@ -1697,7 +882,7 @@ P = Produtor | C = Consumidor
 
     </div>
 
-    <button class="print-btn" onclick="window.print()">🖨️ Imprimir Tudo</button>
+    <button class="print-btn" onclick="window.print()">🖨️ Imprimir</button>
 
     <script>
         function showTab(tabName) {
