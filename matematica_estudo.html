@@ -389,8 +389,25 @@
         }
 
         @media (max-width: 768px) {
+            body { padding: 10px; }
+            .container { padding: 20px; border-radius: 10px; }
+            h1 { font-size: 2em; }
             .cards-grid { grid-template-columns: 1fr; }
             .nivel-2-container { grid-template-columns: 1fr; }
+            .mapa-container { min-width: 100%; }
+            .tab { padding: 10px 20px; font-size: 14px; }
+            .card { min-height: auto; }
+            .formula { font-size: 18px; }
+            .detalhado-section { padding: 20px; }
+        }
+        
+        @media (max-width: 480px) {
+            h1 { font-size: 1.5em; }
+            .subtitle { font-size: 0.9em; }
+            .tab { padding: 8px 15px; font-size: 13px; }
+            .card h3 { font-size: 18px; }
+            .formula { font-size: 16px; }
+            .print-btn { bottom: 15px; right: 15px; padding: 12px 20px; font-size: 14px; }
         }
 
         @media print {
