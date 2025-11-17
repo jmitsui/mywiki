@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Química - Material de Estudo</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg,#0f4c81 0%,#3aa0ff 100%); padding: 20px; line-height: 1.6; }
+        .container { max-width: 1400px; margin: 0 auto; background: white; border-radius: 20px; padding: 40px; box-shadow: 0 20px 60px rgba(0,0,0,0.25); }
+        h1 { text-align: center; color: #0b3960; margin-bottom: 8px; font-size: 2.5em; }
+        .subtitle { text-align: center; color: #444; margin-bottom: 18px; font-size: 1.05em; }
+        .aviso { background: #e3f2fd; border: 2px solid #90caf9; border-radius: 10px; padding: 12px; margin-bottom: 24px; text-align: center; }
+        .aviso strong { color: #0b57a4; }
+        .tabs { display:flex; gap:10px; margin-bottom:30px; flex-wrap:wrap; justify-content:center; }
+        .tab { padding:12px 28px; background:#f0f0f0; border:none; border-radius:25px; cursor:pointer; font-size:16px; font-weight:600; color:#333; }
+        .tab:hover { background: linear-gradient(135deg,#1976d2,#42a5f5); color:white; transform:translateY(-2px); }
+        .tab.active { background: linear-gradient(135deg,#1976d2,#42a5f5); color:white; }
+        .content { display:none; }
+        .content.active { display:block; animation:fadeIn .45s; }
+        @keyframes fadeIn { from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);} }
+        /* mapa mental */
+        .mapa-mental { padding:26px; background:#e8f5ff; border-radius:14px; overflow-x:auto; }
+        .mapa-container { display:flex; flex-direction:column; align-items:center; min-width:820px; }
+        .nivel-1 { background: linear-gradient(135deg,#1976d2,#0288d1); color:white; padding:18px 36px; border-radius:12px; font-size:22px; font-weight:bold; margin-bottom:30px; }
+        .nivel-2-container { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; width:100%; }
+        .nivel-2 { background:#0288d1; color:white; padding:12px 16px; border-radius:10px; font-size:15px; font-weight:700; text-align:center; }
+        .nivel-3-container { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-top:10px; }
+        .nivel-3 { background:white; color:#0b3960; padding:6px 10px; border-radius:8px; font-size:12px; border:2px solid #0288d1; }
+        /* cards */
+        .cards-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:18px; margin-top:20px; }
+        .card { background:linear-gradient(135deg,#f7fbff,#eef7ff); border-radius:14px; padding:18px; box-shadow:0 6px 18px rgba(0,0,0,0.08); border-left:5px solid #1976d2; min-height:200px; }
+        .card h3 { color:#0b3960; font-size:18px; margin-bottom:10px; }
+        .card-content { color:#333; font-size:15px; line-height:1.6; }
+        .dica-card { background:#fff8e1; padding:10px; border-radius:8px; margin-top:12px; border-left:3px solid #ffb300; font-size:13px; }
+        .destaque-card { background:#e3f2fd; padding:10px; border-radius:8px; margin-top:10px; border-left:3px solid #90caf9; }
+        /* detalhado */
+        .detalhado-section { background:#fbfdff; border-radius:12px; padding:22px; margin-bottom:22px; border-left:5px solid #0b57a4; }
+        .detalhado-section h2 { color:#0b3960; font-size:22px; margin-bottom:14px; }
+        .detalhado-section h3 { color:#1976d2; font-size:18px; margin-top:16px; margin-bottom:8px; }
+        .tabela { width:100%; border-collapse:collapse; margin:12px 0; background:white; border-radius:8px; overflow:hidden; box-shadow:0 2px 5px rgba(0,0,0,0.05); }
+        .tabela th { background:#1976d2; color:white; padding:10px; text-align:left; font-weight:700; }
+        .tabela td { padding:10px; border-bottom:1px solid #eee; }
+        .example { background:#eef7ff; padding:12px; border-radius:8px; margin:10px 0; border-left:4px solid #42a5f5; }
+        .print-btn { position:fixed; bottom:28px; right:28px; background:#0288d1; color:white; border:none; padding:12px 22px; border-radius:50px; font-size:15px; font-weight:700; cursor:pointer; box-shadow:0 6px 18px rgba(0,0,0,0.18); z-index:1000; }
+        .print-btn:hover { transform:scale(1.03); }
+        @media (max-width:768px){ .nivel-2-container{grid-template-columns:1fr;} .mapa-container{min-width:100%;} .cards-grid{grid-template-columns:1fr;} }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>⚗️ Química - Material de Estudo</h1>
+        <p class="subtitle">Resumo compacto para revisão e aprofundamento — temas essenciais</p>
+        <div class="aviso"><strong>💡 Dica:</strong> use o mapa mental para visão geral, os cards para revisar rápido e a seção detalhada para exercícios.</div>
+
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('mapa')">🧭 Mapa Mental</button>
+            <button class="tab" onclick="showTab('cards')">📇 Cards Resumo</button>
+            <button class="tab" onclick="showTab('detalhado')">📖 Conteúdo Detalhado</button>
+        </div>
+
+        <!-- MAPA MENTAL -->
+        <div id="mapa" class="content active">
+            <div class="mapa-mental">
+                <div class="mapa-container">
+                    <div class="nivel-1">QUÍMICA - TEMAS PRINCIPAIS</div>
+                    <div class="nivel-2-container">
+                        <div>
+                            <div class="nivel-2">ESTRUTURA ATÔMICA</div>
+                            <div class="nivel-3-container">
+                                <div class="nivel-3">Modelos atômicos</div>
+                                <div class="nivel-3">Distribuição eletrônica</div>
+                                <div class="nivel-3">Níveis e subníveis</div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="nivel-2">LIGAÇÕES & INTERAÇÕES</div>
+                            <div class="nivel-3-container">
+                                <div class="nivel-3">Ligações químicas</div>
+                                <div class="nivel-3">Polaridade</div>
+                                <div class="nivel-3">Forças intermoleculares</div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="nivel-2">REAÇÕES & MISTURAS</div>
+                            <div class="nivel-3-container">
+                                <div class="nivel-3">Oxirredução</div>
+                                <div class="nivel-3">Separação de misturas</div>
+                                <div class="nivel-3">Tratamento de água & Gases</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARDS -->
+        <div id="cards" class="content">
+            <h2 style="text-align:center;color:#0b3960;margin:18px 0;">📇 CARDS PARA REVISÃO RÁPIDA</h2>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <h3>⚛️ Modelos Atômicos</h3>
+                    <div class="card-content">
+                        • Dalton: átomo indivisível, diferentes massas para elementos.
+                        <br>• Thomson: elétrons em "pudim" positivo (carga dentro do átomo).
+                        <br>• Rutherford: núcleo denso (+) e elétrons ao redor.
+                        <br>• Bohr: níveis de energia quantizados (liga com distribuição eletrônica).
+                    </div>
+                    <div class="dica-card">💡 Lembre: Rutherford explicou espalhamento de partículas ⟶ núcleo; Bohr explicou espectros.</div>
+                </div>
+
+                <div class="card">
+                    <h3>🔢 Distribuição Eletrônica</h3>
+                    <div class="card-content">
+                        • Ordem de preenchimento: 1s 2s 2p 3s 3p 4s 3d 4p... (regra de Aufbau).
+                        <br>• Pauli: máximo 2 elétrons por orbital (spin oposto).
+                        <br>• Hund: ocupar orbitais degenerados antes de emparelhar.
+                    </div>
+                    <div class="destaque-card">Ex.: Fe (26): 1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d⁶</div>
+                </div>
+
+                <div class="card">
+                    <h3>🔗 Ligações Químicas</h3>
+                    <div class="card-content">
+                        • Iônica: transferência de elétrons (metal + não-metal). Formam cristais iônicos.
+                        <br>• Covalente: compartilhamento de elétrons (não-metal + não-metal).
+                        <br>• Metálica: mar de elétrons (metais) — condutividade, ductilidade.
+                    </div>
+                    <div class="dica-card">💡 Observe propriedades: iônicas (alto ponto de fusão), covalentes (baixo, gasosos/liquidos), metálicas (brilho/condutividade).</div>
+                </div>
+
+                <div class="card">
+                    <h3>↔ Polaridade & Geometria</h3>
+                    <div class="card-content">
+                        • Polaridade depende de diferenças de eletronegatividade e geometria molecular.
+                        <br>• Molécula: polar se o centro de cargas não coincide (ex.: H₂O polar, CO₂ apolar).
+                        <br>• VSEPR (repulsão de pares eletrônicos) → prever geometria (linear, trigonal, tetraédrica etc.).
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>🔬 Forças Intermoleculares</h3>
+                    <div class="card-content">
+                        • Dipolo–dipolo (entre moléculas polares).
+                        <br>• Ligações de hidrogênio (N–H, O–H, F–H) — caso especial, muito forte.
+                        <br>• Forças de London / dispersão (presentes em todas, importante em apolares).
+                    </div>
+                    <div class="destaque-card">Impacto: solubilidade, pontos de fusão/ebulição, viscosidade.</div>
+                </div>
+
+                <div class="card">
+                    <h3>⚖️ Cálculo Estequiométrico</h3>
+                    <div class="card-content">
+                        • Balancear equações: conservar massa e átomos.
+                        <br>• Relações molares → converter massa ↔ mol ↔ partículas.
+                        <br>• Uso de molaridade (M = mol/L) para soluções.
+                    </div>
+                    <div class="dica-card">💡 Método: balanceie, escolha substância referência, use razões molares.</div>
+                </div>
+
+                <div class="card">
+                    <h3>♨️ Reações de Oxirredução</h3>
+                    <div class="card-content">
+                        • Oxidação = perda de elétrons (Aumenta nº de oxidação).
+                        <br>• Redução = ganho de elétrons (Diminui nº de oxidação).
+                        <br>• Agente oxidante: reduz; agente redutor: oxida.
+                    </div>
+                    <div class="destaque-card">Ex.: Zn + Cu²⁺ → Zn²⁺ + Cu (Zn oxida, Cu²⁺ reduz)</div>
+                </div>
+
+                <div class="card">
+                    <h3>🚰 Separação de Misturas & Tratamento de Água</h3>
+                    <div class="card-content">
+                        • Métodos: decantação, filtração, centrifugação, destilação, cromatografia, evaporação, separação magnética.
+                        <br>• Tratamento de água: captação → gradeamento → coagulação/floculação → decantação → filtração → desinfecção (Cl₂/UV) → distribuição.
+                    </div>
+                    <div class="dica-card">💡 Em química analítica, escolha o método pela diferença de propriedades físicas (densidade, solubilidade, temperatura de ebulição).</div>
+                </div>
+
+                <div class="card">
+                    <h3>🧪 Gases</h3>
+                    <div class="card-content">
+                        • Leis dos gases ideais: PV = nRT (R = 0,0821 L·atm·mol⁻¹·K⁻¹).
+                        <br>• Leis parciais de Dalton, lei de Boyle, Charles, Gay-Lussac.
+                        <br>• Misturas gasosas: pressão parcial e fração molar.
+                    </div>
+                    <div class="destaque-card">Aplicações: estequiometria com gases, estequiometria em condições não padrão (CNTP vs STP).</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DETALHADO -->
+        <div id="detalhado" class="content">
+            <h2 style="text-align:center;color:#0b3960;margin:18px 0;">📖 CONTEÚDO DETALHADO</h2>
+
+            <div class="detalhado-section">
+                <h2>⚛️ Modelos Atômicos</h2>
+                <h3>Dalton</h3>
+                <p>Propôs que a matéria é formada por átomos indivisíveis, cada elemento com átomos de mesma massa e propriedades.</p>
+                <h3>Thomson</h3>
+                <p>Descobriu os elétrons (raios catódicos) e propôs que eram partículas negativas imersas em uma carga positiva contínua (modelo "pudim de passas").</p>
+                <h3>Rutherford</h3>
+                <p>Experiência de espalhamento (folha de ouro) mostrou núcleo pequeno e denso com carga positiva; elétrons circulando ao redor.</p>
+                <h3>Bohr</h3>
+                <p>Elétrons em órbitas quantizadas com energias discretas; explicou espectros de emissão do hidrogênio.</p>
+            </div>
+
+            <div class="detalhado-section">
+                <h2>🔢 Distribuição Eletrônica</h2>
+                <h3>Princípios</h3>
+                <ul>
+                    <li><strong>Princípio de Aufbau:</strong> preencher orbitais do menor para o maior nível de energia.</li>
+                    <li><strong>Princípio de Pauli:</strong> cada orbital pode ter no máximo 2 elétrons com spins opostos.</li>
+                    <li><strong>Regra de Hund:</strong> ocupar orbitais degenerados com elétrons desemparelhados antes de emparelhar.</li>
+                </ul>
+                <div class="example">Exercício: Escreva a configuração eletrônica de Cl (17): 1s² 2s² 2p⁶ 3s² 3p⁵.</div>
+            </div>
+
+            <div class="detalhado-section">
+                <h2>🔗 Ligações Químicas</h2>
+                <h3>Ligação Iônica</h3>
+                <p>Ocorre entre metais e ametais; transferência de elétrons forma íons. Ex.: NaCl. Propriedades: sólidos cristalinos, conduzem quando fundidos/solução, altos pontos de fusão.</p>
+                <h3>Ligação Covalente</h3>
+                <p>Compartilhamento de pares de elétrons (simples, dupla, tripla). Pode ser polar ou apolar conforme diferença de eletronegatividade.</p>
+                <h3>Ligação Metálica</h3>
+                <p>Elétrons deslocalizados ("mar de elétrons") → condutividade elétrica e térmica, maleabilidade.</p>
+            </div>
+
+            <div class="detalhado-section">
+                <h2>↔ Polaridade Molecular</h2>
+                <h3>Eletronegatividade</h3>
+                <p>Diferença de eletronegatividade entre átomos determina caráter iônico/covalente. Tabela de Pauling: O (3,44) é muito eletronegativo.</p>
+                <h3>Geometria & VSEPR</h3>
+                <p>Use VSEPR para prever formas: pares ligantes e pares isolados determinam ângulos. Exemplos: H₂O (angular) → dipolo resultante; CO₂ (linear) → dipolos se cancelam.</p>
+            </div>
+
+            <div class="detalhado-section">
+                <h2>🔬 Forças Intermoleculares</h2>
+                <h3>Ligações de Hidrogênio</h3>
+                <p>Força forte entre H ligado a N, O ou F e um par não-ligante de outra molécula: explica alto ponto de ebulição da água.</p>
+                <h3>Dipolo–Dipolo</h3>
+                <p>Interações entre moléculas polares (orientação de polos opostos).</p>
+                <h3>Forças de London</h3>
+                <p>Flutuações momentâneas da nuvem eletrônica criam dipolos temporários — principais em apolares e aumentam com massa molar.</p>
+            </div>
+
+            <div class="detalhado-section">
+                <h2>⚖️ Cálculo Estequiométrico</h2>
+                <h3>Passos</h3>
+                <ol>
+                    <li>Balancear a equação química.</li>
+                    <li>Converter massas para mols (m/M).</li>
+                    <li>Usar razões molares da equação para obter mols da substância desejada.</li>
+                    <li>Converter mols de volta para massa ou volume (para gases).</li>
+                </ol>
+                <div class="example">
+                    Ex.: 2 H₂ + O₂ → 2 H₂O. Quantos gramas de H₂O são formados por 4,0 g de H₂?
+                    <br>mols H₂ = 4,0 g / 2,02 g·mol⁻¹ = 1,98 mol;
+                    <br>razão H₂ → H₂O = 1 : 1 ⟶ mol H₂O = 1,98 mol;
+                    <br>massa H₂O = 1,98 × 18,02 = 35,7 g.
+                </div>
+            </div>
+
+            <div class="detalhado-section">
+                <h2>♻ Separação de Misturas & Tratamento de Água</h2>
+                <h3>Métodos de Separação</h3>
+                <ul>
+                    <li><strong>Decantação:</strong> separar sólido/líquido por diferença de densidade.</li>
+                    <li><strong>Filtração:</strong> sólido retido, líquido passa (filtração simples e a vácuo).</li>
+                    <li><strong>Destilação:</strong> separar por pontos de ebulição (simples ou fracionada).</li>
+                    <li><strong>Cromatografia:</strong> separação por afinidade (analítica).</li>
+                    <li><strong>Centrifugação:</strong> acelera decantação por força centrífuga.</li>
+                </ul>
+                <h3>Tratamento de Água</h3>
+                <p>Etapas principais: captação → pré-tratamento (gradeamento) → coagulação/floculação → decantação → filtração → desinfecção (cloro/ozônio/UV) → correção de pH → distribuição. Objetivos: remoção de sólidos suspensos, micro-organismos e substâncias contaminantes.</p>
+            </div>
+
+            <div class="detalhado-section">
+                <h2>♨️ Reações de Oxirredução</h2>
+                <h3>Identificação</h3>
+                <p>Calcule números de oxidação (NOX) e identifique quem aumentou (oxidou) e quem diminuiu (reduziu).</p>
+                <h3>Exemplo</h3>
+                <div class="example">Fe + Cu²⁺ → Fe²⁺ + Cu. NOX Fe: 0 → +2 (oxida). NOX Cu: +2 → 0 (reduz). Meio: Zn + 2HCl → ZnCl₂ + H₂ (Zn oxida, H⁺ reduz a H₂).</div>
+            </div>
+
+            <div class="detalhado-section">
+                <h2>🧪 Gases</h2>
+                <h3>Equação de Estado</h3>
+                <p>PV = nRT. Atentar unidades: P (atm), V (L), n (mol), R (0,0821), T (K).</p>
+                <h3>Exemplos e Leis</h3>
+                <ul>
+                    <li><strong>Boyle:</strong> P ∝ 1/V (T constante).</li>
+                    <li><strong>Charles:</strong> V ∝ T (P constante).</li>
+                    <li><strong>Gay-Lussac:</strong> P ∝ T (V constante).</li>
+                    <li><strong>Dalton:</strong> pressão total = soma das pressões parciais.</li>
+                </ul>
+                <div class="example">Cálculo: Em CNTP (0°C, 1 atm), 1 mol gás ocupa 22,4 L (valor clássico). Em condições quaisquer use PV=nRT.</div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <button class="print-btn" onclick="window.print()">🖨️ Imprimir</button>
+
+    <script>
+        function showTab(name){
+            document.querySelectorAll('.content').forEach(c=>c.classList.remove('active'));
+            document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+            document.getElementById(name).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
