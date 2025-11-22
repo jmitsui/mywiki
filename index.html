@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 Minha Wiki de Estudos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+        }
+
+        .materias-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .materia-card {
+            background: linear-gradient(135deg, #f8f9ff 0%, #fff 100%);
+            border-radius: 15px;
+            padding: 25px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .materia-card:hover {
+            transform: translateY(-8px);
+            border-color: #667eea;
+            box-shadow: 0 12px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .materia-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .materia-nome {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .materia-desc {
+            font-size: 0.95em;
+            color: #666;
+        }
+
+        /* Cores específicas por matéria */
+        .materia-card.biologia:hover { border-color: #27ae60; }
+        .materia-card.biologia .materia-nome { color: #27ae60; }
+
+        .materia-card.english:hover { border-color: #3498db; }
+        .materia-card.english .materia-nome { color: #3498db; }
+
+        .materia-card.filosofia:hover { border-color: #9b59b6; }
+        .materia-card.filosofia .materia-nome { color: #9b59b6; }
+
+        .materia-card.fisica:hover { border-color: #e74c3c; }
+        .materia-card.fisica .materia-nome { color: #e74c3c; }
+
+        .materia-card.geografia:hover { border-color: #1abc9c; }
+        .materia-card.geografia .materia-nome { color: #1abc9c; }
+
+        .materia-card.historia:hover { border-color: #d35400; }
+        .materia-card.historia .materia-nome { color: #d35400; }
+
+        .materia-card.matematica:hover { border-color: #2980b9; }
+        .materia-card.matematica .materia-nome { color: #2980b9; }
+
+        .materia-card.portugues:hover { border-color: #16a085; }
+        .materia-card.portugues .materia-nome { color: #16a085; }
+
+        .materia-card.quimica:hover { border-color: #8e44ad; }
+        .materia-card.quimica .materia-nome { color: #8e44ad; }
+
+        .materia-card.sociologia:hover { border-color: #c0392b; }
+        .materia-card.sociologia .materia-nome { color: #c0392b; }
+
+        /* Seção especial - Memorex */
+        .secao-titulo {
+            text-align: center;
+            color: #667eea;
+            margin: 40px 0 25px 0;
+            font-size: 1.6em;
+            padding-top: 30px;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .memorex-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .memorex-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            padding: 25px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .memorex-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(102, 126, 234, 0.5);
+        }
+
+        .memorex-card .materia-icon {
+            font-size: 2.5em;
+        }
+
+        .memorex-card .materia-nome {
+            color: white;
+        }
+
+        .memorex-card .materia-desc {
+            color: rgba(255,255,255,0.85);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #f0f0f0;
+            color: #999;
+            font-size: 0.9em;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .materias-grid, .memorex-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 20px;
+                border-radius: 15px;
+            }
+
+            h1 {
+                font-size: 1.7em;
+            }
+
+            .materia-card, .memorex-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 Wiki de Estudos</h1>
+        <p class="subtitle">Material de estudo organizado por matéria</p>
+
+        <div class="materias-grid">
+            <a href="biologia_estudo.html" class="materia-card biologia">
+                <span class="materia-icon">🧬</span>
+                <span class="materia-nome">Biologia</span>
+                <span class="materia-desc">Células, genética, ecologia e mais</span>
+            </a>
+
+            <a href="english_estudo.html" class="materia-card english">
+                <span class="materia-icon">🇬🇧</span>
+                <span class="materia-nome">English</span>
+                <span class="materia-desc">Grammar, vocabulary and practice</span>
+            </a>
+
+            <a href="filosofia_estudo.html" class="materia-card filosofia">
+                <span class="materia-icon">🤔</span>
+                <span class="materia-nome">Filosofia</span>
+                <span class="materia-desc">Pensadores, ética e epistemologia</span>
+            </a>
+
+            <a href="fisica_estudo.html" class="materia-card fisica">
+                <span class="materia-icon">⚡</span>
+                <span class="materia-nome">Física</span>
+                <span class="materia-desc">Mecânica, termodinâmica, ondas</span>
+            </a>
+
+            <a href="geografia_estudo.html" class="materia-card geografia">
+                <span class="materia-icon">🌍</span>
+                <span class="materia-nome">Geografia</span>
+                <span class="materia-desc">Geopolítica, cartografia, clima</span>
+            </a>
+
+            <a href="historia_estudo.html" class="materia-card historia">
+                <span class="materia-icon">📜</span>
+                <span class="materia-nome">História</span>
+                <span class="materia-desc">Brasil, mundo e atualidades</span>
+            </a>
+
+            <a href="matematica_estudo.html" class="materia-card matematica">
+                <span class="materia-icon">📐</span>
+                <span class="materia-nome">Matemática</span>
+                <span class="materia-desc">Álgebra, geometria, funções</span>
+            </a>
+
+            <a href="portugues_estudo.html" class="materia-card portugues">
+                <span class="materia-icon">📝</span>
+                <span class="materia-nome">Português</span>
+                <span class="materia-desc">Gramática, redação, literatura</span>
+            </a>
+
+            <a href="quimica_estudo.html" class="materia-card quimica">
+                <span class="materia-icon">🧪</span>
+                <span class="materia-nome">Química</span>
+                <span class="materia-desc">Orgânica, inorgânica, reações</span>
+            </a>
+
+            <a href="sociologia_estudo.html" class="materia-card sociologia">
+                <span class="materia-icon">👥</span>
+                <span class="materia-nome">Sociologia</span>
+                <span class="materia-desc">Sociedade, cultura e pensadores</span>
+            </a>
+        </div>
+
+        <h2 class="secao-titulo">🧠 Memorex - Revisão Rápida</h2>
+
+        <div class="memorex-grid">
+            <a href="memorex-trig-log_visual.html" class="memorex-card">
+                <span class="materia-icon">👁️</span>
+                <span class="materia-nome">Trigonometria & Logaritmos</span>
+                <span class="materia-desc">Versão visual interativa</span>
+            </a>
+
+            <a href="memorex-trig-log_impressao.html" class="memorex-card">
+                <span class="materia-icon">🖨️</span>
+                <span class="materia-nome">Trigonometria & Logaritmos</span>
+                <span class="materia-desc">Versão para impressão</span>
+            </a>
+        </div>
+
+        <div class="footer">
+            <p>📖 Bons estudos! Atualizado em 2025</p>
+        </div>
+    </div>
+</body>
+</html>
